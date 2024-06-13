@@ -1,28 +1,25 @@
-let opcoes = document.querySelector(".opcoes").querySelectorAll("div");
-console.log(`Opções encontradas: ${opcoes.length}`);
-for(let opcao of opcoes) {
-    opcao.addEventListener('click', function () {
-        selecionar(elemento_clicado)
-        selecionar(item_clicado)
-    });
-}
-
-function selecionar(elemento_clicado, item_clicado) {
+function selecionar(elemento_clicado) {
     // Removendo a seleção do elemento atualmente selecionado
     document.querySelector('.selecionado').className = 'op';
 
     // Adicionando classe CSS de seleção na opção clicada
     elemento_clicado.className = 'selecionado';
-    document.querySelector('.item').className = 'item2';
-    console.log('classe trocada')
-    
+}
+
+let opcoes = document.querySelector(".opcoes").querySelectorAll('div');
+console.log(`Opções encontradas: ${opcoes.length}`);
+for(let opcao of opcoes) {
+    opcao.addEventListener('click', function () {
+        selecionar(this)
+    });
 }
 
 let button = document.getElementById("handleSubmit")
 
 button.onclick = async function(e) {
     e.preventDefault();
-    let item = document.getElementById(".item2").value;
+    let item = document.getElementById(".item2").value; 
+    // arrumar urgente essa porra
     let date = document.getElementById("#data").value;
     let hora = document.getElementById("#hora").value;
     let qnt = document.getElementById("#quant").value;
