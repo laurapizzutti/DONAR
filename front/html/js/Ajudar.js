@@ -1,6 +1,8 @@
-function selecionar(elemento_clicado) {
+function selecionar(elemento_clicado, item_clicado) {
     // Removendo a seleção do elemento atualmente selecionado
-    document.querySelector('.selecionado').className = 'op';
+    const selecionado = document.querySelector('.selecionado');
+    selecionado.className = 'op';
+    console.log(selecionado.querySelector('.item').textContent)
 
     // Adicionando classe CSS de seleção na opção clicada
     elemento_clicado.className = 'selecionado';
