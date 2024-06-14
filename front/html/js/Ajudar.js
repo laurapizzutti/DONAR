@@ -1,22 +1,31 @@
+// Função para selecionar a div clicada
 function selecionar(elemento_clicado) {
-        
-        const selecionado = document.querySelector('.op');
-        selecionado.className = 'selecionado';
-        
-        console.log(selecionado.querySelector('.item').textContent)
-     
-        elemento_clicado.className = 'selecionado';
+    // Obtenha a div que atualmente está selecionada
+    const selecionado = document.querySelector('.selecionado');
+    
+    // Se houver uma div previamente selecionada, altere sua classe para 'op'
+    if (selecionado) {
+        selecionado.className = 'op';
+    }
+
+    // Altere a classe da div clicada para 'selecionado'
+    elemento_clicado.className = 'selecionado';
+
+    // Exiba o conteúdo do span com a classe 'item' dentro da div selecionada
+    console.log(elemento_clicado.querySelector('.item').textContent);
 }
 
 // Seleciona todas as opções dentro do elemento com a classe 'opcoes'
-let opcoes = document.querySelector(".opcoes").querySelectorAll('div');
-console.log(`Opções encontradas: ${opcoes.length}`); 
+let opcoes = document.querySelector(".opcoes").querySelectorAll('div.op');
+console.log(`Opções encontradas: ${opcoes.length}`);
 
+// Adiciona um evento de clique a cada opção
 for (let opcao of opcoes) {
     opcao.addEventListener('click', function () {
-        selecionar(this); 
+        selecionar(this);
     });
 }
+
 
 // Seleciona o botão de envio pelo ID
 let button = document.getElementById("handleSubmit");
@@ -26,7 +35,7 @@ button.onclick = async function(e) {
     e.preventDefault(); // Previne o comportamento padrão do botão de envio
 
     // Obtenha os valores dos campos de entrada corretamente
-    let item = document.querySelector('.item').value; 
+    let item = document.querySelector('.selecionado .item').textContent;
     let date = document.getElementById("data").value; 
     let hora = document.getElementById("hora").value; 
     let qnt = document.getElementById("quant").value; 
