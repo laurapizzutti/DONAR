@@ -6,7 +6,7 @@ async function storeTask(request, response){
         request.body.item,
         request.body.date,
         request.body.hora,
-        request.body.qnt,
+        request.body.qnt
 
         // 1) pode dar ruim em algum momento
         // é necessário que o item que esteja sendo selecionada na página ajudar 
@@ -17,7 +17,8 @@ async function storeTask(request, response){
     );
 
     // const query = "insert into agendar(item, data_entrega, hora_entrega, qnt) values(?,?,?,?)";
-    const query = "insert into agendamentos(item, data_entrega, hora_entrega, qnt) values(?,?,?,?)";
+    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt) VALUES (?, ?, ?, ?)';
+    // "insert into cadastro(nome, email) values(?,?)";
 
     connection.query(query, params, (err, results) => {
         console.log(err)

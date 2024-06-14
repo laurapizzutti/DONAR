@@ -3,10 +3,10 @@ use DONAR_MVP;
 
 create table agendamentos (
 	id INT primary key auto_increment,
-    item VARCHAR(255) NOT NULL,
+	item VARCHAR(255) NOT NULL,
     data_entrega date not null,
     hora_entrega time not null,
-    qnt int not null
+    qnt INT not null
 );
 
 create table cadastro_usuário (
