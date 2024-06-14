@@ -1,7 +1,7 @@
 {
   "name": "donar---mvp",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "Ajudar.js",
   "scripts": {
     "start": "nodemon src/server.js"
   },

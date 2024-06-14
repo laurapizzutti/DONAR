@@ -4,4 +4,3 @@
 - Criar o banco de dados da aplicação
 - Seguir o tutorial dado pelos professores para criar uma API e as rotas pro banco de dados
 - Posso ter como mudar a hora
-- 
