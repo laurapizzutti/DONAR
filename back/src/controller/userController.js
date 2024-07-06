@@ -1,7 +1,7 @@
 const connection = require('../config/db.js');
 const dotenv= require('dotenv').config();
 
-async function storeTask(request, response){
+async function storeUser(request, response){
     const params = Array(
         request.body.nome,
         request.body.email,
@@ -10,7 +10,7 @@ async function storeTask(request, response){
         request.body.endereco,
     );
 
-    const query = 'INSERT INTO cadastro_usuario(nome, email, senha, tipo_usuario, endereco) VALUES (?, ?, ?, ?)';
+    const query = 'INSERT INTO cadastro_usuario(nome, email, senha, tipo_usuario, endereco) VALUES (?, ?, ?, ?, ? )';
 
     connection.query(query, params, (err, results) => {
         console.log(err)
