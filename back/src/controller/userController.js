@@ -10,6 +10,7 @@ async function storeUser(request, response){
         request.body.endereco,
     );
 
+
     const query = 'INSERT INTO cadastro_usuario(nome, email, senha, tipo_usuario, endereco) VALUES (?, ?, ?, ?, ? )';
 
     connection.query(query, params, (err, results) => {
@@ -22,6 +23,7 @@ async function storeUser(request, response){
                     massage: "Sucesso!",
                     data: results
                 })
+            
         }else{
             response
                 .status(400)

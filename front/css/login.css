@@ -38,6 +38,7 @@ input {
     border: solid 1.8px;
     border-color: #6D6A6A;
     outline: 0;
+    font-family: "Outfit", sans-serif;
 }
 
 ::placeholder {

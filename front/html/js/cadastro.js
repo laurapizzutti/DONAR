@@ -31,6 +31,7 @@ button.onclick = async function(e) {
 
         if (content.success) {
             alert("Sucesso"); 
+            window.location.href = "/front/html/login.html";
         } else {
             alert("Não"); 
         }

@@ -1,16 +1,9 @@
 function selecionar(elemento_clicado) {
-    
     const selecionado = document.querySelector('.selecionado');
-    
-    
     if (selecionado) {
         selecionado.className = 'op';
     }
-
-   
     elemento_clicado.className = 'selecionado';
-
-    
     console.log(elemento_clicado.querySelector('.item').textContent);
 }
 
