@@ -292,3 +292,9 @@ a {
     text-decoration: none;
     color: #ffffff;
 }
+
+#handleSubmit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

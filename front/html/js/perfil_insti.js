@@ -10,13 +10,13 @@ button.onclick = async function(e) {
     let endereco = document.querySelector('.registro .endereco').value; 
 
     
-    let data = { nome, email, senha, tipo_usuario, endereco }; 
+    let data = { item, qnt_itens }; 
 
     console.log("Dados que serão enviados:", data); 
 
     try {
         
-        const response = await fetch('http://localhost:3001/api/store/user', {
+        const response = await fetch('http://localhost:3001/api/store/tabela', {
             method: "post", 
             headers: { "Content-Type": "application/json;charset=UTF-8" }, 
             body: JSON.stringify(data) 
