@@ -14,8 +14,15 @@ create table cadastro_usuario (
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL UNIQUE,
-    tipo_usuario ENUM ("Colaborador", "Instituição" NOT NULL),
+    tipo_usuario ENUM ("Colaborador", "Instituição") NOT NULL,
     endereco VARCHAR(255) NOT NULL
+);
+
+create table tabela_itens (
+	 FOREIGN KEY(id) REFERENCES cadastro_usuario(id),
+     id_item INT  primary key auto_increment,
+     item VARCHAR(255) NOT NULL,
+     qnt_itens VARCHAR(255) NOT NULL
 );
 
 select * from agendamentos;
