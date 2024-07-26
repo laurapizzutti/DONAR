@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     const tabela = document.getElementById('tabela');
     const mostrarPopupBotao = document.getElementById('mostrarPopup');
-    const modal = document.getElementById('modal');
-    const fecharModalBotao = document.getElementById('fecharModal');
+    const popup = document.getElementById('popup');
+    const fecharPopupBotao = document.getElementById('fecharPopup');
     const salvarItemBotao = document.getElementById('salvarItem');
     const quantidadeInput = document.getElementById('quantidade');
     const nomeItemInput = document.getElementById('nomeItem');
-    const tituloModal = document.getElementById('tituloModal');
+    const tituloPopup = document.getElementById('tituloPopup');
 
     let itemEditando = null;
 
-    function alternarModal() {
-        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    function alternarPopup() {
+        popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
     }
 
     function limparInputs() {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             excluirBotao.addEventListener('click', () => excluirItem(opcao));
 
             tabela.appendChild(opcao);
-            alternarModal();
+            alternarPopup();
             limparInputs();
         } else {
             alert("Por favor, preencha todos os campos.");
@@ -65,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
         itemEditando = opcao;
         quantidadeInput.value = quantidade;
         nomeItemInput.value = nomeItem;
-        tituloModal.textContent = "Editar Item";
-        alternarModal();
+        tituloPopup.textContent = "Editar Item";
+        alternarPopup();
     }
 
     function excluirItem(opcao) {
@@ -74,12 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     mostrarPopupBotao.addEventListener('click', () => {
-        tituloModal.textContent = "Adicionar Item";
-        alternarModal();
+        tituloPopup.textContent = "Adicionar Item";
+        alternarPopup();
     });
 
-    fecharModalBotao.addEventListener('click', () => {
-        alternarModal();
+    fecharPopupBotao.addEventListener('click', () => {
+        alternarPopup();
         limparInputs();
     });
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (quantidade && nomeItem) {
                 itemEditando.querySelector('.quantidade').textContent = `${quantidade}x`;
                 itemEditando.querySelector('.item').textContent = nomeItem;
-                alternarModal();
+                alternarPopup();
                 limparInputs();
             } else {
                 alert("Por favor, preencha todos os campos.");

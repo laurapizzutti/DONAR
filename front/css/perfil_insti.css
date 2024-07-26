@@ -22,9 +22,8 @@ h1 {
 
 .cabecalho-div {
     display: flex;
-    padding-bottom: 10px;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .tabela {
@@ -33,7 +32,6 @@ h1 {
     justify-content: center;
     flex-direction: column;
     gap: 12px;
-    padding: 5%;
     margin-bottom: 20px;
 }
 
@@ -65,7 +63,6 @@ h1 {
     color: #FFFFFF;
     border: none;
     cursor: pointer;
-    margin-top: 20px;
 }
 
 .quantidade {
@@ -122,7 +119,7 @@ button.editar svg {
     fill: #28a745;
 }
 
-.modal {
+.popup {
     display: none;
     position: fixed;
     z-index: 1;
@@ -136,7 +133,7 @@ button.editar svg {
     align-items: center;
 }
 
-.conteudo-modal {
+.conteudo-popup {
     background-color: #fefefe;
     /* margin: 100px; */
     padding: 20px;
@@ -162,7 +159,7 @@ button.editar svg {
     color: black;
 }
 
-.input-modal {
+.input-popup {
     width: 325px; /* Igual à largura dos quadros */
     height: 30px; /* Igual à altura dos quadros */
     border-radius: 20px; /* Igual ao arredondamento dos quadros */
@@ -171,8 +168,12 @@ button.editar svg {
     font-family: "Outfit", sans-serif;
 }
 
-.input-modal::placeholder {
+.input-popup::placeholder {
     font-family: "Outfit", sans-serif;
     font-size: 15px;
     font-weight: 650;
+}
+
+h2 {
+    margin: 0;
 }
