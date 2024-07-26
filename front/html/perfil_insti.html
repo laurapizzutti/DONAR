@@ -3,63 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/front/css/Ajudar.css">
+    <link rel="stylesheet" href="../css/perfil_insti.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <title>Tabela - Instituição</title>
 </head>
 <body>
-    <header>
+    <header></header>
+    <main>
         <div class="cabecalho-div">
             <a href="/front/html/home.html"><img class="flecha" src="/front/img/arrow.svg"></a>
             <h1>Solicite seus itens por aqui!</h1>
         </div>
-        <!-- <div class="coluna">
-            <img src="/front/img/Ellipse 35 (1).svg" alt="">
-            <img src="/front/img/images-removebg-preview 18.svg" alt="">
+        <div class="tabela" id="tabela">
+            <!-- Itens serão adicionados aqui pelo JavaScript -->
         </div>
-        <span class="frase">
-            Selecione qual item <br> deseja doar
-        </span> -->
-    </header>
-    <main>
-        <div class="tabela">
-            <!-- <div class="op">
-                <span class="qnt2">
-                    20x
-                </span>
-                <span class="item">
-                    Caixa de Leite
-                </span>
+        <button type="button" class="botao" id="mostrarPopup">Adicionar Item</button>
+
+        <!-- Modal -->
+        <div class="modal" id="modal">
+            <div class="conteudo-modal">
+                <span class="fechar" id="fecharModal">&times;</span>
+                <h2 id="tituloModal">Adicionar Item</h2>
+                <input type="number" id="quantidade" placeholder="Quantidade" class="input-modal">
+                <input type="text" id="nomeItem" placeholder="Nome do item" class="input-modal">
+                <button type="button" class="botao" id="salvarItem">Salvar</button>
             </div>
-            <div class="op">
-                <span class="qnt2">
-                    10x
-                </span>
-                <span class="item">
-                    1Kg de Arroz Branco
-                </span>
-            </div>
-            <div class="op">
-                <span class="qnt2">
-                    13x
-                </span>
-                <span class="item">
-                    Arroz branco
-                </span>
-            </div>
-            <div class="op">
-                <span class="qnt2">
-                    8x
-                </span>
-                <span class="item">
-                    Feijão
-                </span>
-            </div> -->
-        </div>
-            <button type="button" class="agendar" id="handleSubmit"> Atualizar
-            </button>
         </div>
     </main>
     <footer>
@@ -78,6 +48,7 @@
             </a>
         </div>
     </footer>
-    <script src="/front/html/js/Ajudar.js"></script>
+
+    <script src="../html/js/perfil_insti.js"></script>
 </body>
 </html>

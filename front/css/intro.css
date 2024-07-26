@@ -1,0 +1,48 @@
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8FBFB;
+    font-family: "Outfit", sans-serif;
+}
+
+.intro {
+    display: flex;
+    position: relative;
+    left: 5px;
+    top: 150px;
+    margin: 15px;
+    justify-content: center;
+    /* gap: 30px; */
+    flex-direction: column;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+
+}
+
+p {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.agendar {
+    border-radius: 15px;
+    width: 325px;
+    height: 46px;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #FFC600;
+    color: #FFFFFF;
+    border: 0 none;
+    margin-top: 30px;
+}
