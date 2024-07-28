@@ -12,6 +12,58 @@ document.addEventListener('DOMContentLoaded', function () {
     let descItem = [];
     let editIndex = null; // Para rastrear o índice do item em edição
 
+    async function carregarItens() {
+        try {
+            const response = await fetch('/api/tabela');
+            const data = await response.json();
+            quantidadeItem = data.map(item => item.quantidade);
+            descItem = data.map(item => item.nome);
+            renderizarItens(true);
+        } catch (error) {
+            console.error('Erro ao carregar itens:', error);
+        }
+    }
+
+    async function salvarVersaoTabela() {
+        try {
+            const items = quantidadeItem.map((quantidade, index) => ({
+                quantidade: quantidade,
+                nome: descItem[index]
+            }));
+
+            await fetch('/api/tabela', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(items)
+            });
+            console.log('Versão da tabela salva:', items);
+        } catch (error) {
+            console.error('Erro ao salvar itens:', error);
+        }
+    }
+
+    async function removerItem(index) {
+        try {
+            const itemToDelete = {
+                quantidade: quantidadeItem[index],
+                nome: descItem[index]
+            };
+
+            await fetch('/api/tabela', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(itemToDelete)
+            });
+            console.log('Item removido:', itemToDelete);
+        } catch (error) {
+            console.error('Erro ao remover item:', error);
+        }
+    }
+
     function alternarPopup() {
         popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
     }
@@ -55,10 +107,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 </svg>
             `; // SVG de exclusão
 
-            excluirButton.addEventListener('click', function () {
+            excluirButton.addEventListener('click', async function () {
                 const index = [...tabela.children].indexOf(itemDiv);
                 quantidadeItem.splice(index, 1);
                 descItem.splice(index, 1);
+                await removerItem(index);
                 renderizarItens(true);
             });
 
@@ -109,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alternarPopup();
     });
 
-    salvarItemButton.addEventListener('click', function () {
+    salvarItemButton.addEventListener('click', async function () {
         const quantidade = quantidadeInput.value;
         const nomeItem = nomeItemInput.value;
 
@@ -123,6 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 descItem.push(nomeItem);
             }
 
+            await salvarVersaoTabela();
             renderizarItens(true);
             quantidadeInput.value = '';
             nomeItemInput.value = '';
@@ -136,10 +190,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    function salvarVersaoTabela() {
-        console.log('Versão da tabela salva:', quantidadeItem, descItem);
-    }
-
     function renderizarItens(comAcoes = false) {
         tabela.innerHTML = ''; // Limpa a tabela
         for (let i = 0; i < quantidadeItem.length; i++) {
@@ -147,5 +197,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    renderizarItens(); // Renderiza itens ao carregar a página
+    carregarItens(); // Carrega itens ao carregar a página
 });

@@ -1,29 +1,36 @@
-create database DONAR_MVP;
-use DONAR_MVP;
+-- Criação do banco de dados
+CREATE DATABASE DONAR_MVP;
+USE DONAR_MVP;
 
-create table agendamentos (
-	id INT primary key auto_increment,
-	item VARCHAR(255) NOT NULL,
-    data_entrega date NOT NULL,
-    hora_entrega time NOT NULL,
+-- Criação da tabela agendamentos
+CREATE TABLE agendamentos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    item VARCHAR(255) NOT NULL,
+    data_entrega DATE NOT NULL,
+    hora_entrega TIME NOT NULL,
     qnt INT NOT NULL
 );
 
-create table cadastro_usuario (
-	id INT primary key auto_increment,
+-- Criação da tabela cadastro_usuario
+CREATE TABLE cadastro_usuario (
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL UNIQUE,
-    tipo_usuario ENUM ("Colaborador", "Instituição") NOT NULL,
+    tipo_usuario ENUM('Colaborador', 'Instituição') NOT NULL,
     endereco VARCHAR(255) NOT NULL
 );
 
-create table tabela_itens (
-	 FOREIGN KEY(id) REFERENCES cadastro_usuario(id),
-     id_item INT  primary key auto_increment,
-     item VARCHAR(255) NOT NULL,
-     qnt_itens VARCHAR(255) NOT NULL
+-- Criação da tabela tabela_itens
+CREATE TABLE tabela_itens (
+    id_item INT PRIMARY KEY AUTO_INCREMENT,
+    item VARCHAR(255) NOT NULL,
+    qnt_itens VARCHAR(255) NOT NULL,
+    id_user INT,
+    FOREIGN KEY (id_user) REFERENCES cadastro_usuario(id)
 );
 
-select * from agendamentos;
-select *  from cadastro_usuario;
+-- Consultas para visualizar os dados das tabelas
+SELECT * FROM agendamentos;
+SELECT * FROM cadastro_usuario;
+SELECT * FROM tabela_itens;
