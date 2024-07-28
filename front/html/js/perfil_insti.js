@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function carregarItens() {
         try {
-            const response = await fetch('/api/tabela');
+            const response = await fetch('http://localhost:3001/api/store/tabela');
             const data = await response.json();
             quantidadeItem = data.map(item => item.quantidade);
             descItem = data.map(item => item.nome);
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 nome: descItem[index]
             }));
 
-            await fetch('/api/tabela', {
+            await fetch('http://localhost:3001/api/store/tabela', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 nome: descItem[index]
             };
 
-            await fetch('/api/tabela', {
+            await fetch('http://localhost:3001/api/store/tabela', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

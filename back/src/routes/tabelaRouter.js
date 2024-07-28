@@ -3,7 +3,8 @@ const router = Router();
 
 const { storeItem, getItems } = require('../controller/tabelaController');
 
-router.post('/store/item', storeItem);
-router.get('/get/items/:id', getItems);
+// Atualizar as rotas para '/api/tabela'
+router.post('/tabela', storeItem); // POST para adicionar itens
+router.get('/tabela', getItems);    // GET para obter todos os itens
 
 module.exports = router;
