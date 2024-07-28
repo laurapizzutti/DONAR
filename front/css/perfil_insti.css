@@ -22,8 +22,8 @@ h1 {
 
 .cabecalho-div {
     display: flex;
+    padding-bottom: 10px;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .tabela {
@@ -37,16 +37,16 @@ h1 {
 
 .opcao {
     display: flex;
-    align-items: center; /* Alinha a quantidade, nome e ícones na mesma linha */
+    align-items: center;
     background-color: #FFFFFF;
-    width: 325px; /* Largura fixa */
-    min-height: 57.82px; /* Altura mínima */
-    max-height: 200px; /* Altura máxima (ajuste conforme necessário) */
+    width: 300px;
+    min-height: 57.82px;
+    max-height: 200px;
     border-radius: 20px;
     box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
     justify-content: space-between;
-    padding: 10px 20px; /* Ajusta o padding interno */
-    overflow: hidden; /* Esconde o conteúdo que excede a altura máxima */
+    padding: 10px 20px;
+    overflow: hidden;
 }
 
 .botao {
@@ -63,29 +63,30 @@ h1 {
     color: #FFFFFF;
     border: none;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .quantidade {
     font-weight: bold;
     font-size: 170%;
     color: #000000;
-    margin-right: 10px; /* Espaçamento entre a quantidade e o nome do item */
-    white-space: nowrap; /* Mantém a quantidade em uma linha */
+    margin-right: 10px;
+    white-space: nowrap;
 }
 
 .item {
     font-size: 150%;
     font-weight: 400;
-    overflow-wrap: break-word; /* Permite que o texto quebre quando necessário */
-    word-wrap: break-word; /* Para compatibilidade com navegadores mais antigos */
-    flex-grow: 1; /* Permite que o nome do item ocupe o espaço disponível */
-    margin-right: 10px; /* Espaçamento entre o nome do item e os ícones */
-    min-width: 0; /* Permite que o texto quebre corretamente */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    flex-grow: 1;
+    margin-right: 10px;
+    min-width: 0;
 }
 
 div {
-    display: flex; /* Flex para os ícones */
-    gap: 10px; /* Espaçamento entre os ícones */
+    display: flex;
+    gap: 10px;
 }
 
 .navbar {
@@ -135,7 +136,6 @@ button.editar svg {
 
 .conteudo-popup {
     background-color: #fefefe;
-    /* margin: 100px; */
     padding: 20px;
     border: 1px solid #888;
     max-width: 400px;
@@ -160,9 +160,9 @@ button.editar svg {
 }
 
 .input-popup {
-    width: 325px; /* Igual à largura dos quadros */
-    height: 30px; /* Igual à altura dos quadros */
-    border-radius: 20px; /* Igual ao arredondamento dos quadros */
+    width: 325px;
+    height: 30px;
+    border-radius: 20px;
     border: 1px solid #ccc;
     padding: 10px;
     font-family: "Outfit", sans-serif;
@@ -172,8 +172,4 @@ button.editar svg {
     font-family: "Outfit", sans-serif;
     font-size: 15px;
     font-weight: 650;
-}
-
-h2 {
-    margin: 0;
 }
