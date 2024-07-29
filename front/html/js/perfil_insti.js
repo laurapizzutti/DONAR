@@ -4,11 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const adicionarItemButton = document.getElementById('adicionarItem');
     const popup = document.getElementById('popup');
     const fecharPopup = document.getElementById('fecharPopup');
-    const salvarTabelaButton = document.getElementById('salvar');
-    const salvarItemButton = document.getElementById('salvarItem')
-    // const salvarItemButton = document.getElementById('salvar');
-    // o botão salvar do popup está executando como o botão salvar que envia pro banco, o salvar final, mudanda essa const 
-    // para o class "salvar" resolve, mas ainda temho que garantir que o botão que salva e adicona o item na lista funcione 
+    const salvarItemButton = document.getElementById('salvarItem'); // Botão do pop-up
+    const salvarTabelaButton = document.getElementById('salvar'); // Botão que salva a tabela
     const quantidadeInput = document.getElementById('quantidade');
     const nomeItemInput = document.getElementById('nomeItem');
 
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function carregarItens() {
         try {
             const response = await fetch('http://localhost:3001/api/get/tabela');
-            const data = await response.json()
+            const data = await response.json();
             
             quantidadeItem = data.data.map(item => item.quantidade);
             descItem = data.data.map(item => item.nome);
@@ -169,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alternarPopup();
     });
 
-    salvarTabelaButton.addEventListener('click', async function () {
+    salvarItemButton.addEventListener('click', async function () {
         const quantidade = quantidadeInput.value;
         const nomeItem = nomeItemInput.value;
 
@@ -183,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 descItem.push(nomeItem);
             }
 
-            await salvarTabela();
+            await salvarTabela(); 
             renderizarItens(true);
             quantidadeInput.value = '';
             nomeItemInput.value = '';
