@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 
-const { storeItem, getItems } = require('../controller/tabelaController');
+const { storeItem, getItems, deleteItems } = require('../controller/tabelaController');
 
-// Atualizar as rotas para '/api/tabela'
-router.post('/tabela', storeItem); // POST para adicionar itens
-router.get('/tabela', getItems);    // GET para obter todos os itens
+
+router.post('/api/store/tabela', storeItem); 
+router.get('/get/tabela', getItems);   
+router.delete('/api/delete/tabela', deleteItems);
 
 module.exports = router;
