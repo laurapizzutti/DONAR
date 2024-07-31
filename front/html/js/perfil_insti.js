@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const popup = document.getElementById('popup');
     const fecharPopup = document.getElementById('fecharPopup');
     const salvarItemButton = document.getElementById('salvarItem');
-    const salvarTabelaButton = document.getElementById('SalvarTabela');
+    // const salvarTabelaButton = document.getElementById('SalvarTabela');
     const quantidadeInput = document.getElementById('quantidade');
     const nomeItemInput = document.getElementById('nomeItem');
 
@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function () {
     async function salvarTabela() {
         try {
             const items = quantidadeItem.map((quantidade, index) => ({
-                quantidade: Number(quantidade),  // Assegure-se de que seja um número
-                nome: descItem[index]  // Certifique-se de que seja uma string válida
+                quantidade: Number(quantidade),  //
+                nome: descItem[index]  //
             }));
             
     
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
-
     async function removerItem(index) {
         try {
             const itemDeletar = {
@@ -99,9 +98,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const editarButton = document.createElement('button');
             editarButton.classList.add('editar');
             editarButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                    <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
-                </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
+            </svg>
             `;
 
             editarButton.addEventListener('click', function () {
@@ -114,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const excluirButton = document.createElement('button');
             excluirButton.classList.add('excluir');
             excluirButton.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V6h-5v-.5zM2 6h12v8.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 14.5V6zM7 1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1H12a2 2 0 0 1 2 2H2a2 2 0 0 1 2-2h3z"/>
-                </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+            <path d="M5.5 5.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V6h-5v-.5zM2 6h12v8.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 14.5V6zM7 1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1H12a2 2 0 0 1 2 2H2a2 2 0 0 1 2-2h3z"/>
+            </svg>
             `;
 
             excluirButton.addEventListener('click', async function () {
