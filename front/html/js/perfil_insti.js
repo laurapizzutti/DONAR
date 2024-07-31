@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const adicionarItemButton = document.getElementById('adicionarItem');
     const popup = document.getElementById('popup');
     const fecharPopup = document.getElementById('fecharPopup');
-    const salvarItemButton = document.getElementById('salvarItem'); // Botão do pop-up
-    const salvarTabelaButton = document.getElementById('salvar'); // Botão que salva a tabela
+    const salvarItemButton = document.getElementById('salvarItem');
+    const salvarTabelaButton = document.getElementById('SalvarTabela');
     const quantidadeInput = document.getElementById('quantidade');
     const nomeItemInput = document.getElementById('nomeItem');
 
@@ -29,23 +29,31 @@ document.addEventListener('DOMContentLoaded', function () {
     async function salvarTabela() {
         try {
             const items = quantidadeItem.map((quantidade, index) => ({
-                quantidade: quantidade,
-                nome: descItem[index]
+                quantidade: Number(quantidade),  // Assegure-se de que seja um número
+                nome: descItem[index]  // Certifique-se de que seja uma string válida
             }));
-
+            
+    
+            console.log('Dados que serão enviados:', items); // Adiciona este log
+    
             const response = await fetch('http://localhost:3001/api/store/tabela', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(items)
             });
+    
             if (!response.ok) {
-                throw new Error('Erro na resposta da API');
+                const errorDetails = await response.json(); // Ou response.text() se não for JSON
+                throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
             }
+            
+            
             console.log('Versão da tabela salva:', items);
         } catch (error) {
             console.error('Erro ao salvar itens:', error);
         }
     }
+    
 
     async function removerItem(index) {
         try {
@@ -56,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const response = await fetch('http://localhost:3001/api/delete/tabela', {
                 method: 'DELETE',
-                headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(itemDeletar)
             });
             if (!response.ok) {
@@ -78,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const quantidadeSpan = document.createElement('span');
         quantidadeSpan.classList.add('quantidade');
-        quantidadeSpan.textContent = `${quantidade}x`; // Adiciona o x da quantidade
+        quantidadeSpan.textContent = `${quantidade}x`;
 
         const nomeSpan = document.createElement('span');
         nomeSpan.classList.add('item');
@@ -166,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alternarPopup();
     });
 
-    salvarItemButton.addEventListener('click', async function () {
+    salvarItemButton.addEventListener('click', function () { // Remove o async aqui
         const quantidade = quantidadeInput.value;
         const nomeItem = nomeItemInput.value;
 
@@ -180,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 descItem.push(nomeItem);
             }
 
-            await salvarTabela(); 
+            // Não chamamos salvarTabela aqui
             renderizarItens(true);
             quantidadeInput.value = '';
             nomeItemInput.value = '';
