@@ -2,25 +2,21 @@ const connection = require('../config/db.js');
 const dotenv = require('dotenv').config();
 
 async function storeItem(request, response) {
-    const params = [
-        request.body.id, 
-        request.body.item,
-        request.body.qnt_itens
-    ];
+    const items = request.body;
+    const query = 'INSERT INTO tabela_itens (item, qnt_itens) VALUES ?';
+    const values = items.map(item => [item.nome, item.quantidade]);
 
-    const query = 'INSERT INTO tabela_itens (id, item, qnt_itens) VALUES (?, ?, ?)';
-
-    connection.query(query, params, (err, results) => {
+    connection.query(query, [values], (err, results) => {
         if (results) {
             response.status(201).json({
                 success: true,
-                message: "Item adicionado com sucesso!",
+                message: "Itens adicionados com sucesso!",
                 data: results
             });
         } else {
             response.status(400).json({
                 success: false,
-                message: "Erro ao adicionar item.",
+                message: "Erro ao adicionar itens.",
                 data: err
             });
         }
@@ -28,11 +24,9 @@ async function storeItem(request, response) {
 }
 
 async function getItems(request, response) {
-    const params = [request.params.id];
+    const query = 'SELECT * FROM tabela_itens';
 
-    const query = 'SELECT * FROM tabela_itens WHERE id_item = ?';
-    
-    connection.query(query, params, (err, results) => {
+    connection.query(query, (err, results) => {
         if (results) {
             response.status(200).json({
                 success: true,
@@ -48,30 +42,28 @@ async function getItems(request, response) {
         }
     });
 }
-
 
 async function deleteItems(request, response) {
-    const params = [request.params.id];
+    const { id_item } = request.body;
 
-    const query = 'DELETE FROM tabela_itens WHERE id = ?';
-    
-    connection.query(query, params, (err, results) => {
+    const query = 'DELETE FROM tabela_itens WHERE id_item = ?';
+
+    connection.query(query, [id_item], (err, results) => {
         if (results) {
             response.status(200).json({
                 success: true,
-                message: "Itens recuperados com sucesso!",
+                message: "Item deletado com sucesso!",
                 data: results
             });
         } else {
             response.status(400).json({
                 success: false,
-                message: "Erro ao recuperar itens.",
+                message: "Erro ao deletar item.",
                 data: err
             });
         }
     });
 }
-
 
 module.exports = {
     storeItem,

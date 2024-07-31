@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // O código permanece o mesmo, com pequenas alterações
     const tabela = document.getElementById('tabela');
     const atualizarButton = document.getElementById('atualizar');
     const adicionarItemButton = document.getElementById('adicionarItem');
     const popup = document.getElementById('popup');
     const fecharPopup = document.getElementById('fecharPopup');
     const salvarItemButton = document.getElementById('salvarItem');
-    // const salvarTabelaButton = document.getElementById('SalvarTabela');
     const quantidadeInput = document.getElementById('quantidade');
     const nomeItemInput = document.getElementById('nomeItem');
 
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = await fetch('http://localhost:3001/api/get/tabela');
             const data = await response.json();
             
-            quantidadeItem = data.data.map(item => item.quantidade);
-            descItem = data.data.map(item => item.nome);
+            quantidadeItem = data.data.map(item => item.qnt_itens);
+            descItem = data.data.map(item => item.item);
             renderizarItens(true);
         } catch (error) {
             console.error('Erro ao carregar itens:', error);
@@ -29,24 +29,20 @@ document.addEventListener('DOMContentLoaded', function () {
     async function salvarTabela() {
         try {
             const items = quantidadeItem.map((quantidade, index) => ({
-                quantidade: Number(quantidade),  //
-                nome: descItem[index]  //
+                quantidade: quantidade,
+                nome: descItem[index]
             }));
-            
-    
-            console.log('Dados que serão enviados:', items); // Adiciona este log
-    
+
             const response = await fetch('http://localhost:3001/api/store/tabela', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(items)
             });
-    
+
             if (!response.ok) {
-                const errorDetails = await response.json(); // Ou response.text() se não for JSON
+                const errorDetails = await response.json(); 
                 throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
             }
-            
             
             console.log('Versão da tabela salva:', items);
         } catch (error) {
@@ -57,8 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
     async function removerItem(index) {
         try {
             const itemDeletar = {
-                quantidade: quantidadeItem[index],
-                nome: descItem[index]
+                id_item: index
             };
 
             const response = await fetch('http://localhost:3001/api/delete/tabela', {
@@ -99,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
             editarButton.classList.add('editar');
             editarButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-            <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
+                <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
             </svg>
             `;
 
@@ -114,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             excluirButton.classList.add('excluir');
             excluirButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-            <path d="M5.5 5.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V6h-5v-.5zM2 6h12v8.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 14.5V6zM7 1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1H12a2 2 0 0 1 2 2H2a2 2 0 0 1 2-2h3z"/>
+                <path d="M5.5 5.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V6h-5v-.5zM2 6h12v8.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 14.5V6zM7 1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1H12a2 2 0 0 1 2 2H2a2 2 0 0 1 2-2h3z"/>
             </svg>
             `;
 
@@ -173,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
         alternarPopup();
     });
 
-    salvarItemButton.addEventListener('click', function () { // Remove o async aqui
+    salvarItemButton.addEventListener('click', function () { 
         const quantidade = quantidadeInput.value;
         const nomeItem = nomeItemInput.value;
 
@@ -187,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 descItem.push(nomeItem);
             }
 
-            // Não chamamos salvarTabela aqui
             renderizarItens(true);
             quantidadeInput.value = '';
             nomeItemInput.value = '';
