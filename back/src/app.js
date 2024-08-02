@@ -9,6 +9,7 @@ const app = express();
 app.set('port', process.env.PORT || 3005);
 app.use(cors());
 app.use(express.json());
+
 app.use('/api', taskRouter);
 app.use('/api', userRouter);
 app.use('/api', tabelaRouter);

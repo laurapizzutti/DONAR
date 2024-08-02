@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // O código permanece o mesmo, com pequenas alterações
     const tabela = document.getElementById('tabela');
     const atualizarButton = document.getElementById('atualizar');
     const adicionarItemButton = document.getElementById('adicionarItem');
@@ -15,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function carregarItens() {
         try {
-            const response = await fetch('http://localhost:3001/api/get/tabela');
+            const userId = 9; // Utilizar 9 como id_user para teste
+    
+            const response = await fetch(`http://localhost:3001/api/get/tabela?id_user=${userId}`);
             const data = await response.json();
             
             quantidadeItem = data.data.map(item => item.qnt_itens);
@@ -25,30 +26,36 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Erro ao carregar itens:', error);
         }
     }
-
+    
+    
     async function salvarTabela() {
-        try {
-            const items = quantidadeItem.map((quantidade, index) => ({
-                quantidade: quantidade,
-                nome: descItem[index]
-            }));
+    try {
+        const items = quantidadeItem.map((quantidade, index) => ({
+            quantidade: quantidade,
+            nome: descItem[index]
+        }));
 
-            const response = await fetch('http://localhost:3001/api/store/tabela', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(items)
-            });
+        const userId = 9; // Utilizar 9 como id_user para teste
 
-            if (!response.ok) {
-                const errorDetails = await response.json(); 
-                throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
-            }
-            
-            console.log('Versão da tabela salva:', items);
-        } catch (error) {
-            console.error('Erro ao salvar itens:', error);
+        const response = await fetch('http://localhost:3001/api/store/tabela', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id_user: userId, items })
+        });
+
+        if (!response.ok) {
+            const errorDetails = await response.json(); 
+            throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
         }
+        
+        console.log('Versão da tabela salva:', items);
+    } catch (error) {
+        console.error('Erro ao salvar itens:', error);
     }
+}
+
     
     async function removerItem(index) {
         try {
@@ -94,9 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
             editarButton.classList.add('editar');
             editarButton.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
+            <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
             </svg>
-            `;
+        `;
 
             editarButton.addEventListener('click', function () {
                 quantidadeInput.value = quantidade;
