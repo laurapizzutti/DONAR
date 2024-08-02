@@ -12,49 +12,49 @@ document.addEventListener('DOMContentLoaded', function () {
     let descItem = [];
     let indice = null;
 
-    async function carregarItens() {
-        try {
-            const userId = 9; // Utilizar 9 como id_user para teste
+    // async function carregarItens() {
+    //     try {
+    //         const userId = 9; // Utilizar 9 como id_user para teste
     
-            const response = await fetch(`http://localhost:3001/api/get/tabela?id_user=${userId}`);
-            const data = await response.json();
+    //         const response = await fetch(`http://localhost:3001/api/get/tabela?id_user=${userId}`);
+    //         const data = await response.json();
             
-            quantidadeItem = data.data.map(item => item.qnt_itens);
-            descItem = data.data.map(item => item.item);
-            renderizarItens(true);
-        } catch (error) {
-            console.error('Erro ao carregar itens:', error);
-        }
-    }
+    //         quantidadeItem = data.data.map(item => item.qnt_itens);
+    //         descItem = data.data.map(item => item.item);
+    //         renderizarItens(true);
+    //     } catch (error) {
+    //         console.error('Erro ao carregar itens:', error);
+    //     }
+    // }
     
     
-    async function salvarTabela() {
-    try {
-        const items = quantidadeItem.map((quantidade, index) => ({
-            quantidade: quantidade,
-            nome: descItem[index]
-        }));
+    // async function salvarTabela() {
+    // try {
+    //     const items = quantidadeItem.map((quantidade, index) => ({
+    //         quantidade: quantidade,
+    //         nome: descItem[index]
+    //     }));
 
-        const userId = 9; // Utilizar 9 como id_user para teste
+    //     const userId = 9; // Utilizar 9 como id_user para teste
 
-        const response = await fetch('http://localhost:3001/api/store/tabela', {
-            method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ id_user: userId, items })
-        });
+    //     const response = await fetch('http://localhost:3001/api/store/tabela', {
+    //         method: 'POST',
+    //         headers: { 
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ id_user: userId, items })
+    //     });
 
-        if (!response.ok) {
-            const errorDetails = await response.json(); 
-            throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
-        }
+    //     if (!response.ok) {
+    //         const errorDetails = await response.json(); 
+    //         throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
+    //     }
         
-        console.log('Versão da tabela salva:', items);
-    } catch (error) {
-        console.error('Erro ao salvar itens:', error);
-    }
-}
+    //     console.log('Versão da tabela salva:', items);
+    // } catch (error) {
+    //     console.error('Erro ao salvar itens:', error);
+    // }
+// }
 
     
     async function removerItem(index) {
@@ -209,5 +209,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    carregarItens();
+    // carregarItens();
 });

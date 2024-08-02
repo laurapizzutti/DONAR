@@ -1,3 +1,12 @@
+const tabela = document.getElementById('tabela');
+    const atualizarButton = document.getElementById('atualizar');
+    const adicionarItemButton = document.getElementById('adicionarItem');
+    const popup = document.getElementById('popup');
+    const fecharPopup = document.getElementById('fecharPopup');
+    const salvarItemButton = document.getElementById('salvarItem');
+    const quantidadeInput = document.getElementById('quantidade');
+    const nomeItemInput = document.getElementById('nomeItem');
+
 async function cadastrarItem(event) {
     event.preventDefault();
 
