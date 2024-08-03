@@ -1,4 +1,4 @@
-const tabela = document.getElementById('tabela');
+    const tabela = document.getElementById('tabela');
     const atualizarButton = document.getElementById('atualizar');
     const adicionarItemButton = document.getElementById('adicionarItem');
     const popup = document.getElementById('popup');
@@ -7,7 +7,7 @@ const tabela = document.getElementById('tabela');
     const quantidadeInput = document.getElementById('quantidade');
     const nomeItemInput = document.getElementById('nomeItem');
 
-async function cadastrarItem(event) {
+async function SalvarItemDB(event) {
     event.preventDefault();
 
     const quantidade = document.getElementById("quantidade").value;
@@ -64,9 +64,35 @@ async function getItens() {
 
             tabela.appendChild(htmlItem);
 
+
         
         })
 
     }
 }
+
+async function AdicionarItemNovo(event) {
+
+
+
+
+
+}
+async function Atualizar(event) {
+    // if (quantidadeItem.length === 0 && descItem.length === 0) {
+    //     alternarPopup();
+    // } else {
+    //     renderizarItens(true);
+    //     adicionarItemButton.style.display = 'block';
+    //     atualizarButton.style.display = 'none';
+    //     adicionarSalvar();
+    // }
+}
+async function Salvar(event) {
+    
+}
+
+
+
 getItens();
+

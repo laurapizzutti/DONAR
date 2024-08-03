@@ -28,17 +28,18 @@
         <div class="tabela" id="tabela">
             
         </div>
-        <button type="button" class="botao" id="atualizar">Atualizar</button>
-        <button type="button" class="botao" id="adicionarItem" style="display: none;">Adicionar Item</button>
-        <button type="button" class="botao" id="salvar" style="display: none;">Salvar</button>
+        <button type="button" class="botao" id="atualizar" onclick="Atualizar(event)">Atualizar</button>
+        <button type="button" class="botao" id="adicionarItem" style="display: none;" onclick="AdicionarItemNovo(event)">Adicionar Item</button>
+        <button type="button" class="botao" id="salvar" style="display: none;"  onclick="Salvar(event)">Salvar</button>
+        <!-- <button type="button" class="botao" id="salvar" style="display: none;" onclick="SalvarFora(event)">Salvar</button> -->
 
         <div class="popup" id="popup">
             <div class="conteudo-popup">
                 <span class="fechar" id="fecharPopup">&times;</span>
-                <h2 id="tituloPopup">Adicionar Item</h2>
+                <h2 id="tituloPopup" >Adicionar Item</h2>
                 <input type="number" id="quantidade" placeholder="Quantidade" class="input-popup">
                 <input type="text" id="nomeItem" placeholder="Nome do item" class="input-popup">
-                <button type="button" class="botao" onclick="cadastrarItem(event)">Salvar</button>
+                <button type="button" class="botao" onclick="SalvarItemDB(event)">Salvar</button>
             </div>
         </div>
     </main>
