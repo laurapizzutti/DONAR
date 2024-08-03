@@ -28,7 +28,7 @@ async function cadastrarItem(event) {
 }
 
 async function getItens() {
-    const idUsuario = 9;
+    const idUsuario = 1;
 
     const response = await fetch('http://localhost:3001/api/itens/'+ idUsuario, {
         method: "GET",
@@ -45,8 +45,26 @@ async function getItens() {
         let tabela = document.getElementById('tabela');
 
         itens.map(item => {
-            let htmlItem = "<div>" + item.item + "</div> <button>Editar" +  item.id_item + "</button>"
-            tabela.innerHTML = htmlItem;
+            // let htmlItem = "<div>" + item.item + "</div> "  + item.qnt_itens 
+            let htmlItem = document.createElement('div');
+            htmlItem.classList.add('opcao');
+    
+            const quantidadeSpan = document.createElement('span');
+            quantidadeSpan.classList.add('quantidade');
+            quantidadeSpan.textContent = `${item.qnt_itens}x`;
+    
+            const nomeSpan = document.createElement('span');
+            nomeSpan.classList.add('item');
+            nomeSpan.textContent = item.item;
+    
+            htmlItem.appendChild(quantidadeSpan);
+            htmlItem.appendChild(nomeSpan); 
+
+            // tabela.innerHTML = itemDiv;
+
+            tabela.innerHTML = htmlItem.textContent;
+
+            console.log(htmlItem)
         })
 
     }

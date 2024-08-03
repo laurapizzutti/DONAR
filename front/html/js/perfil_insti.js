@@ -56,26 +56,25 @@ document.addEventListener('DOMContentLoaded', function () {
     // }
 // }
 
-    
-    async function removerItem(index) {
-        try {
-            const itemDeletar = {
-                id_item: index
-            };
+    // async function removerItem(index) {
+    //     try {
+    //         const itemDeletar = {
+    //             id_item: index
+    //         };
 
-            const response = await fetch('http://localhost:3001/api/delete/tabela', {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(itemDeletar)
-            });
-            if (!response.ok) {
-                throw new Error('Erro na resposta da API');
-            }
-            console.log('Item removido:', itemDeletar);
-        } catch (error) {
-            console.error('Erro ao remover item:', error);
-        }
-    }
+    //         const response = await fetch('http://localhost:3001/api/delete/tabela', {
+    //             method: 'DELETE',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify(itemDeletar)
+    //         });
+    //         if (!response.ok) {
+    //             throw new Error('Erro na resposta da API');
+    //         }
+    //         console.log('Item removido:', itemDeletar);
+    //     } catch (error) {
+    //         console.error('Erro ao remover item:', error);
+    //     }
+    // }
 
     function alternarPopup() {
         popup.style.display = popup.style.display === 'flex' ? 'none' : 'flex';
@@ -97,14 +96,12 @@ document.addEventListener('DOMContentLoaded', function () {
         itemDiv.appendChild(nomeSpan);
 
         if (Rodando) {
-            const editarButton = document.createElement('button');
-            editarButton.classList.add('editar');
-            editarButton.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-            <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
-            </svg>
-        `;
-
+            // const editarButton = document.createElement('button');
+            // editarButton.classList.add('editar');
+            // editarButton.innerHTML = `
+            // <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+            // <path d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.6 9.6A.5.5 0 0 1 5.5 13H3.5a.5.5 0 0 1-.5-.5V10.5a.5.5 0 0 1 .146-.354l9.6-9.6zM11.5 2.5L3 11v2h2l8.5-8.5-2-2zM4.146 12H2.5v-1.646L11.5 3.5l1.646 1.646L4.146 12z"/>
+            // </svg>
             editarButton.addEventListener('click', function () {
                 quantidadeInput.value = quantidade;
                 nomeItemInput.value = nome;
@@ -130,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             itemDiv.appendChild(editarButton);
             itemDiv.appendChild(excluirButton);
+
         }
 
         tabela.appendChild(itemDiv);
@@ -175,39 +173,39 @@ document.addEventListener('DOMContentLoaded', function () {
         alternarPopup();
     });
 
-    salvarItemButton.addEventListener('click', function () { 
-        const quantidade = quantidadeInput.value;
-        const nomeItem = nomeItemInput.value;
+    // salvarItemButton.addEventListener('click', function () { 
+    //     const quantidade = quantidadeInput.value;
+    //     const nomeItem = nomeItemInput.value;
 
-        if (quantidade && nomeItem) {
-            if (indice !== null) {
-                quantidadeItem[indice] = quantidade;
-                descItem[indice] = nomeItem;
-                indice = null;
-            } else {
-                quantidadeItem.push(quantidade);
-                descItem.push(nomeItem);
-            }
+    //     if (quantidade && nomeItem) {
+    //         if (indice !== null) {
+    //             quantidadeItem[indice] = quantidade;
+    //             descItem[indice] = nomeItem;
+    //             indice = null;
+    //         } else {
+    //             quantidadeItem.push(quantidade);
+    //             descItem.push(nomeItem);
+    //         }
 
-            renderizarItens(true);
-            quantidadeInput.value = '';
-            nomeItemInput.value = '';
-            alternarPopup();
+    //         renderizarItens(true);
+    //         quantidadeInput.value = '';
+    //         nomeItemInput.value = '';
+    //         alternarPopup();
 
-            if (quantidadeItem.length === 1 && descItem.length === 1) {
-                adicionarItemButton.style.display = 'block';
-                atualizarButton.style.display = 'none';
-                adicionarSalvar();
-            }
-        }
-    });
+    //         if (quantidadeItem.length === 1 && descItem.length === 1) {
+    //             adicionarItemButton.style.display = 'block';
+    //             atualizarButton.style.display = 'none';
+    //             adicionarSalvar();
+    //         }
+    //     }
+    // });
 
-    function renderizarItens(Rodando = false) {
-        tabela.innerHTML = '';
-        for (let i = 0; i < quantidadeItem.length; i++) {
-            adicionarItem(quantidadeItem[i], descItem[i], Rodando);
-        }
-    }
+    // function renderizarItens(Rodando = false) {
+    //     tabela.innerHTML = '';
+    //     for (let i = 0; i < quantidadeItem.length; i++) {
+    //         adicionarItem(quantidadeItem[i], descItem[i], Rodando);
+    //     }
+    // }
 
     // carregarItens();
 });

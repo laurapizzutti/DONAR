@@ -4,6 +4,7 @@ const cors = require('cors');
 const taskRouter = require('./routes/taskRouter');
 const userRouter = require('./routes/userRouter');
 const tabelaRouter = require('./routes/tabelaRouter');
+const loginRouter = require('./routes/loginRouter');
 const app = express();
 
 app.set('port', process.env.PORT || 3005);
@@ -13,5 +14,6 @@ app.use(express.json());
 app.use('/api', taskRouter);
 app.use('/api', userRouter);
 app.use('/api', tabelaRouter);
+app.use('/api', loginRouter)
 
 module.exports = app;

@@ -36,6 +36,32 @@ async function storeUser(request, response){
     })
 }
 
+// async function getUser(request, response) {    
+//     const params = Array(
+//         request.params.id
+//     )
+//     console.log(params)
+
+//     const query = 'SELECT * FROM cadastro_usuario WHERE id_user = ?';
+
+//     connection.query(query, params, (err, results) => {
+//         console.log(err, results)
+//         if (results) {
+//             response.status(200).json({
+//                 success: true,
+//                 message: "Dados com sucesso!",
+//                 data: results
+//             });
+//         } else {
+//             response.status(400).json({
+//                 success: false,
+//                 message: "Erro ao recuperar Dados.",
+//                 data: err
+//             });
+//         }
+//     });
+// }
+
 module.exports = {
     storeUser
 }
