@@ -62,9 +62,9 @@ async function getItens() {
 
             // tabela.innerHTML = itemDiv;
 
-            tabela.innerHTML = htmlItem.textContent;
+            tabela.appendChild(htmlItem);
 
-            console.log(htmlItem)
+        
         })
 
     }
