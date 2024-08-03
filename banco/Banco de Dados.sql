@@ -6,7 +6,9 @@ CREATE TABLE agendamentos (
     item VARCHAR(255) NOT NULL,
     data_entrega DATE NOT NULL,
     hora_entrega TIME NOT NULL,
-    qnt INT NOT NULL
+    qnt INT NOT NULL,
+	-- FOREIGN KEY (id_doador) REFERENCES cadastro_usuario(id) WHERE tipo_usuario = 'Colaborador',
+    -- FOREIGN KEY (id_insti) REFERENCES cadastro_usuario(id) WHERE tipo_usuario = 'Instituição'
 );
 
 CREATE TABLE cadastro_usuario (
@@ -29,3 +31,6 @@ CREATE TABLE tabela_itens (
 SELECT * FROM agendamentos;
 SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
+
+insert into cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('teste','email@email','senha','instituicao','street');
+INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Feijão', '101', 1);
