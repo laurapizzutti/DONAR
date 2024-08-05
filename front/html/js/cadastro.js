@@ -17,7 +17,7 @@ button.onclick = async function(e) {
     try {
         
         const response = await fetch('http://localhost:3001/api/store/user', {
-            method: "post", 
+            method: "POST", 
             headers: { "Content-Type": "application/json;charset=UTF-8" }, 
             body: JSON.stringify(data) 
         });
@@ -32,7 +32,8 @@ button.onclick = async function(e) {
         if (content.success) {
             alert("Sucesso"); 
             if (tipo_usuario == 'Instituição') {
-                window.location.href = "/front/html/perfil_insti.html";
+                // window.location.href = "/front/html/perfil_insti.html";
+                localStorage.setItem('Dados:', JSON. stringify(data)); 
             }
         } else {
             alert("Não"); 

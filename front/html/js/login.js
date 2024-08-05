@@ -22,8 +22,10 @@ async function login(event) {
     if(results.success) {
         alert(results.message);
         console.log(data);
+        // salvar data em localStorage e pegar o id do LocalStorage pra colocar em IdUsuario
 
-        
+        // window.localStorage(data)
+
         // window.location.href = "/front/html/home.html";
     }else{
         alert(results.message);
