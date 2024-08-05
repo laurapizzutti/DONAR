@@ -60,6 +60,8 @@ async function getItens() {
             htmlItem.appendChild(nomeSpan); 
 
             tabela.appendChild(htmlItem);
+
+            // vou ter que fazer algo bem parecido com isso pra home.js
         })
 
     }

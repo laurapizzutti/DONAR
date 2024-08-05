@@ -25,7 +25,7 @@ async function login(req, res) {
                     .json({
                         success: true,
                         message: "Login feito com Sucesso",
-                        data: results
+                        data: results[0]
                 });        
             } else {
                 res
