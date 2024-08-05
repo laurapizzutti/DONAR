@@ -45,7 +45,6 @@ async function getItens() {
         let tabela = document.getElementById('tabela');
 
         itens.map(item => {
-            // let htmlItem = "<div>" + item.item + "</div> "  + item.qnt_itens 
             let htmlItem = document.createElement('div');
             htmlItem.classList.add('opcao');
     
@@ -60,23 +59,13 @@ async function getItens() {
             htmlItem.appendChild(quantidadeSpan);
             htmlItem.appendChild(nomeSpan); 
 
-            // tabela.innerHTML = itemDiv;
-
             tabela.appendChild(htmlItem);
-
-
-        
         })
 
     }
 }
 
 async function AdicionarItemNovo(event) {
-
-
-
-
-
 }
 async function Atualizar(event) {
     // if (quantidadeItem.length === 0 && descItem.length === 0) {
@@ -91,8 +80,5 @@ async function Atualizar(event) {
 async function Salvar(event) {
     
 }
-
-
-
 getItens();
 

@@ -31,7 +31,9 @@ button.onclick = async function(e) {
 
         if (content.success) {
             alert("Sucesso"); 
-            window.location.href = "/front/html/login.html";
+            if (tipo_usuario == 'Instituição') {
+                window.location.href = "/front/html/perfil_insti.html";
+            }
         } else {
             alert("Não"); 
         }

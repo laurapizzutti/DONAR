@@ -27,34 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //     }
     // }
     
-    
-    // async function salvarTabela() {
-    // try {
-    //     const items = quantidadeItem.map((quantidade, index) => ({
-    //         quantidade: quantidade,
-    //         nome: descItem[index]
-    //     }));
-
-    //     const userId = 9; // Utilizar 9 como id_user para teste
-
-    //     const response = await fetch('http://localhost:3001/api/store/tabela', {
-    //         method: 'POST',
-    //         headers: { 
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ id_user: userId, items })
-    //     });
-
-    //     if (!response.ok) {
-    //         const errorDetails = await response.json(); 
-    //         throw new Error(`Erro na resposta da API: ${errorDetails.message || 'Erro desconhecido'}`);
-    //     }
-        
-    //     console.log('Versão da tabela salva:', items);
-    // } catch (error) {
-    //     console.error('Erro ao salvar itens:', error);
-    // }
-// }
 
     // async function removerItem(index) {
     //     try {
@@ -145,11 +117,10 @@ document.addEventListener('DOMContentLoaded', function () {
         salvarButton.id = 'salvar';
         salvarButton.textContent = 'Salvar';
         salvarButton.addEventListener('click', function () {
-            salvarTabela();
+            // salvarTabela();
             adicionarItemButton.style.display = 'none';
             salvarButton.remove();
             atualizarButton.style.display = 'block';
-            renderizarItens(false);
         });
         tabela.parentNode.insertBefore(salvarButton, adicionarItemButton);
     }
