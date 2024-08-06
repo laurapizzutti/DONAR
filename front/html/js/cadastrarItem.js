@@ -12,7 +12,7 @@ async function SalvarItemDB(event) {
 
     const quantidade = document.getElementById("quantidade").value;
     const nomeItem = document.getElementById("nomeItem").value;
-    const idUsuario = 9
+    const idUsuario = 1
 
     const data = {quantidade, nomeItem, idUsuario};
 

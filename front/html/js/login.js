@@ -2,12 +2,10 @@ async function login(event) {
     event.preventDefault();
 
     const email = document.getElementById('email').value;
-    
     const senha = document.getElementById('password').value;
 
     const data = {email, senha};
     console.log(data);
-
 
     const response = await fetch('http://localhost:3001/api/login', {
         method: "POST",
@@ -21,14 +19,9 @@ async function login(event) {
     console.log(results)
     if(results.success) {
         alert(results.message);
-        console.log(data);
-        // salvar data em localStorage e pegar o id do LocalStorage pra colocar em IdUsuario
-
-        // window.localStorage(data)
-
-        // window.location.href = "/front/html/home.html";
-    }else{
+            
+            // window.location.href = "/front/html/home.html";
+    } else {
         alert(results.message);
     }
-
 }
