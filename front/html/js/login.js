@@ -19,6 +19,9 @@ async function login(event) {
     console.log(results)
     if(results.success) {
         alert(results.message);
+
+            localStorage.setItem('id_user', results.data.id_user);
+            console.log(`ID do usuário armazenado: ${results.data.id_user}`);
             
             // window.location.href = "/front/html/home.html";
     } else {

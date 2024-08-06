@@ -29,13 +29,12 @@ button.onclick = async function(e) {
         if (content.success) {
             alert("Sucesso"); 
             
-            localStorage.setItem('id_user', content.data.id_user);
+            // localStorage.setItem('id_user', content.data.id_user);
+            // console.log(`ID do usuário armazenado: ${content.data.id_user}`);
+            //     if (tipo_usuario == 'Instituição') {
+            //         window.location.href = "/front/html/perfil_insti.html";
+            //     }
 
-            console.log(`ID do usuário armazenado: ${content.data.id_user}`);
-
-            // if (tipo_usuario == 'Instituição') {
-            //     window.location.href = "/front/html/perfil_insti.html";
-            // }
         } else {
             alert("Erro ao cadastrar. Vefique os dados inseridos ou se você já possui uma conta."); 
         }
