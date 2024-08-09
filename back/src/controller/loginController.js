@@ -36,8 +36,6 @@ async function login(req, res) {
                         message: "Verifique sua Senha",
                         data: results
                 });  
-                // localStorage.setItem('id_user', results[2].data.id_user);
-                // console.log(`ID do usuário armazenado: ${results[2].data.id_user}`);
         }
     });
 };

@@ -36,6 +36,44 @@ async function storeUser(request, response){
     })
 }
 
+async function getIDUser(request, response){
+    const params = Array(
+      // AQUI
+    );
+
+    const query = 'SELECT id, tipo_usuario FROM cadastro_usuario) VALUES (?)';
+
+    connection.query(query, params, (err, results) => {
+        console.log(err)
+        if (results) {
+            response 
+                .status(201)
+                .json({
+                    success: true,
+                    massage: "ID e Tipo recuperados com sucessso!",
+                    data: results
+                })
+
+            // localStorage.setItem('id: ', results.data.id)
+            
+            // Id_User = 
+
+            if (results.data.tipo_usuario === 'Instituição') {
+                window.location.href = "/front/html/perfil_insti.html";
+            }
+
+        }else{
+            response
+                .status(400)
+                .json({
+                    success: false,
+                    message: "Ops, deu problema :(",
+                    data: err
+                })
+        }
+    })
+}
+
 // async function getUser(request, response) {    
 //     const params = Array(
 //         request.params.id
@@ -63,5 +101,6 @@ async function storeUser(request, response){
 // }
 
 module.exports = {
-    storeUser
+    storeUser,
+    getIDUser
 }
