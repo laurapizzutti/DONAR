@@ -8,7 +8,7 @@ async function login(req, res) {
     const params = Array(
         req.body.email
     )
-    console.log("emaail p/ cadastro:", req.body.email)
+    console.log("email p/ cadastro:", req.body.email)
 
     const query = "SELECT email, senha, id FROM cadastro_usuario WHERE email = ?";
     // const query = "SELECT email, senha, FROM cadastro_usuario WHERE email = ?";
@@ -36,9 +36,8 @@ async function login(req, res) {
                         message: "Verifique sua Senha",
                         data: results
                 });  
-
-                localStorage.setItem('id_user', results[0].data.id_user);
-                console.log(`ID do usuário armazenado: ${results[0].data.id_user}`);
+                // localStorage.setItem('id_user', results[2].data.id_user);
+                // console.log(`ID do usuário armazenado: ${results[2].data.id_user}`);
         }
     });
 };
