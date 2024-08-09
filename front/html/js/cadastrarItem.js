@@ -1,3 +1,5 @@
+
+
     const tabela = document.getElementById('tabela');
     const atualizarButton = document.getElementById('atualizar');
     const adicionarItemButton = document.getElementById('adicionarItem');
@@ -12,9 +14,9 @@ async function SalvarItemDB(event) {
 
     const quantidade = document.getElementById("quantidade").value;
     const nomeItem = document.getElementById("nomeItem").value;
-    const idUsuario = 1
+    const Id_User = localStorage.getItem('id');
 
-    const data = {quantidade, nomeItem, idUsuario};
+    const data = {quantidade, nomeItem, Id_User};
 
     console.log(data);
 
@@ -28,9 +30,9 @@ async function SalvarItemDB(event) {
 }
 
 async function getItens() {
-    const idUsuario = 1;
+    const Id_User = localStorage.getItem('id');
 
-    const response = await fetch('http://localhost:3001/api/itens/'+ idUsuario, {
+    const response = await fetch('http://localhost:3001/api/itens/'+ Id_User, {
         method: "GET",
         headers: {
             "Content-Type":"application/json"
@@ -38,6 +40,7 @@ async function getItens() {
     })
 
     const results = await response.json();
+    console.log('ID do usuário: ', Id_User)
     console.log(results)
     if(results.success) {
         let itens = results.data;
@@ -67,20 +70,20 @@ async function getItens() {
     }
 }
 
-async function AdicionarItemNovo(event) {
-}
-async function Atualizar(event) {
-    // if (quantidadeItem.length === 0 && descItem.length === 0) {
-    //     alternarPopup();
-    // } else {
-    //     renderizarItens(true);
-    //     adicionarItemButton.style.display = 'block';
-    //     atualizarButton.style.display = 'none';
-    //     adicionarSalvar();
-    // }
-}
-async function Salvar(event) {
+// async function AdicionarItemNovo(event) {
+// }
+// async function Atualizar(event) {
+//     // if (quantidadeItem.length === 0 && descItem.length === 0) {
+//     //     alternarPopup();
+//     // } else {
+//     //     renderizarItens(true);
+//     //     adicionarItemButton.style.display = 'block';
+//     //     atualizarButton.style.display = 'none';
+//     //     adicionarSalvar();
+//     // }
+// }
+// async function Salvar(event) {
     
-}
+// }
 getItens();
 

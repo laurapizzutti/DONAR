@@ -5,7 +5,7 @@ async function storeItem(request, response) {
     const params = Array(
         request.body.nomeItem,
         request.body.quantidade,
-        request.body.idUsuario
+        request.body.Id_User
     );
     console.log(params);
 
