@@ -19,7 +19,7 @@ async function login(event) {
     console.log(results)
     if(results.success) {
         alert(results.message);
-            Id_User = localStorage.setItem('id', results.data.id);
+            Id_User = localStorage.getItem('id');
             console.log(`ID do usuário: ${Id_User}`);
             // window.location.href = "/front/html/home.html";
     } else {
