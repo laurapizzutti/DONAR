@@ -18,7 +18,6 @@ async function login(event) {
     const results = await response.json();
     console.log(results)
     if(results.success) {
-        results.data
         alert(results.message);
         localStorage.setItem('id', results.data.id)
             Id_User = localStorage.getItem('id');

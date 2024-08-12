@@ -33,27 +33,36 @@ async function storeTask(request, response){
     })
 }
 
-// async function getTask(request, response){
-//     const query = 'SELECT * from agendamentos';
-//     connection.query(query, (err, results) => {
-//         console.log(err)
-//         if (results) {
-//             response.status(201).json({
-//                     success: true,
-//                     massage: "Sucesso!",
-//                     data: results
-//                 })
-//         }else{
-//             response.status(400).json({
-//                     success: false,
-//                     message: "Ops, deu problema :(",
-//                     data: err
-//             })
-//         }
-//     })
-// }
+async function getTask(request, response){
+
+    const params = Array(
+        request.params.id_doador,
+        // tenho que pegar o id_doador quando for 
+    );
+
+    // A PÁGINA AGENDAMENTOS.HTML SÓ APARECE PARA COLABORADORES, PORTANTO,
+    // A PORRA DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
+
+    const query = 'SELECT * from agendamentos WHERE id_doador = ?';
+    connection.query(query, (err, results) => {
+        console.log(err)
+        if (results) {
+            response.status(201).json({
+                    success: true,
+                    massage: "Sucesso!",
+                    data: results
+                })
+        }else{
+            response.status(400).json({
+                    success: false,
+                    message: "Ops, deu problema :(",
+                    data: err
+            })
+        }
+    })
+}
 
 module.exports = {
-    storeTask
-    // getTask 
+    storeTask,
+    getTask 
 }

@@ -8,34 +8,31 @@ const salvarItem = document.getElementById('salvarItem');
 const quantidade = document.getElementById('quantidade');
 const nomeItem = document.getElementById('nomeItem');
 
-// Evento onclick para o botão Atualizar
+
 atualizar.onclick = function(event) {
     if (tabela.innerHTML.trim() === "") {
-        // Se a tabela estiver vazia, abrir o popup
         popup.style.display = 'block';
     } else {
-        // Se a tabela já tiver itens, exibir os botões Adicionar Item e Salvar
+       
         adicionarItem.style.display = 'block';
         salvar.style.display = 'block';
-        atualizar.style.display = 'none'; // Oculta o botão "Atualizar"
-        Excluir(true); // Exibe o ícone de lixeira
+        atualizar.style.display = 'none'; 
+        Excluir(true);
     }
 }
 
-// Evento onclick para o botão Adicionar Item
 adicionarItem.onclick = function(event) {
     popup.style.display = 'block';
 }
 
-// Evento onclick para o botão Salvar
 salvar.onclick = function(event) {
     adicionarItem.style.display = 'none';
     salvar.style.display = 'none';
-    atualizar.style.display = 'block'; // Mostra o botão "Atualizar" novamente
-    Excluir(false); // Oculta o ícone de lixeira
+    atualizar.style.display = 'block'; 
+    Excluir(false); 
 }
 
-// Função para controlar a exibição dos ícones de lixeira ao lado dos itens
+
 function Excluir(exibir) {
     const itens = document.querySelectorAll('.opcao');
     itens.forEach(item => {
@@ -60,12 +57,12 @@ function Excluir(exibir) {
     });
 }
 
-// Fechar o popup ao clicar no "x"
+
 fecharPopup.onclick = function() {
     popup.style.display = 'none';
 }
 
-// Função para salvar um item no banco de dados
+
 async function SalvarItemDB(event) {
     event.preventDefault();
 
@@ -85,23 +82,20 @@ async function SalvarItemDB(event) {
         body: JSON.stringify(data)
     });
 
-    // Após salvar o item, fechar o popup e atualizar a tabela
+  
     if (response.ok) {
         popup.style.display = 'none';
-        tabela.innerHTML = '';  // Limpar a tabela antes de atualizar
-        await getItens();  // Atualizar os itens da tabela
+        tabela.innerHTML = ''; 
+        await getItens();  
         
-        // Exibir os botões "Adicionar Item" e "Salvar", e ocultar "Atualizar"
         adicionarItem.style.display = 'block';
         salvar.style.display = 'block';
         atualizar.style.display = 'none';
         
-        // Manter os ícones de lixeira visíveis
         Excluir(true); 
     }
 }
 
-// Função para buscar itens do banco de dados e exibi-los na tabela
 async function getItens() {
     const Id_User = localStorage.getItem('id');
 
@@ -137,13 +131,10 @@ async function getItens() {
 
             tabela.appendChild(htmlItem);
         });
-
-        // Garantir que os ícones de lixeira sejam exibidos se o botão "Atualizar" já foi clicado
         if (adicionarItem.style.display === 'block') {
             Excluir(true);
         }
     }
 }
 
-// Carregar os itens na tabela ao abrir a página
 getItens();
