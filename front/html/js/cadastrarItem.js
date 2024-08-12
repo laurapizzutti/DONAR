@@ -70,20 +70,6 @@ async function getItens() {
     }
 }
 
-// async function AdicionarItemNovo(event) {
-// }
-// async function Atualizar(event) {
-//     // if (quantidadeItem.length === 0 && descItem.length === 0) {
-//     //     alternarPopup();
-//     // } else {
-//     //     renderizarItens(true);
-//     //     adicionarItemButton.style.display = 'block';
-//     //     atualizarButton.style.display = 'none';
-//     //     adicionarSalvar();
-//     // }
-// }
-// async function Salvar(event) {
-    
-// }
+
 getItens();
 

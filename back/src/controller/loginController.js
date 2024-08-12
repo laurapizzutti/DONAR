@@ -1,6 +1,6 @@
 const connection = require('../config/db.js');
 const dotenv = require('dotenv').config();
-const { response } = require('express')
+const { response } = require('express') // possível problema
 
 
 async function login(req, res) {
