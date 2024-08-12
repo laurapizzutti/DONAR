@@ -17,7 +17,8 @@ atualizarButton.onclick = function(event) {
         // Se a tabela já tiver itens, exibir os botões Adicionar Item e Salvar
         adicionarItemButton.style.display = 'block';
         salvarButton.style.display = 'block';
-        Excluir(true);
+        atualizarButton.style.display = 'none'; // Oculta o botão "Atualizar"
+        Excluir(true); // Exibe o ícone de lixeira
     }
 }
 
@@ -30,26 +31,30 @@ adicionarItemButton.onclick = function(event) {
 salvarButton.onclick = function(event) {
     adicionarItemButton.style.display = 'none';
     salvarButton.style.display = 'none';
-    Excluir(false);
+    atualizarButton.style.display = 'block'; // Mostra o botão "Atualizar" novamente
+    Excluir(false); // Oculta o ícone de lixeira
 }
 
 // Função para controlar a exibição dos ícones de lixeira ao lado dos itens
 function Excluir(exibir) {
-    const itens = document.querySelectorAll('.opcao .item');
+    const itens = document.querySelectorAll('.opcao');
     itens.forEach(item => {
         if (exibir) {
-            const Lixeira = document.createElement('span');
-            Lixeira.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                    <path d="M5.5 5.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V6h-5v-.5zM2 6h12v8.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 14.5V6zM7 1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1H12a2 2 0 0 1 2 2H2a2 2 0 0 1 2-2h3z"/>
-                </svg>
-            `;
-            Lixeira.classList.add('lixeira-icon');
-            item.parentNode.appendChild(Lixeira);
+            let lixeira = item.querySelector('.lixeira-icon');
+            if (!lixeira) {
+                lixeira = document.createElement('span');
+                lixeira.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5V6h-5v-.5zM2 6h12v8.5a1.5 1.5 0 0 1-1.5 1.5H3.5A1.5 1.5 0 0 1 2 14.5V6zM7 1a1 1 0 0 1 1-1h.5a1 1 0 0 1 1 1H12a2 2 0 0 1 2 2H2a2 2 0 0 1 2-2h3z"/>
+                    </svg>
+                `;
+                lixeira.classList.add('lixeira-icon');
+                item.appendChild(lixeira);
+            }
         } else {
-            const Lixeira = item.parentNode.querySelector('.lixeira-icon');
-            if (Lixeira) {
-                Lixeira.remove();
+            const lixeira = item.querySelector('.lixeira-icon');
+            if (lixeira) {
+                lixeira.remove();
             }
         }
     });
@@ -85,8 +90,11 @@ async function SalvarItemDB(event) {
         popup.style.display = 'none';
         tabela.innerHTML = '';  // Limpar a tabela antes de atualizar
         await getItens();  // Atualizar os itens da tabela
+        
+        // Após adicionar o primeiro item, exibir os botões "Adicionar Item" e "Salvar", e ocultar "Atualizar"
         adicionarItemButton.style.display = 'block';
         salvarButton.style.display = 'block';
+        atualizarButton.style.display = 'none';  
     }
 }
 
@@ -125,7 +133,7 @@ async function getItens() {
             htmlItem.appendChild(nomeSpan); 
 
             tabela.appendChild(htmlItem);
-        })
+        });
     }
 }
 
