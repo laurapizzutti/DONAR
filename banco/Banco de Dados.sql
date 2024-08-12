@@ -6,9 +6,8 @@ CREATE TABLE agendamentos (
     item VARCHAR(255) NOT NULL,
     data_entrega DATE NOT NULL,
     hora_entrega TIME NOT NULL,
-    qnt INT NOT NULL
-	-- FOREIGN KEY (id_doador) REFERENCES cadastro_usuario(id) WHERE tipo_usuario = 'Colaborador',
-    -- FOREIGN KEY (id_insti) REFERENCES cadastro_usuario(id) WHERE tipo_usuario = 'Instituição'
+    qnt INT NOT NULL,
+	FOREIGN KEY (id_doador) REFERENCES cadastro_usuario(id)
 );
 
 CREATE TABLE cadastro_usuario (
