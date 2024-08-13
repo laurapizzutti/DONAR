@@ -21,20 +21,20 @@ async function getTask() {
 
                 // item, data_entrega, hora_entrega, qnt, id_doador
             
-                    doacoes.map(item => {
+                    doacoes.map(doacoes => {
                         let htmlItem = document.createElement('div');
                         htmlItem.classList.add('doação');
                 
-                        // const quantidadeSpan = document.createElement('span');
-                        // quantidadeSpan.classList.add('quantidade');
-                        // quantidadeSpan.textContent = `${item.qnt_itens}x`;
+                        const quantidadeSpan = document.createElement('span');
+                        quantidadeSpan.classList.add('quantidade');
+                        quantidadeSpan.textContent = `${doacoes.qnt}x`;
                 
-                        // const nomeSpan = document.createElement('span');
-                        // nomeSpan.classList.add('item');
-                        // nomeSpan.textContent = item.item;
+                        const nomeSpan = document.createElement('span');
+                        nomeSpan.classList.add('item');
+                        nomeSpan.textContent = doacoes.item;
                 
-                        // htmlItem.appendChild(quantidadeSpan);
-                        // htmlItem.appendChild(nomeSpan); 
+                        htmlItem.appendChild(quantidadeSpan);
+                        htmlItem.appendChild(nomeSpan); 
             
                         div.appendChild(htmlItem);
                     });

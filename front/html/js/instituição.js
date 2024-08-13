@@ -99,7 +99,7 @@ async function SalvarItemDB(event) {
 async function getItens() {
     const Id_User = localStorage.getItem('id');
 
-    const response = await fetch('http://localhost:3001/api/itens/'+ Id_User, {
+    const response = await fetch('http://localhost:3005/api/itens/'+ Id_User, {
         method: "GET",
         headers: {
             "Content-Type":"application/json"

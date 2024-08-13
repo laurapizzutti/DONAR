@@ -3,13 +3,47 @@ html {
     font-family: "Outfit", sans-serif;
 }
 
-
 .doações {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-doação {
-    background-color: aqua;
+.doação {
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    width: 325px;
+    height: 57.82px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
+
+}
+
+.quantidade {
+    font-weight: bold;
+    font-size: 170%;
+    color: #000000;
+    margin: 25px;
+}
+
+.item {
+    font-size: 150%;
+    font-weight: 400;
+
+}
+
+.navbar {
+    background-color: #FFFFFF;
+    filter: drop-shadow(0px 4px 120px rgba(58, 86, 78, 0.10));
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    width: 96%;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    height: 4.625rem;
+    position: fixed;
+    bottom: 0;
 }
