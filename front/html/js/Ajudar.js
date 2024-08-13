@@ -22,21 +22,21 @@ let button = document.getElementById("handleSubmit");
 
 button.onclick = async function(e) {
     e.preventDefault(); 
-
     
     let item = document.querySelector('.selecionado .item').textContent;
     let date = document.getElementById("data").value; 
     let hora = document.getElementById("hora").value; 
     let qnt = document.getElementById("quant").value; 
-
+    const Id_User = localStorage.getItem('id');
+    console.log(`ID do usuário: ${Id_User}`);
     
-    let data = { item, date, hora, qnt }; 
+    let data = { item, date, hora, qnt, Id_User }; 
 
     console.log("Dados que serão enviados:", data); 
 
     try {
         
-        const response = await fetch('http://localhost:3001/api/store/task', {
+        const response = await fetch('http://localhost:3005/api/store/task' , {
             method: "post", 
             headers: { "Content-Type": "application/json;charset=UTF-8" }, 
             body: JSON.stringify(data) 

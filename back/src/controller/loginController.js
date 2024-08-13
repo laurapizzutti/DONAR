@@ -10,7 +10,7 @@ async function login(req, res) {
     )
     console.log("email p/ cadastro:", req.body.email)
 
-    const query = "SELECT email, senha, id FROM cadastro_usuario WHERE email = ?";
+    const query = "SELECT email, senha, id, tipo_usuario FROM cadastro_usuario WHERE email = ?";
     // const query = "SELECT email, senha, FROM cadastro_usuario WHERE email = ?";
 
     connection.query(query, params, (err, results) => {

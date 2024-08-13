@@ -6,10 +6,14 @@ async function storeTask(request, response){
         request.body.item,
         request.body.date,
         request.body.hora,
-        request.body.qnt
+        request.body.qnt,
+        request.body.Id_User,
+        
     );
 
-    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt) VALUES (?, ?, ?, ?)';
+    console.log(params)
+
+    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt, id_doador) VALUES (?, ?, ?, ?, ?)';
 
     connection.query(query, params, (err, results) => {
         console.log(err)
@@ -36,15 +40,18 @@ async function storeTask(request, response){
 async function getTask(request, response){
 
     const params = Array(
-        request.params.id_doador,
-        // tenho que pegar o id_doador quando for 
+        request.body.Id_User,
+        
     );
+
+     console.log(params)
 
     // A PÁGINA AGENDAMENTOS.HTML SÓ APARECE PARA COLABORADORES, PORTANTO,
     // A PORRA DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
 
     const query = 'SELECT * from agendamentos WHERE id_doador = ?';
-    connection.query(query, (err, results) => {
+    
+    connection.query(query, params, (err, results) => {
         console.log(err)
         if (results) {
             response.status(201).json({

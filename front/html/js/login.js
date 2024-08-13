@@ -7,7 +7,7 @@ async function login(event) {
     const data = {email, senha};
     console.log(data);
 
-    const response = await fetch('http://localhost:3001/api/login', {
+    const response = await fetch('http://localhost:3005/api/login', {
         method: "POST",
         headers: {
             "Content-Type":"application/json;charset=UTF-8"
@@ -20,9 +20,18 @@ async function login(event) {
     if(results.success) {
         alert(results.message);
         localStorage.setItem('id', results.data.id)
+        localStorage.setItem('tipo_user', results.data.tipo_usuario)
+            Tipo_User = localStorage.getItem('tipo_user');
             Id_User = localStorage.getItem('id');
-            console.log(`ID do usuário: ${Id_User}`);
-            window.location.href = "/front/html/perfil_insti.html";
+            console.log(`ID do usuário: ${Id_User} e Tipo do usuário: ${Tipo_User}`);
+            
+            // vai mudar
+            if (Tipo_User == 'Instituição') {
+                window.location.href = "/front/html/intro.html";
+            } else {
+                window.location.href = "/front/html/home.html";
+            }
+
     } else {
         alert(results.message);
     }
