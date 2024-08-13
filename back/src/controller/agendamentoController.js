@@ -8,7 +8,8 @@ async function storeTask(request, response){
         request.body.hora,
         request.body.qnt,
         request.body.Id_User,
-        
+        // request.body.Id_Insti
+
     );
 
     console.log(params)
@@ -41,6 +42,7 @@ async function getTask(request, response){
 
     const params = Array(
         request.body.Id_User,
+
         
     );
 
@@ -50,7 +52,7 @@ async function getTask(request, response){
     // A PORRA DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
 
     const query = 'SELECT * from agendamentos WHERE id_doador = ?';
-    
+
     connection.query(query, params, (err, results) => {
         console.log(err)
         if (results) {
