@@ -14,7 +14,7 @@ async function storeTask(request, response){
 
     console.log(params)
 
-    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt, id_doador, id_insti) VALUES (?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt, id_doador) VALUES (?, ?, ?, ?, ?)';
 
     connection.query(query, params, (err, results) => {
         console.log(err)
@@ -38,11 +38,49 @@ async function storeTask(request, response){
     })
 }
 
+// async function getID (request, response) {
+     
+//     const params = Array(
+//         req.body.email
+//     )
+//     console.log("email p/ cadastro:", req.body.email)
+
+//     const query = "id, tipo_usuario FROM cadastro_usuario WHERE email = ?";
+//     // const query = "SELECT email, senha, FROM cadastro_usuario WHERE email = ?";
+
+//     connection.query(query, params, (err, results) => {
+//         console.log(err, results)
+//         if(results.length > 0) {
+//             let senhaForms = req.body.senha
+//             let senhaDb = results[0].senha
+
+//             if (senhaDb === senhaForms)
+//                 console.log('Senha Correta!')   
+//                 res
+//                     .status(200)
+//                     .json({
+//                         success: true,
+//                         message: "Login feito com Sucesso",
+//                         data: results[0]
+//                 });        
+//             } else {
+//                 res
+//                     .status(400)
+//                     .json({
+//                         success: false,
+//                         message: "Verifique sua Senha",
+//                         data: results
+//                 });  
+//         }
+//     });
+    
+// }
+
 async function getTask(request, response){
 
     const params = Array(
-        request.body.Id_User,
-        // request.body.Id_Insti
+        // request.body.Id_User,
+        // // request.body.Id_Insti
         request.body.id
     );
 
@@ -51,7 +89,7 @@ async function getTask(request, response){
     // A PÁGINA AGENDAMENTOS.HTML SÓ APARECE PARA COLABORADORES, PORTANTO,
     // A PORRA DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
 
-    const query = 'SELECT * from agendamentos WHERE id_doador = ?';
+    const query = 'SELECT * from agendamentos WHERE id = ?';
 
     connection.query(query, params, (err, results) => {
         console.log(err)
