@@ -40,6 +40,8 @@ async function getTask() {
                 
                         htmlItem.appendChild(quantidadeSpan);
                         htmlItem.appendChild(nomeSpan); 
+
+                        console.log(htmlItem)
             
                         div.appendChild(htmlItem);
                     });

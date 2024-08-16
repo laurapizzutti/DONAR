@@ -87,7 +87,7 @@ async function getTask(request, response){
      console.log(params)
 
     // A PÁGINA AGENDAMENTOS.HTML SÓ APARECE PARA COLABORADORES, PORTANTO,
-    // A PORRA DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
+    // A  DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
 
     const query = 'SELECT * from agendamentos WHERE id = ?';
 

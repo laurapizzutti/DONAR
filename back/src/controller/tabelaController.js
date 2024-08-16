@@ -56,6 +56,32 @@ async function getItems(request, response) {
     });
 }
 
+// function getItemsHome(request, response) {    
+//     const params = Array(
+//         request.params.id
+//     )
+//     console.log(params)
+
+//     const query = 'SELECT * FROM tabela_itens WHERE id_user = ?';
+
+//     connection.query(query, params, (err, results) => {
+//         console.log(err, results)
+//         if (results) {
+//             response.status(200).json({
+//                 success: true,
+//                 message: "Itens recuperados com sucesso!",
+//                 data: results
+//             });
+//         } else {
+//             response.status(400).json({
+//                 success: false,
+//                 message: "Erro ao recuperar itens.",
+//                 data: err
+//             });
+//         }
+//     });
+// }
+
 async function deleteItems(request, response) {
     const { id_item } = request.body;
     const userId = request.body.id_user;
