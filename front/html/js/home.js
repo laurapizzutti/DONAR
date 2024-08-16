@@ -1,14 +1,14 @@
-function getInstiData() {
+async function getInstiData() {
     // const Id_User = localStorage.getItem('id');
 
-    const response = fetch('http://localhost:3005/api/get/insti', {
+    const response = await fetch('http://localhost:3005/api/get/insti', {
         method: "GET",
         headers: {
             "Content-Type":"application/json"
         }
     })
 
-    const results = response.json();
+    const results = await response.json();
     
     console.log(results)
 
@@ -36,6 +36,8 @@ function getInstiData() {
             const ID_insti = item.id
             console.log(ID_insti)
 
+            localStorage.setItem("ID_insti", ID_insti)
+
 
             // const quantidadeSpan = document.createElement('span');
             // quantidadeSpan.classList.add('quantidade');
@@ -48,7 +50,6 @@ function getInstiData() {
             // cabecalho.appendChild(quantidadeSpan);
             // card_div.appendChild(nomeSpan); 
 
-            home.appendChild(card_div);
         });
     }else{
         console.log('deu errado')
@@ -58,7 +59,7 @@ function getInstiData() {
 getInstiData();
 
 async function getItems() {
-    const Insti = ID_insti;
+    const Insti = localStorage.getItem("ID_insti");
 
     const response = await fetch('http://localhost:3005/api/itens/'+ Insti, {
         method: "GET",
@@ -71,27 +72,25 @@ async function getItems() {
     console.log('ID da Instituição: ', Insti)
     console.log(results)
     if(results.success) {
-        // let itens = results.data;
+        let itens = results.data;
 
-        // let tabela = document.getElementById('tabela');
+        itens.map(item => {
+            let htmlItem = document.createElement('div');
+            htmlItem.classList.add('opcao');
+    
+            const quantidadeSpan = document.createElement('span');
+            quantidadeSpan.classList.add('quantidade');
+            quantidadeSpan.textContent = `${item.qnt_itens[0]}x`;
+    
+            const nomeSpan = document.createElement('span');
+            nomeSpan.classList.add('item');
+            nomeSpan.textContent = item.item[0];
+    
+            htmlItem.appendChild(quantidadeSpan);
+            htmlItem.appendChild(nomeSpan); 
 
-        // itens.map(item => {
-        //     let htmlItem = document.createElement('div');
-        //     htmlItem.classList.add('opcao');
-    
-        //     const quantidadeSpan = document.createElement('span');
-        //     quantidadeSpan.classList.add('quantidade');
-        //     quantidadeSpan.textContent = `${item.qnt_itens[0]}x`;
-    
-        //     const nomeSpan = document.createElement('span');
-        //     nomeSpan.classList.add('item');
-        //     nomeSpan.textContent = item.item[0];
-    
-        //     htmlItem.appendChild(quantidadeSpan);
-        //     htmlItem.appendChild(nomeSpan); 
-
-        //     tabela.appendChild(htmlItem);
-        // });
+            home.appendChild(card_div);
+        });
     }
 
 }

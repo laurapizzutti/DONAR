@@ -2,7 +2,7 @@ const connection = require('../config/db.js');
 const dotenv = require('dotenv').config();
 
 
-function getInstiData(request, response){
+async function getInstiData(request, response){
 
     const query = 'SELECT id, nome, tipo_usuario, endereco FROM cadastro_usuario WHERE tipo_usuario = "Instituição"';
 
