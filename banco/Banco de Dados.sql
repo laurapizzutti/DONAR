@@ -36,7 +36,7 @@ SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
 
 INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('teste','email@email','senha','instituicao','street');
-INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Feijão', '101', 1);
+INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Feijão', '101', 14);
 INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('1','Feijão', '2022-06-06','09:00', 1, 1, 1, 'Realizada');
 
 DROP TABLE agendamentos;
