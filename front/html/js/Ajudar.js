@@ -28,9 +28,11 @@ button.onclick = async function(e) {
     let hora = document.getElementById("hora").value; 
     let qnt = document.getElementById("quant").value; 
     const Id_User = localStorage.getItem('id');
+    const Insti = localStorage.getItem("ID_insti");
     console.log(`ID do usuário: ${Id_User}`);
+
     
-    let data = { item, date, hora, qnt, Id_User }; 
+    let data = { item, date, hora, qnt, Id_User, Insti }; 
 
     console.log("Dados que serão enviados:", data); 
 

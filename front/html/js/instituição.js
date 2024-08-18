@@ -47,6 +47,35 @@ function Excluir(exibir) {
                 `;
                 lixeira.classList.add('lixeira-icon');
                 item.appendChild(lixeira);
+
+                lixeira.onclick = function (event) {
+                    async function deleteItems() {
+                    
+                        // const quantidade = document.getElementById("quantidade").value;
+                        // const nomeItem = document.getElementById("nomeItem").value;
+                        // const Id_User = localStorage.getItem('id');
+                    
+                        // const data = {quantidade, nomeItem, Id_User, id_item};
+                    
+                        // console.log(data);
+                    
+                        const response = await fetch('http://localhost:3005/api/delete/item', {
+                            method: "DELETE",
+                            headers: {
+                                "Content-Type":"application/json"
+                            },
+                            // body: JSON.stringify(data)
+                        });
+                    
+                      
+                        if (response.ok) {
+                           alert('Item removido com sucesso')
+                        }else{
+                            alert('Deu errado')
+                        }
+                    }
+                    
+                }
             }
         } else {
             const lixeira = item.querySelector('.lixeira-icon');
@@ -74,7 +103,7 @@ async function SalvarItemDB(event) {
 
     console.log(data);
 
-    const response = await fetch('http://localhost:3001/api/store/item', {
+    const response = await fetch('http://localhost:3005/api/store/item', {
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -108,6 +137,7 @@ async function getItens() {
 
     const results = await response.json();
     console.log('ID do usuário: ', Id_User)
+    id_item = results.data.id_item
     console.log(results)
     if(results.success) {
         let itens = results.data;

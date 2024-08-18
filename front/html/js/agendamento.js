@@ -16,8 +16,8 @@ async function getTask() {
         const results = await response.json();
            
             console.log(results)
-            id_item = results.data.id.value
-            console.log('ID do agendamento:', id_item)
+            id_agendamento = results.data.id
+            console.log('ID do agendamento:', id_agendamento)
 
             if(results.success) {
                 let doacoes = results.data;

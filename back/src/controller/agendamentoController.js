@@ -8,13 +8,13 @@ async function storeTask(request, response){
         request.body.hora,
         request.body.qnt,
         request.body.Id_User,
-        // request.body.Id_Insti
+        request.body.Insti
 
     );
 
     console.log(params)
 
-    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt, id_doador) VALUES (?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO agendamentos(item, data_entrega, hora_entrega, qnt, id_doador, id_insti) VALUES (?, ?, ?, ?, ?)';
 
     connection.query(query, params, (err, results) => {
         console.log(err)

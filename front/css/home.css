@@ -77,11 +77,11 @@ body {
 
 .pedido-card-container {
     width: 16.438rem;
-    height: 5.313rem;
+    height: 4rem;
     /* background-color: #f3ec2056; */
     background-color: #fcecb49f;
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     padding: 1.5rem;
     border: 0.5rem;
@@ -130,6 +130,7 @@ a {
 .item {
     font-size: 150%;
     font-weight: 400;
+    margin-right: 20px;
 
 }
 
@@ -154,14 +155,14 @@ a {
 .ajudar {
     font-weight: bold;
     font-size: 120%;
-    width: 19rem;
+    width: 19.5rem;
     height: 2.6875rem;
     background-color: #FFC600;
     display:flex ;
     align-items: center;
     justify-content: center;
     border-color: transparent;
-    border-radius: 0.5rem;
+    border-radius: 0.8rem;
     padding: 1rem;
     margin: 0%;
     color: #F8FBFB;

@@ -84,11 +84,11 @@ async function getItems(request, response) {
 
 async function deleteItems(request, response) {
     const { id_item } = request.body;
-    const userId = request.body.id_user;
+    // const userId = request.body.id_user;
 
-    const query = 'DELETE FROM tabela_itens WHERE id_item = ? AND id_user = ?';
+    const query = 'DELETE FROM tabela_itens WHERE id_item = ?';
 
-    connection.query(query, [id_item, userId], (err, results) => {
+    connection.query(query, [id_item], (err, results) => {
         
         if (results) {
             response.status(200).json({

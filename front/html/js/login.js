@@ -25,12 +25,12 @@ async function login(event) {
             Id_User = localStorage.getItem('id');
             console.log(`ID do usuário: ${Id_User} e Tipo do usuário: ${Tipo_User}`);
             
-            // vai mudar
-            if (Tipo_User == 'Instituição') {
-                window.location.href = "/front/html/intro.html";
-            } else {
-                window.location.href = "/front/html/home.html";
-            }
+            window.location.href = "/front/html/intro.html";
+            // if (Tipo_User == 'Instituição') {
+            //     window.location.href = "/front/html/intro.html";
+            // } else {
+            //     window.location.href = "/front/html/intro.html";
+            // }
 
     } else {
         alert(results.message);
