@@ -36,8 +36,10 @@ SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
 
 INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('teste','email@email','senha','instituicao','street');
-INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Feijão', '101', 14);
-INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('1','Feijão', '2022-06-06','09:00', 1, 1, 1, 'Realizada');
+INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Arroz', 8, 5);
+INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('5','Feijão Vermelho', '2022-06-06','09:00', 10, 1, 5, 'Agendada');
 
+DELETE FROM tabela_itens WHERE id_item = 11;
+DELETE FROM cadastro_usuario WHERE email = 'fyjycrf';
 DROP TABLE agendamentos;
 

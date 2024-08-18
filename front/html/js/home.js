@@ -1,5 +1,5 @@
 async function getInstiData() {
-    // const Id_User = localStorage.getItem('id');
+
 
     const response = await fetch('http://localhost:3005/api/get/insti', {
         method: "GET",
