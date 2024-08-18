@@ -62,5 +62,6 @@ async function getItems(request, response) {
 }
 
 module.exports = {
-    getInstiData
+    getInstiData,
+    getItems
 }

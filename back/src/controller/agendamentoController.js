@@ -81,7 +81,7 @@ async function getTask(request, response){
     const params = Array(
         // request.body.Id_User,
         // // request.body.Id_Insti
-        request.body.id
+        request.body.id_agendamento
     );
 
      console.log(params)
