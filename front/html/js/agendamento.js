@@ -1,6 +1,9 @@
 async function getTask() {
+    Id_User = localStorage.getItem('id');
+    console.log('ID do usuário: ', Id_User)
     Tipo_User = localStorage.getItem('tipo_user');
-    if (Tipo_User == 'Colaborador') {
+    console.log('ID do usuário: ', Tipo_User)
+    if (Tipo_User = 'Colaborador') {
         Id_User = localStorage.getItem('id');
 
         const response = await fetch('http://localhost:3005/api/itens/' + Id_User, {
@@ -11,8 +14,10 @@ async function getTask() {
         })
 
         const results = await response.json();
-            console.log('ID do usuário: ', Id_User)
+           
             console.log(results)
+            id_item = results.data.id.value
+            console.log('ID do agendamento:', id_item)
 
             if(results.success) {
                 let doacoes = results.data;
@@ -35,6 +40,8 @@ async function getTask() {
                 
                         htmlItem.appendChild(quantidadeSpan);
                         htmlItem.appendChild(nomeSpan); 
+
+                        console.log(htmlItem)
             
                         div.appendChild(htmlItem);
                     });

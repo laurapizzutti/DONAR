@@ -37,7 +37,7 @@ button.onclick = async function(e) {
     try {
         
         const response = await fetch('http://localhost:3005/api/store/task' , {
-            method: "post", 
+            method: "POST", 
             headers: { "Content-Type": "application/json;charset=UTF-8" }, 
             body: JSON.stringify(data) 
         });
@@ -51,7 +51,13 @@ button.onclick = async function(e) {
 
         if (content.success) {
             alert("Sucesso"); 
-            window.location.href = "/front/html/agendamento.html";
+            
+            // window.location.href = "/front/html/agendamento.html";
+            console.log(results)
+
+            localStorage.setItem('ID_item:', results.data.id)
+            Id_Item = localStorage.getItem('ID_item:');
+            console.log(`ID do agendamento: ${Id_Item}`);
         } else {
             alert("Não"); 
         }

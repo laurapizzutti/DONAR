@@ -58,9 +58,9 @@ async function getIDUser(request, response){
             
             // Id_User = 
 
-            if (results.data.tipo_usuario === 'Instituição') {
-                window.location.href = "/front/html/perfil_insti.html";
-            }
+            // if (results.data.tipo_usuario === 'Instituição') {
+            //     window.location.href = "/front/html/perfil_insti.html";
+            // }
 
         }else{
             response
