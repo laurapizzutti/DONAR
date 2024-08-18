@@ -1,55 +1,69 @@
-async function getItems() {
+async function getItens() {
+    const Insti = localStorage.getItem('ID_insti');
+    console.log(Insti)
+    const User = localStorage.getItem('id');
 
-    const Insti = localStorage.getItem("ID_insti");
-    console.log(ID_insti)
-            
-    const response = await fetch('http://localhost:3005/api/itens/'+ Insti, {
+    const response = await fetch('http://localhost:3005/api/itens/' + Insti, {
         method: "GET",
         headers: {
             "Content-Type":"application/json"
         }
-    })
+    });
 
     const results = await response.json();
-    console.log('ID da Instituição: ', Insti)
-    console.log(results)
-
-    if(results.success) {
-
-        console.log('Sucesso')
-
+    console.log('ID do usuário: ', User)
     
-        // let itens = results.data;
+    if (results.success) {
+        let itens = results.data;
 
-        async function selecionar(elemento_clicado) {
-            const selecionado = document.querySelector('.selecionado');
-            if (selecionado) {
-                selecionado.className = 'op';
-            }
-            elemento_clicado.className = 'selecionado';
-            console.log(elemento_clicado.querySelector('.item').textContent);
-        }
-        
-        let opcoes = document.querySelector(".opcoes").querySelectorAll('div.op');
-        console.log(`Opções encontradas: ${opcoes.length}`);
-        
-        
-        for (let opcao of opcoes) {
-            opcao.addEventListener('click', function () {
+        let tabela = document.getElementById('opcoes');
+
+        itens.forEach(item => {
+            let htmlItem = document.createElement('div');
+            htmlItem.classList.add('op');
+    
+            const quantidadeSpan = document.createElement('span');
+            quantidadeSpan.classList.add('qnt2');
+            quantidadeSpan.textContent = `${item.qnt_itens}x`;
+    
+            const nomeSpan = document.createElement('span');
+            nomeSpan.classList.add('item');
+            nomeSpan.textContent = item.item;
+    
+            htmlItem.appendChild(quantidadeSpan);
+            htmlItem.appendChild(nomeSpan);
+
+            htmlItem.onclick = function () {
                 selecionar(this);
-            });
-        }
+            };
+
+            tabela.appendChild(htmlItem);
+        });
+
+        function selecionar(elemento_clicado) {
+            const selecionado = document.querySelector('.selecionado');
+            
+            if (selecionado) {
+                selecionado.classList.remove('selecionado');
+                selecionado.classList.add('op');
+            }
         
+            elemento_clicado.classList.remove('op');
+            elemento_clicado.classList.add('selecionado');
         
-        let button = document.getElementById("handleSubmit");
+            console.log(elemento_clicado.querySelector('.item').textContent);
+        
+            let button = document.getElementById("handleSubmit");
         
         button.onclick = async function(e) {
             e.preventDefault(); 
             
-            let item = document.querySelector('.selecionado .item').textContent;
+            let item = results.data.item;
+            console.log(item)
             let date = document.getElementById("data").value; 
             let hora = document.getElementById("hora").value; 
-            let qnt = document.getElementById("quant").value; 
+            let qnt = results.data.qnt_itens
+            console.log(qnt)
             const Id_User = localStorage.getItem('id');
             const Insti = localStorage.getItem("ID_insti");
             console.log(`ID do usuário: ${Id_User}`);
@@ -93,9 +107,30 @@ async function getItems() {
             }
         };
         
-
-    }else{
-        console.log('deu errado')
+        }
     }
 }
+
+
+
+getItens();
+
+
+// async function selecionar(elemento_clicado) {
+//     const selecionado = document.querySelector('.selecionado');
+//     if (selecionado) {
+//         selecionado.classList.remove('selecionado');
+//     }
+//     elemento_clicado.classList.add('selecionado');
+//     console.log(elemento_clicado.querySelector('.item').textContent);
+// }
+
+// // Corrigindo a seleção dos elementos .op
+// let opcoes = document.querySelectorAll(".op");
+
+// for (let opcao of opcoes) {
+//     opcao.addEventListener('click', function () {
+//         selecionar(this);
+//     });
+// }
 
