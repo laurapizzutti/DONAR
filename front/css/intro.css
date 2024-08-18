@@ -35,7 +35,10 @@ p {
     font-weight: 500;
 }
 
-.agendar {
+.ajudar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 15px;
     width: 325px;
     height: 46px;
@@ -45,4 +48,10 @@ p {
     color: #FFFFFF;
     border: 0 none;
     margin-top: 30px;
+    position: relative;
+    left: 15px;
+}
+
+a {
+    text-decoration: none;
 }
