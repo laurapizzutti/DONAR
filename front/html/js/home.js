@@ -79,9 +79,9 @@ async function getInstiData() {
                         button.textContent = 'Ajudar'
 
                         button.onclick = function(event) {
-
-                            window.location.href = '/front/html/Ajudar.html'
+                            window.location.href = '/front/html/Ajudar.html';
                         }
+
                 
                         htmlItem.appendChild(quantidadeSpan);
                         htmlItem.appendChild(nomeSpan); 

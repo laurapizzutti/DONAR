@@ -1,47 +1,44 @@
-async function getItens() {
-    const Insti = localStorage.getItem('ID_insti');
-    const User = localStorage.getItem('id');
+async function getItems() {
+    const Insti = localStorage.getItem('ID_insti'); // Recupera o ID da instituição
+    console.log('ID da Instituição Selecionada: ', Insti);
 
     const response = await fetch('http://localhost:3005/api/itens/' + Insti, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type":"application/json"
         }
     });
 
     const results = await response.json();
+    console.log(results);
 
     if (results.success) {
         let itens = results.data;
 
         let tabela = document.getElementById('opcoes');
 
-        itens.forEach(item => {
+        itens.map(item => {
             let htmlItem = document.createElement('div');
             htmlItem.classList.add('op');
 
-            // Associa o objeto inteiro do item ao elemento DOM usando o nome 'data'
-            htmlItem.data = item;
-    
             const quantidadeSpan = document.createElement('span');
             quantidadeSpan.classList.add('qnt2');
             quantidadeSpan.textContent = `${item.qnt_itens}x`;
-    
+
             const nomeSpan = document.createElement('span');
             nomeSpan.classList.add('item');
             nomeSpan.textContent = item.item;
-    
+
             htmlItem.appendChild(quantidadeSpan);
             htmlItem.appendChild(nomeSpan);
 
-            htmlItem.onclick = function () {
-                selecionar(this);
-            };
-
             tabela.appendChild(htmlItem);
         });
+    } else {
+        console.log('Nenhum item encontrado para esta instituição');
     }
 }
+
 
 function selecionar(elemento_clicado) {
     const selecionado = document.querySelector('.selecionado');
@@ -108,4 +105,4 @@ document.getElementById("handleSubmit").onclick = async function(e) {
     }
 };
 
-getItens();
+getItems();

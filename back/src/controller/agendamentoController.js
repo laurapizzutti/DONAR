@@ -73,35 +73,41 @@ async function storeTask(request, response){
     
 // }
 
-async function getTask(request, response){
 
-    const params = Array(
-        request.body.Id_User
-    );
-     console.log(params)
+async function getTask(request, response) {
+    const id_doador = request.params.id; // Captura o ID do colaborador
 
-    // A PÁGINA AGENDAMENTOS.HTML SÓ APARECE PARA COLABORADORES, PORTANTO,
-    // A  DO ID QUE VIRA PARA PROCURAR NO BANCO SERÁ APENAS DE COLABORADORES
+    const query = 'SELECT * FROM agendamentos WHERE id_doador = ?';
 
-    const query = 'SELECT * from agendamentos WHERE id_doador = ?';
-
-    connection.query(query, params, (err, results) => {
-        console.log(err)
-        if (results) {
-            response.status(201).json({
-                    success: true,
-                    massage: "Sucesso!",
-                    data: results
-                })
-        }else{
-            response.status(400).json({
-                    success: false,
-                    message: "Ops, deu problema :(",
-                    data: err
-            })
+    connection.query(query, [id_doador], (err, results) => {
+        if (err) {
+            console.error(err);
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao recuperar agendamentos",
+                data: err
+            });
         }
-    })
+
+        if (results.length > 0) {
+            response.status(200).json({
+                success: true,
+                message: "Agendamentos recuperados com sucesso!",
+                data: results
+            });
+        } else {
+            response.status(404).json({
+                success: false,
+                message: "Nenhum agendamento encontrado para este colaborador"
+            });
+        }
+    });
 }
+
+module.exports = {
+    getTask
+};
+
 
 module.exports = {
     storeTask,
