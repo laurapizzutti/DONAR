@@ -80,6 +80,7 @@ h1 {
     box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
     border: solid 1.8px;
     border-color: #FB7B05;
+    padding: 10px;
 }
 
 .op {
@@ -92,6 +93,7 @@ h1 {
     height: 57.82px;
     border-radius: 20px;
     box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
+    padding: 10px;
     
 }
 

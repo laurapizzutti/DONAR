@@ -1,23 +1,20 @@
 async function getItems() {
-    const Insti = localStorage.getItem('ID_insti'); // Recupera o ID da instituição
-    console.log('ID da Instituição Selecionada: ', Insti);
+    const Insti = localStorage.getItem('ID_insti');
 
     const response = await fetch('http://localhost:3005/api/itens/' + Insti, {
         method: "GET",
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         }
     });
 
     const results = await response.json();
-    console.log(results);
 
     if (results.success) {
         let itens = results.data;
-
         let tabela = document.getElementById('opcoes');
 
-        itens.map(item => {
+        itens.forEach(item => {
             let htmlItem = document.createElement('div');
             htmlItem.classList.add('op');
 
@@ -32,13 +29,20 @@ async function getItems() {
             htmlItem.appendChild(quantidadeSpan);
             htmlItem.appendChild(nomeSpan);
 
+            // Armazena os dados do item no elemento
+            htmlItem.data = item;
+
+            // Adiciona o evento de clique para seleção
+            htmlItem.onclick = function() {
+                selecionar(this);
+            };
+
             tabela.appendChild(htmlItem);
         });
     } else {
         console.log('Nenhum item encontrado para esta instituição');
     }
 }
-
 
 function selecionar(elemento_clicado) {
     const selecionado = document.querySelector('.selecionado');
@@ -59,20 +63,17 @@ document.getElementById("handleSubmit").onclick = async function(e) {
 
     if (!selecionado) {
         alert("Por favor, selecione um item antes de agendar sua doação");
+        return;
     }
 
-    // Pega o item e a quantidade diretamente do objeto 'data' armazenado no elemento selecionado
     let item = selecionado.data.item;
     let qnt = selecionado.data.qnt_itens;
-
     let date = document.getElementById("data").value; 
     let hora = document.getElementById("hora").value; 
     const Id_User = localStorage.getItem('id');
-    const Insti = localStorage.getItem("ID_insti");
+    const Insti = localStorage.getItem('ID_insti');
 
     let data = { item, date, hora, qnt, Id_User, Insti };
-
-    console.log("Dados que serão enviados:", data);
 
     try {
         const response = await fetch('http://localhost:3005/api/store/task', {
@@ -88,13 +89,7 @@ document.getElementById("handleSubmit").onclick = async function(e) {
         let results = await response.json();
 
         if (results.success) {
-           window.location.href = '/front/html/agendamento.html'
-            // console.log(results);
-
-            // localStorage.setItem('ID_agendamento:', results.data.id);
-            // let Id_Item = localStorage.getItem('ID_item:');
-            // console.log(`ID do agendamento: ${Id_Item}`);
-
+           window.location.href = '/front/html/agendamento.html';
         } else {
             alert("Não foi possível agendar a doação.");
         }
