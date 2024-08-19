@@ -1,6 +1,7 @@
 html {
     background-color: #F8FBFB;
     font-family: "Outfit", sans-serif;
+    margin: 20px;
 }
 
 .doações {
@@ -10,14 +11,167 @@ html {
 }
 
 .doação {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: self-start;
+    justify-content: space-around;
     background-color: #f3ec202d;
     width: 360px;
     height: 115px;
     border-radius: 20px;
-    box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
+    box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15); */
+    width: 19.375rem;
+    height: max-content;
+    /* justify-content: space-between; */
+    background-color: #FFFFFF;
+    padding: 1.5rem;
+    border-radius: 0.938rem;
+    flex-direction: column;
+    /* gap: 1rem; */
+    /* margin: 1rem; */
+    box-shadow: 0px 4px 120px 0px rgba(155, 158, 157, 0.15);
+}
 
+
+.doacao-dois {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.cabecalho{
+    display: flex;
+    align-items: self-start;
+    /* justify-content: space-between; */
+    flex-direction: row;
+    gap: 1rem;
+    /* margin: 1rem; */
+}
+
+
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+p {
+    margin: 0%;
+}
+
+.status_desc {
+    font-size: 14px;
+    font-weight: 450;
+}
+
+/* #status-status {
+    font-weight: 600;
+    font-size: 14px;
+} */
+
+.realizada {
+    font-weight: 600;
+    font-size: 14px;
+    font-style: #00aa25;
+}
+
+.agendada {
+    font-weight: 600;
+    font-size: 14px;
+    font-style: #FFC600;
+
+}
+
+/* <div class="doação">
+                <div class="cabecalho">
+                    <img src="/front/img/perfil_insti.svg" class="img" srcset="">
+                    <h4>Casa da Acolhida</h4>
+                </div>
+                <div class="doacao-dois">
+                    <p class="data">
+                        01/09/2024
+                    </p>
+                    <div class="status">
+                        <p class="status_desc">
+                            Status
+                        </p>
+                        <p id="status-status">
+                            Agendada
+                        </p>
+                    </div>
+                    <button class="ver-mais">
+                            ver mais
+                    </button>
+                </div>
+            </div> */
+
+            /* let card_div = document.createElement('div');
+            card_div.classList.add('card-home');
+
+            let img = document.createElement('img');
+            img.classList.add('foto-perfil');
+            img.src = '/front/img/perfil_insti.svg';
+
+            let cabecalho = document.createElement('div');
+            cabecalho.classList.add('cabecalho');
+
+            let h2 = document.createElement('h2');
+            h2.textContent = dados.nome;
+
+            cabecalho.appendChild(img);
+            cabecalho.appendChild(h2);
+
+            card_div.appendChild(cabecalho); */
+
+            /* itens.map(item => {
+                let htmlItem = document.createElement('div');
+                htmlItem.classList.add('opcao');
+        
+                const quantidadeSpan = document.createElement('span');
+                quantidadeSpan.classList.add('quantidade');
+                quantidadeSpan.textContent = `${item.qnt_itens}x`;
+        
+                const nomeSpan = document.createElement('span');
+                nomeSpan.classList.add('item');
+                nomeSpan.textContent = item.item;
+        
+                htmlItem.appendChild(quantidadeSpan);
+                htmlItem.appendChild(nomeSpan); 
+    
+                tabela.appendChild(htmlItem);
+            }); */
+
+.data{
+    font-size: 14px;
+    justify-content: last baseline;
+    align-content: end;
+    color: #494945;
+    font-weight: 500;
+}
+
+.ver-mais {
+   
+    color: #ffc800;
+    font-weight: 550;
+    font-size: 15px;
+    border-radius: 8px;
+    background-color: #ffffffd5;
+    font-family: "Outfit", sans-serif;   
+    border: solid 1px;
+    border-color:#ffc800;
+    padding: 0%;
+}
+
+button {
+    text-decoration: none;
+    width: 6rem;
+    height: 2rem;
+}
+
+h4 {
+    display: flex;
+    align-items: self-start;
 }
 
 .quantidade {

@@ -17,7 +17,7 @@ async function getInstiData() {
 
             let img = document.createElement('img');
             img.classList.add('foto-perfil');
-            img.src = '/front/img/foto-perfil-insti.jpg';
+            img.src = '/front/img/perfil_insti.svg';
 
             let cabecalho = document.createElement('div');
             cabecalho.classList.add('cabecalho');
