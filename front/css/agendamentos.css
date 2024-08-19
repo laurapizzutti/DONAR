@@ -12,9 +12,9 @@ html {
 .doação {
     display: flex;
     align-items: center;
-    background-color: #FFFFFF;
-    width: 325px;
-    height: 57.82px;
+    background-color: #f3ec202d;
+    width: 360px;
+    height: 115px;
     border-radius: 20px;
     box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
 
