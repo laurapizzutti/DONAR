@@ -67,7 +67,7 @@ document.getElementById("handleSubmit").onclick = async function(e) {
     }
 
     let item = selecionado.data.item;
-    let qnt = selecionado.data.qnt_itens;
+    let qnt = document.getElementById('quant').value;
     let date = document.getElementById("data").value; 
     let hora = document.getElementById("hora").value; 
     const Id_User = localStorage.getItem('id');

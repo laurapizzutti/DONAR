@@ -36,7 +36,7 @@ h1 {
     font-size: 150%;
     font-weight: 500;
     position: relative;
-    bottom: 190px;
+    bottom: 14px;
 }
 
 .coluna {
@@ -65,7 +65,7 @@ h1 {
     gap: 12px;
     padding: 5%;
     position: relative;
-    bottom: 50px;
+    bottom: 20px;
 }
 
 .selecionado {

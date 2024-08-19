@@ -1,4 +1,7 @@
+
 let button = document.getElementById("handleSubmit");
+
+localStorage.clear();
 
 button.onclick = async function(e) {
     e.preventDefault(); 
