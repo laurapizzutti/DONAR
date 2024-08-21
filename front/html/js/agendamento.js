@@ -33,7 +33,6 @@ async function getTask() {
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
 
-            // Cabeçalho com a imagem e nome da instituição
             let cabecalho = document.createElement('div');
             cabecalho.classList.add('cabecalho');
 
@@ -93,22 +92,26 @@ async function getTask() {
                     status.appendChild(status_desc);
 
                     let status_status = document.createElement('p');
+                    status_status.id = 'status_status';
                     status_status.textContent = agendamento._status;
 
-                    if (agendamento._status === "Agendada") {
+                    // Aplicando a classe correta ao status_status
+                    if (agendamento._status.trim().toLowerCase() === "agendada") {
                         status_status.classList.add('agendada');
-                    } else {
+                    } else if (agendamento._status.trim().toLowerCase() === "realizada") {
                         status_status.classList.add('realizada');
                     }
+
                     status.appendChild(status_status);
 
                     doacao_dois.appendChild(status);
-
                     doacao.appendChild(doacao_dois);
 
                     let button = document.createElement('button');
                     button.classList.add('ver-mais');
                     button.textContent = 'Ver mais';
+                    button.setAttribute('data-item', agendamento.item); // Adiciona o item como data-atributo
+                    button.setAttribute('data-quantidade', agendamento.qnt); // Adiciona a quantidade como data-atributo
 
                     doacao.appendChild(button);
 
@@ -128,3 +131,28 @@ async function getTask() {
 
 // Chama a função getTask
 getTask().catch(err => console.error('Erro ao buscar as tarefas:', err));
+
+// Adicione o evento ao botão "Ver mais"
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('ver-mais')) {
+        const item = event.target.getAttribute('data-item'); // Pegue o item do atributo data-item
+        const quantidade = event.target.getAttribute('data-quantidade'); // Pegue a quantidade do atributo data-quantidade
+
+        document.getElementById('popup-item').textContent = `Item: ${item}`;
+        document.getElementById('popup-quantidade').textContent = `Quantidade: ${quantidade}`;
+
+        document.getElementById('popup').style.display = 'block';
+    }
+});
+
+// Fechar o pop-up quando o botão "x" for clicado
+document.querySelector('.close-button').addEventListener('click', function() {
+    document.getElementById('popup').style.display = 'none';
+});
+
+// Fechar o pop-up quando clicar fora do conteúdo do pop-up
+window.addEventListener('click', function(event) {
+    if (event.target === document.getElementById('popup')) {
+        document.getElementById('popup').style.display = 'none';
+    }
+});

@@ -1,53 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/agendamentos.css">
+    <title>Agendamentos</title>
+    <link rel="stylesheet" href="/front/css/agendamentos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <title>Perfil do Usuário</title>
 </head>
-
 <body>
     <header>
+
     </header>
     <main>
-        <h2> Atividade </h2>
         <div class="doações">
-            <!-- <div class="doação">
-                <img src="/front/img/foto-perfil-insti.jpg" alt="" srcset="">
-                <h2></h2>
-
-                <div class="cabecalho">
-                    <img src="/front/img/perfil_insti.svg" class="img" srcset="">
-                    <h4>Casa da Acolhida</h4>
-                </div>
-                <div class="doacao-dois">
-                    <p class="data">
-                        01/09/2024
-                    </p>
-                    <div class="status">
-                        <p class="status_desc">
-                            Status
-                        </p>
-                        <p id="status-status">
-                            Agendada
-                        </p>
-                    </div>
-                    <button class="ver-mais">
-                            Ver mais
-                    </button>
-                </div>
-
-            </div> -->
+            <!-- Os cards de agendamentos serão inseridos aqui pelo JavaScript -->
+        </div>
+    
+        <!-- Pop-up para exibir o item e a quantidade -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-button">&times;</span>
+                <h3 id="popup-item"></h3>
+                <p id="popup-quantidade"></p>
+            </div>
         </div>
     </main>
     <footer>
         <div class="navbar">
-            <a href="/front/html/home.html">
+            <a href="#">
                 <img src="/front/img/navbar/home-colorful.jpg" alt="">
             </a>
             <a href="#" class="profile">
@@ -55,6 +37,6 @@
             </a>
         </div>
     </footer>
-    <script src="../html/js/agendamento.js"></script>
+    <script src="./js/agendamento.js"></script>
 </body>
 </html>
