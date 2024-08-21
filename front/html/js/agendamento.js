@@ -17,10 +17,11 @@ async function getTask() {
     const results = await response.json();
     console.log(results);
 
-    let div = document.querySelector('.doações')
+    const div = document.querySelector('doações')
 
     if (results.success) {
         results.data.forEach(agendamento => {
+
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
 
@@ -31,48 +32,70 @@ async function getTask() {
                 img.src = '/front/img/perfil_insti.svg'
                 img.classList.add('img');
 
-
-                let h4 = document.createElement('div');
-                h4.classList.add('h4');
-                // h4.value = agendamento.id
-
-                    img.appendChild(h4)
-                    cabecalho.appendChild(img)
-
-                let doacao_dois = document.createElement('div');
-                doacao_dois.classList.add('doacao-dois');
-
-                    let data = document.createElement('p');
-                    data.classList.add('data');
-
-                    let status = document.createElement('div');
-                    status.classList.add('status');
-
-                    let status_desc = document.createElement('p');
-                    status_desc.classList.add('status_desc');
-
-                    let status_status = document.createElement('p');
-
-                    status_status.textContent = agendamento.status
-
-                    if (agendamento.status == "Agendada") {
-                        status_status.classList.add('agendada');
-                    }else{
-                        status_status.classList.add('realizada');
+                async function getInstiName() { 
+                    const response = await fetch(`http://localhost:3005/api/get/InstiName${agendamento.id_insti}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
                     }
+                });
+                
+                const nome = await response.json();
 
-                    // button e appends
-                    
+                if (nome.success) {
 
+                    nome.data.forEach(nome => { 
+                            let h4 = document.createElement('div');
+                            h4.classList.add('h4');
+                            h4.textContent = nome.id
 
+                        cabecalho.appendChild(h4)
+                        cabecalho.appendChild(img)
 
+                        let doacao_dois = document.createElement('div');
+                        doacao_dois.classList.add('doacao-dois');
+        
+                            let data = document.createElement('p');
+                            data.classList.add('data');
+                            data.textContent = agendamento.data_entrega
+        
+                            let status = document.createElement('div');
+                            status.classList.add('status');
+        
+                            let status_desc = document.createElement('p');
+                            status_desc.classList.add('status_desc');
+        
+                            let status_status = document.createElement('p');
+        
+                            status_status.textContent = agendamento._status
+        
+                            if (agendamento._status == "Agendada") {
+                                status_status.classList.add('agendada');
+                            }else{
+                                status_status.classList.add('realizada');
+                            }
 
+                                status.appendChild(status_desc)
+                                status.appendChild(status_status)
 
+                            doacao_dois.appendChild(data)
+                            doacao_dois.appendChild(status)
+                           
+                            let button = document.createElement('button');
+                            button.classList.add('.ver-mais');
 
+                        doacao.appendChild(cabecalho)
+                        doacao.appendChild(doacao_dois)
+                        doacao.appendChild(button)
 
+                    div.appendChild(doacao)
+                    })
 
-            
-        });
+                } else {
+                    console.log('Nenhum item encontrado para esta instituição');
+                }
+            }  // button e appends
+        })
     } else {
         console.error('Nenhum agendamento encontrado para este colaborador:', results.message);
     }

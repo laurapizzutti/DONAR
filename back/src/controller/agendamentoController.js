@@ -105,11 +105,6 @@ async function getTask(request, response) {
 }
 
 module.exports = {
-    getTask
-};
-
-
-module.exports = {
     storeTask,
     getTask 
 }

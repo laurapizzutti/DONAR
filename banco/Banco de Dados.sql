@@ -35,12 +35,13 @@ SELECT * FROM agendamentos;
 SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
 
-INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('teste','email@email','senha','instituicao','street');
-INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Arroz', 8, 5);
-INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('5','Feijão Vermelho', '2022-06-06','09:00', 10, 1, 5, 'Agendada');
+INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('ONG Somos+ Juntos','somos@somos','somos','Instituição','Rua 45, Rio Branco');
+INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('Laura Pizzuti','lalapizzutti@gmail.com','Laura','Colaborador','Rua 63, Rio Verde');
+INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Arroz', 8, 1);
+INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('1','Arroz', '2022-06-06','09:00', 10, 2, 1, 'Agendada');
 
-DELETE FROM tabela_itens;
-DELETE FROM cadastro_usuario WHERE email = 'fyjycrf';
-DROP TABLE cadastro_usuario;
+ -- DELETE FROM tabela_itens;
+-- DELETE FROM cadastro_usuario WHERE email = 'fyjycrf';
+-- DROP TABLE cadastro_usuario;
 
-truncate table agendamentos;
+-- truncate table agendamentos;
