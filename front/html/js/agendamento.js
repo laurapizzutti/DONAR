@@ -33,14 +33,15 @@ async function getTask() {
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
 
+            // Cabeçalho com a imagem e nome da instituição
             let cabecalho = document.createElement('div');
             cabecalho.classList.add('cabecalho');
 
             let img = document.createElement('img');
             img.src = '/front/img/perfil_insti.svg';
             img.classList.add('img');
+            cabecalho.appendChild(img);
 
-            // Obtendo o nome da instituição
             async function getInstiName() { 
                 console.log('Buscando nome da instituição para o ID:', agendamento.id_insti);
 
@@ -58,54 +59,60 @@ async function getTask() {
                 console.log('Nome da instituição:', nome);
 
                 if (nome.success) {
-                    nome.data.forEach(nome => {
-                        console.log('Nome encontrado:', nome);
+                    nome.data.forEach(nomeItem => {
+                        console.log('Nome encontrado:', nomeItem);
 
-                        let h4 = document.createElement('div');
-                        h4.classList.add('h4');
-                        h4.textContent = nome.id;
-
+                        let h4 = document.createElement('h4');
+                        h4.textContent = nomeItem.nome; // Nome da instituição
                         cabecalho.appendChild(h4);
-                        cabecalho.appendChild(img);
-
-                        let doacao_dois = document.createElement('div');
-                        doacao_dois.classList.add('doacao-dois');
-
-                        let data = document.createElement('p');
-                        data.classList.add('data');
-                        data.textContent = agendamento.data_entrega;
-
-                        let status = document.createElement('div');
-                        status.classList.add('status');
-
-                        let status_desc = document.createElement('p');
-                        status_desc.classList.add('status_desc');
-
-                        let status_status = document.createElement('p');
-                        status_status.textContent = agendamento._status;
-
-                        if (agendamento._status === "Agendada") {
-                            status_status.classList.add('agendada');
-                        } else {
-                            status_status.classList.add('realizada');
-                        }
-
-                        status.appendChild(status_desc);
-                        status.appendChild(status_status);
-
-                        doacao_dois.appendChild(data);
-                        doacao_dois.appendChild(status);
-
-                        let button = document.createElement('button');
-                        button.classList.add('ver-mais');
-                        button.textContent = 'Ver mais';
-
-                        doacao.appendChild(cabecalho);
-                        doacao.appendChild(doacao_dois);
-                        doacao.appendChild(button);
-
-                        div.appendChild(doacao);
                     });
+
+                    doacao.appendChild(cabecalho);
+
+                    let doacao_dois = document.createElement('div');
+                    doacao_dois.classList.add('doacao-dois');
+
+                    // Formatar a data
+                    let data = new Date(agendamento.data_entrega).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                    });
+
+                    let dataElement = document.createElement('p');
+                    dataElement.classList.add('data');
+                    dataElement.textContent = data;
+                    doacao_dois.appendChild(dataElement);
+
+                    let status = document.createElement('div');
+                    status.classList.add('status');
+
+                    let status_desc = document.createElement('p');
+                    status_desc.classList.add('status_desc');
+                    status_desc.textContent = 'Status';
+                    status.appendChild(status_desc);
+
+                    let status_status = document.createElement('p');
+                    status_status.textContent = agendamento._status;
+
+                    if (agendamento._status === "Agendada") {
+                        status_status.classList.add('agendada');
+                    } else {
+                        status_status.classList.add('realizada');
+                    }
+                    status.appendChild(status_status);
+
+                    doacao_dois.appendChild(status);
+
+                    doacao.appendChild(doacao_dois);
+
+                    let button = document.createElement('button');
+                    button.classList.add('ver-mais');
+                    button.textContent = 'Ver mais';
+
+                    doacao.appendChild(button);
+
+                    div.appendChild(doacao);
                 } else {
                     console.log('Nenhum item encontrado para esta instituição');
                 }
@@ -113,7 +120,6 @@ async function getTask() {
 
             // Chamar a função para buscar o nome da instituição
             getInstiName().catch(err => console.error('Erro ao buscar o nome da instituição:', err));
-
         });
     } else {
         console.error('Nenhum agendamento encontrado para este colaborador:', results.message);

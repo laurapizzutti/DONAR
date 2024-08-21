@@ -29,42 +29,32 @@ async function getInstiData(request, response){
     })
 }
 
-async function getInstiName(request, response){
-
-    const params = Array(
-            request.params.id_insti
-        )
-
+async function getInstiName(request, response) {
+    const params = [request.params.id_insti];  // Corrigido para usar request.params
     const query = 'SELECT nome FROM cadastro_usuario WHERE id = ?';
 
-    connection.query(query, (err, results) => {
-        console.log(err)
+    connection.query(query, params, (err, results) => {
+        console.log(err);
         if (results) {
             response 
                 .status(201)
                 .json({
                     success: true,
-                    massage: "id e nome, tipo_usuario, endereco das Instituições recuparados!",
+                    message: "Nome da instituição recuperado com sucesso!",
                     data: results
-                })
-
-            // // localStorage.setItem('id: ', results.data.id)
-            // // Id_User = 
-            // if (results.data.tipo_usuario === 'Instituição') {
-            //     window.location.href = "/front/html/perfil_insti.html";
-            // }
-
-        }else{
+                });
+        } else {
             response
                 .status(400)
                 .json({
                     success: false,
                     message: "Ops, deu problema :(",
                     data: err
-                })
+                });
         }
-    })
-} 
+    });
+}
+
 
 module.exports = {
     getInstiData,
