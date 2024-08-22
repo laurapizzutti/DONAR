@@ -138,9 +138,32 @@ document.addEventListener('click', function(event) {
         const item = event.target.getAttribute('data-item'); // Pegue o item do atributo data-item
         const quantidade = event.target.getAttribute('data-quantidade'); // Pegue a quantidade do atributo data-quantidade
 
-        document.getElementById('popup-item').textContent = `Item: ${item}`;
-        document.getElementById('popup-quantidade').textContent = `Quantidade: ${quantidade}`;
+        // Limpa o conteúdo anterior
+        const popupItensContainer = document.getElementById('popup-itens');
+        popupItensContainer.innerHTML = '';
 
+        // Cria a div .op
+        const opDiv = document.createElement('div');
+        opDiv.classList.add('op');
+
+        // Cria o elemento de quantidade com a classe .qnt2
+        const qntSpan = document.createElement('span');
+        qntSpan.classList.add('qnt2');
+        qntSpan.textContent = `${quantidade}x`;
+
+        // Cria o elemento de item com a classe .item
+        const itemSpan = document.createElement('span');
+        itemSpan.classList.add('item');
+        itemSpan.textContent = item;
+
+        // Adiciona os spans dentro da div .op
+        opDiv.appendChild(qntSpan);
+        opDiv.appendChild(itemSpan);
+
+        // Adiciona a div .op ao container do popup
+        popupItensContainer.appendChild(opDiv);
+
+        // Exibe o popup
         document.getElementById('popup').style.display = 'block';
     }
 });
