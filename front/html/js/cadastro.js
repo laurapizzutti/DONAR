@@ -31,10 +31,14 @@ button.onclick = async function(e) {
 
         if (content.success) {
             alert("Sucesso"); 
+
+            // console.log(content.data.insertId)
             
-            localStorage.setItem('id_user', content.data.id_user);
-            console.log(`ID do usuário armazenado: ${content.data.id_user}`);
-                if (tipo_usuario == 'Instituição') {
+            localStorage.setItem('id', content.data.insertId);
+            console.log(`ID do usuário armazenado: ${content.data.insertId}`);
+            console.log(`Tipo do usuário armazenado: ${content.data.tipo_usuario}`);
+            
+                if (content.data.tipo_usuario == 'Instituição') {
                     window.location.href = "/front/html/perfil_insti.html";
                 }else{
                     window.location.href = "/front/html/agendamento.html";
