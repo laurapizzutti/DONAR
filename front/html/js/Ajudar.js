@@ -67,10 +67,12 @@ document.getElementById("handleSubmit").onclick = async function(e) {
     }
 
     let item = selecionado.data.item;
+    console.log(item)
     let qnt = document.getElementById('quant').value;
     let date = document.getElementById("data").value; 
     let hora = document.getElementById("hora").value; 
     const Id_User = localStorage.getItem('id');
+    console.log(Id_User)
     const Insti = localStorage.getItem('ID_insti');
 
     let data = { item, date, hora, qnt, Id_User, Insti };
