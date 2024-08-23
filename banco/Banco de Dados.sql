@@ -5,7 +5,7 @@ CREATE TABLE cadastro_usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
-    senha VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
     tipo_usuario ENUM('Colaborador', 'Instituição') NOT NULL,
     endereco VARCHAR(255) NOT NULL
 );
