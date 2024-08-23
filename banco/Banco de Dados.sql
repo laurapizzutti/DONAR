@@ -40,7 +40,7 @@ INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('La
 INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Arroz', 8, 1);
 INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('1','Arroz', '2022-06-06','09:00', 10, 2, 1, 'Agendada');
 
- -- DELETE FROM tabela_itens;
+-- DELETE FROM tabela_itens;
 -- DELETE FROM cadastro_usuario WHERE email = 'fyjycrf';
 -- DROP TABLE cadastro_usuario;
 
