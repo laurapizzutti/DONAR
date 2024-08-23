@@ -1,20 +1,26 @@
 /* Estilo geral da página */
 
-html {
+/* html {
     margin: 25px;
-}
+} */
 
 body {
     background-color: #F8FBFB;
     font-family: "Outfit", sans-serif;
+    margin-bottom: 100px;
 }
 
+h2 {
+    display: flex;
+    justify-content: left;
+    margin-left: 25px;
+}
 .doações {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .doação {
@@ -127,6 +133,7 @@ body {
     max-width: 400px;
     border-radius: 10px;
     text-align: center;
+    
 }
 
 /* Estilo do botão de fechar o pop-up */
@@ -160,6 +167,7 @@ body {
 .op {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #FFFFFF;
     width: 325px;
     height: 57.82px;
