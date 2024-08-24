@@ -31,7 +31,7 @@ async function getInstiData(request, response){
 
 async function getInstiName(request, response) {
     const params = [request.params.id_insti];  // Corrigido para usar request.params
-    const query = 'SELECT nome FROM cadastro_usuario WHERE id = ?';
+    const query = 'SELECT nome, endereco FROM cadastro_usuario WHERE id = ?';
 
     connection.query(query, params, (err, results) => {
         console.log(err);

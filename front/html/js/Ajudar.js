@@ -91,7 +91,7 @@ document.getElementById("handleSubmit").onclick = async function(e) {
         let results = await response.json();
 
         if (results.success) {
-           window.location.href = '/front/html/agendamento.html';
+           window.location.href = '/front/html/agendada.html';
         } else {
             alert("Não foi possível agendar a doação.");
         }
