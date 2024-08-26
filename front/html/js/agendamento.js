@@ -62,7 +62,7 @@ async function getTask() {
                         console.log('Nome encontrado:', nomeItem);
 
                         let h4 = document.createElement('h4');
-                        h4.textContent = nomeItem.nome; // Nome da instituição
+                        h4.textContent = nomeItem.nome; 
                         cabecalho.appendChild(h4);
                     });
 
@@ -71,7 +71,6 @@ async function getTask() {
                     let doacao_dois = document.createElement('div');
                     doacao_dois.classList.add('doacao-dois');
 
-                    // Formatar a data
                     let data = new Date(agendamento.data_entrega).toLocaleDateString('pt-BR', {
                         day: '2-digit',
                         month: '2-digit',
@@ -95,7 +94,6 @@ async function getTask() {
                     status_status.id = 'status_status';
                     status_status.textContent = agendamento._status;
 
-                    // Aplicando a classe correta ao status_status
                     if (agendamento._status.trim().toLowerCase() === "agendada") {
                         status_status.classList.add('agendada');
                     } else if (agendamento._status.trim().toLowerCase() === "realizada") {
@@ -110,8 +108,8 @@ async function getTask() {
                     let button = document.createElement('button');
                     button.classList.add('ver-mais');
                     button.textContent = 'Ver mais';
-                    button.setAttribute('data-item', agendamento.item); // Adiciona o item como data-atributo
-                    button.setAttribute('data-quantidade', agendamento.qnt); // Adiciona a quantidade como data-atributo
+                    button.setAttribute('data-item', agendamento.item);
+                    button.setAttribute('data-quantidade', agendamento.qnt); 
 
                     doacao.appendChild(button);
 
@@ -121,7 +119,6 @@ async function getTask() {
                 }
             }
 
-            // Chamar a função para buscar o nome da instituição
             getInstiName().catch(err => console.error('Erro ao buscar o nome da instituição:', err));
         });
     } else {
@@ -129,51 +126,40 @@ async function getTask() {
     }
 }
 
-// Chama a função getTask
-getTask().catch(err => console.error('Erro ao buscar as tarefas:', err));
+getTask()
 
-// Adicione o evento ao botão "Ver mais"
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('ver-mais')) {
-        const item = event.target.getAttribute('data-item'); // Pegue o item do atributo data-item
-        const quantidade = event.target.getAttribute('data-quantidade'); // Pegue a quantidade do atributo data-quantidade
+        const item = event.target.getAttribute('data-item'); 
+        const quantidade = event.target.getAttribute('data-quantidade'); 
 
-        // Limpa o conteúdo anterior
         const popupItensContainer = document.getElementById('popup-itens');
         popupItensContainer.innerHTML = '';
-
-        // Cria a div .op
+        
         const opDiv = document.createElement('div');
         opDiv.classList.add('op');
 
-        // Cria o elemento de quantidade com a classe .qnt2
         const qntSpan = document.createElement('span');
         qntSpan.classList.add('qnt2');
         qntSpan.textContent = `${quantidade}x`;
 
-        // Cria o elemento de item com a classe .item
         const itemSpan = document.createElement('span');
         itemSpan.classList.add('item');
         itemSpan.textContent = item;
 
-        // Adiciona os spans dentro da div .op
         opDiv.appendChild(qntSpan);
         opDiv.appendChild(itemSpan);
 
-        // Adiciona a div .op ao container do popup
         popupItensContainer.appendChild(opDiv);
 
-        // Exibe o popup
         document.getElementById('popup').style.display = 'block';
     }
 });
 
-// Fechar o pop-up quando o botão "x" for clicado
 document.querySelector('.close-button').addEventListener('click', function() {
     document.getElementById('popup').style.display = 'none';
 });
 
-// Fechar o pop-up quando clicar fora do conteúdo do pop-up
 window.addEventListener('click', function(event) {
     if (event.target === document.getElementById('popup')) {
         document.getElementById('popup').style.display = 'none';

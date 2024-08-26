@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     // database: process.env.db_database,
     host: 'localhost',
     user: 'root',
-    password: '998545021@Laura',
+    password: 'root',
     database: 'DONAR_MVP',
 
 })
