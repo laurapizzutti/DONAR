@@ -21,10 +21,6 @@ async function getTask() {
     console.log('Resultados obtidos:', results);
 
     const div = document.querySelector('.doações');
-    if (!div) {
-        console.error('Elemento div .doações não encontrado!');
-        return;
-    }
 
     if (results.success) {
         results.data.forEach(agendamento => {
@@ -134,7 +130,7 @@ document.addEventListener('click', function(event) {
         const quantidade = event.target.getAttribute('data-quantidade'); 
 
         const popup_itens = document.getElementById('popup-itens');
-        // popup_itens.innerHTML = '';
+        popup_itens.innerHTML = '';
 
         const op = document.createElement('div');
         op.classList.add('op');
