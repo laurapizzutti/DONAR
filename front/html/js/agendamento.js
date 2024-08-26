@@ -133,24 +133,24 @@ document.addEventListener('click', function(event) {
         const item = event.target.getAttribute('data-item'); 
         const quantidade = event.target.getAttribute('data-quantidade'); 
 
-        const popupItensContainer = document.getElementById('popup-itens');
-        popupItensContainer.innerHTML = '';
-        
-        const opDiv = document.createElement('div');
-        opDiv.classList.add('op');
+        const popup_itens = document.getElementById('popup-itens');
+        // popup_itens.innerHTML = '';
 
-        const qntSpan = document.createElement('span');
-        qntSpan.classList.add('qnt2');
-        qntSpan.textContent = `${quantidade}x`;
+        const op = document.createElement('div');
+        op.classList.add('op');
+
+        const qnt = document.createElement('span');
+        qnt.classList.add('qnt2');
+        qnt.textContent = `${quantidade}x`;
 
         const itemSpan = document.createElement('span');
         itemSpan.classList.add('item');
         itemSpan.textContent = item;
 
-        opDiv.appendChild(qntSpan);
-        opDiv.appendChild(itemSpan);
+        op.appendChild(qnt);
+        op.appendChild(itemSpan);
 
-        popupItensContainer.appendChild(opDiv);
+        popup_itens.appendChild(op);
 
         document.getElementById('popup').style.display = 'block';
     }
