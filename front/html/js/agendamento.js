@@ -152,9 +152,9 @@ document.addEventListener('click', function(event) {
     }
 });
 
-document.querySelector('.close-button').addEventListener('click', function() {
-    document.getElementById('popup').style.display = 'none';
-});
+// document.querySelector('.close-button').addEventListener('click', function() {
+//     document.getElementById('popup').style.display = 'none';
+// });
 
 window.addEventListener('click', function(event) {
     if (event.target === document.getElementById('popup')) {
