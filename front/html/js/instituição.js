@@ -59,7 +59,7 @@ function Excluir(exibir) {
                     
                         // console.log(data);
                     
-                        const response = await fetch('http://localhost:3005/api/delete/item', {
+                        const response = await fetch('http://localhost:3001/api/delete/item', {
                             method: "DELETE",
                             headers: {
                                 "Content-Type":"application/json"
@@ -86,11 +86,9 @@ function Excluir(exibir) {
     });
 }
 
-
 fecharPopup.onclick = function() {
     popup.style.display = 'none';
 }
-
 
 async function SalvarItemDB(event) {
     event.preventDefault();
@@ -103,7 +101,7 @@ async function SalvarItemDB(event) {
 
     console.log(data);
 
-    const response = await fetch('http://localhost:3005/api/store/item', {
+    const response = await fetch('http://localhost:3001/api/store/item', {
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -128,7 +126,7 @@ async function SalvarItemDB(event) {
 async function getItens() {
     const Id_User = localStorage.getItem('id');
 
-    const response = await fetch('http://localhost:3005/api/itens/'+ Id_User, {
+    const response = await fetch('http://localhost:3001/api/itens/'+ Id_User, {
         method: "GET",
         headers: {
             "Content-Type":"application/json"

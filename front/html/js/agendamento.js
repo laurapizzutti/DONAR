@@ -2,15 +2,12 @@ async function getTask() {
     let Id_User = localStorage.getItem('id');
     console.log('ID do colaborador:', Id_User);
 
-    const response = await fetch(`http://localhost:3005/api/get/task/${Id_User}`, {
+    const response = await fetch(`http://localhost:3001/api/get/task/${Id_User}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
         }
     });
-
-    console.log('Response status:', response.status);
-    console.log('Response:', response);
 
     if (!response.ok) {
         console.error(`Erro na requisição: ${response.statusText}`);
@@ -18,8 +15,6 @@ async function getTask() {
     }
 
     const results = await response.json();
-    console.log('Resultados obtidos:', results);
-
     const div = document.querySelector('.doações');
 
     if (results.success) {
@@ -37,28 +32,22 @@ async function getTask() {
             img.classList.add('img');
             cabecalho.appendChild(img);
 
-            async function getInstiName() { 
-                console.log('Buscando nome da instituição para o ID:', agendamento.id_insti);
-
-                const response = await fetch(`http://localhost:3005/api/get/InstiName/${agendamento.id_insti}`, {
+            async function getInstiName() {
+                const response = await fetch(`http://localhost:3001/api/get/InstiName/${agendamento.id_insti}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"
                     }
                 });
 
-                console.log('Response status (nome da instituição):', response.status);
-                console.log('Response (nome da instituição):', response);
-
                 const nome = await response.json();
-                console.log('Nome da instituição:', nome);
 
                 if (nome.success) {
                     nome.data.forEach(nomeItem => {
                         console.log('Nome encontrado:', nomeItem);
 
                         let h4 = document.createElement('h4');
-                        h4.textContent = nomeItem.nome; 
+                        h4.textContent = nomeItem.nome;
                         cabecalho.appendChild(h4);
                     });
 
@@ -104,8 +93,9 @@ async function getTask() {
                     let button = document.createElement('button');
                     button.classList.add('ver-mais');
                     button.textContent = 'Ver mais';
+
                     button.setAttribute('data-item', agendamento.item);
-                    button.setAttribute('data-quantidade', agendamento.qnt); 
+                    button.setAttribute('data-quantidade', agendamento.qnt);
 
                     doacao.appendChild(button);
 
@@ -115,49 +105,44 @@ async function getTask() {
                 }
             }
 
-            getInstiName().catch(err => console.error('Erro ao buscar o nome da instituição:', err));
+            getInstiName();
+        });
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('ver-mais')) {
+                let item = event.target.getAttribute('data-item');
+                let quantidade = event.target.getAttribute('data-quantidade');
+
+                let popup_itens = document.getElementById('popup-itens');
+                popup_itens.innerHTML = '';
+
+                let op = document.createElement('div');
+                op.classList.add('op');
+
+                let qnt = document.createElement('span');
+                qnt.classList.add('qnt2');
+                qnt.textContent = `${quantidade}x`;
+
+                let itemSpan = document.createElement('span');
+                itemSpan.classList.add('item');
+                itemSpan.textContent = item;
+
+                op.appendChild(qnt);
+                op.appendChild(itemSpan);
+
+                popup_itens.appendChild(op);
+
+                document.getElementById('popup').style.display = 'block';
+            }
+        });
+        window.addEventListener('click', function(event) {
+            if (event.target === document.getElementById('popup')) {
+                document.getElementById('popup').style.display = 'none';
+            }
         });
     } else {
         console.error('Nenhum agendamento encontrado para este colaborador:', results.message);
     }
 }
 
-getTask()
-
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('ver-mais')) {
-        const item = event.target.getAttribute('data-item'); 
-        const quantidade = event.target.getAttribute('data-quantidade'); 
-
-        const popup_itens = document.getElementById('popup-itens');
-        popup_itens.innerHTML = '';
-
-        const op = document.createElement('div');
-        op.classList.add('op');
-
-        const qnt = document.createElement('span');
-        qnt.classList.add('qnt2');
-        qnt.textContent = `${quantidade}x`;
-
-        const itemSpan = document.createElement('span');
-        itemSpan.classList.add('item');
-        itemSpan.textContent = item;
-
-        op.appendChild(qnt);
-        op.appendChild(itemSpan);
-
-        popup_itens.appendChild(op);
-
-        document.getElementById('popup').style.display = 'block';
-    }
-});
-
-// document.querySelector('.close-button').addEventListener('click', function() {
-//     document.getElementById('popup').style.display = 'none';
-// });
-
-window.addEventListener('click', function(event) {
-    if (event.target === document.getElementById('popup')) {
-        document.getElementById('popup').style.display = 'none';
-    }
-});
+getTask();

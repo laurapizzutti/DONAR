@@ -3,28 +3,14 @@ html {
     font-family: "Outfit", sans-serif;
 }
 
-body {
-    /* display: flex; */
+main {
     justify-content: center;
     font-family: "Outfit", sans-serif;
     margin-bottom: 90px;
+    padding: 0;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
-
-/* .nunito-sans-<uniquifier> {
-   
-    font-optical-sizing: auto;
-    font-weight: <weight>;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100,
-      "YTLC" 500;
-  } */
-
-/* h2.nome-insti {
-    display: grid;
-    justify-content: right;
-    row-gap: 0%;
-} */
 
 .foto-perfil {
     width: 45px;
@@ -32,52 +18,48 @@ body {
 }
 
 .card-home {
-    
-    width: 19.375rem;
+    width: 100%;
+    max-width: 19.375rem;
     height: max-content;
     justify-content: space-between;
     background-color: #FFFFFF;
     display: flex;
     padding: 1.5rem;
-    border-radius:0.938rem;
+    border-radius: 0.938rem;
     flex-direction: column;
-    gap: 1rem;
-    margin: 1rem;
     box-shadow: 0px 4px 120px 0px rgba(155, 158, 157, 0.15);
-
+    gap: 1rem;
+    margin: 0 auto;
 }
 
-/* .card-home {
-    width: 19.375rem;
-    height: 15rem;
-    justify-content: space-between;
-    background-color: #FFFFFF;
-    display: flex;
-    padding: 1.5rem;
-    border-radius:1rem;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 1rem;
-} */
+#home {
+    display: grid;
+    gap: 1.5rem; /* Espaçamento entre os cards */
+    justify-content: center;
+}
 
-/* .nome-insti{
-    margin: 0%;
-    justify-content: left;
-} */
+@media (min-width: 320px) {
+    #home {
+        grid-template-columns: 1fr;
+    }
+}
 
-/* .pedido-card-container {
-    background-color: #F3EB20;
-    opacity: 30%;
-    display: flex;
-    padding: 1.8rem;
-    border: 1rem;
-    border-radius: 1.2em;
-} */
+/* Duas colunas em tablets e telas médias */
+@media (min-width: 768px) {
+    #home {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Três colunas em desktops */
+@media (min-width: 1024px) {
+    #home {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
 .pedido-card-container {
-    width: 16.438rem;
-    height: 4rem;
-    /* background-color: #f3ec2056; */
+    width: 100%;
     background-color: #fcecb49f;
     display: flex;
     justify-content: left;
@@ -86,7 +68,7 @@ body {
     border: 0.5rem;
     border-radius: 1rem;
     gap: 1.5rem;
-
+    box-sizing: border-box;
 }
 
 .cabecalho {
@@ -171,21 +153,6 @@ a {
     margin-left: 0.5rem;
 }
 
-.navbar {
-    background-color: #FFFFFF;
-    filter: drop-shadow(0px 4px 120px rgba(58, 86, 78, 0.10));
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-    width: 96%;
-    border-radius: 1rem;
-    border-bottom-right-radius: 0rem;
-    border-bottom-left-radius: 0rem;
-    height: 4.625rem;
-    position: fixed;
-    bottom: 0;
-}
-
 .search-div {
     display: flex;
     align-items: center;
@@ -214,4 +181,19 @@ input {
 h1 {
     font-size: 24px;
     padding: 20px;
+}
+
+.navbar {
+    background-color: #FFFFFF;
+    filter: drop-shadow(0px 4px 120px rgba(58, 86, 78, 0.10));
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    width: 96%;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    height: 4.625rem;
+    position: fixed;
+    bottom: 0;
 }

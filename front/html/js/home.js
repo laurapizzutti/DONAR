@@ -1,5 +1,5 @@
 async function getInstiData() {
-    const response = await fetch('http://localhost:3005/api/get/insti', {
+    const response = await fetch('http://localhost:3001/api/get/insti', {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -30,7 +30,7 @@ async function getInstiData() {
 
             card_div.appendChild(cabecalho);
 
-            const itens = await fetch(`http://localhost:3005/api/itens/${dados.id}`, {
+            const itens = await fetch(`http://localhost:3001/api/itens/${dados.id}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"

@@ -17,7 +17,7 @@ button.onclick = async function(e) {
     console.log("Dados que serão enviados:", data); 
 
     try {
-        const response = await fetch('http://localhost:3005/api/store/user', {
+        const response = await fetch('http://localhost:3001/api/store/user', {
             method: "POST", 
             headers: { "Content-Type": "application/json;charset=UTF-8" }, 
             body: JSON.stringify(data) 

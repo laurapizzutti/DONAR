@@ -3,28 +3,47 @@ html {
     font-family: "Outfit", sans-serif;
 }
 
-/* Estilo geral da página */
-body {
+main {
+    justify-content: center;
     font-family: "Outfit", sans-serif;
-    margin-bottom: 100px;
-}
-
-h2 {
-    display: flex;
-    justify-content: left;
-    margin-left: 25px;
+    margin-bottom: 90px;
+    padding: 0;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 .doações {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    gap: 1.5rem; /* Espaçamento entre os cards */
     justify-content: center;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr)); /* Ajuste automático das colunas */
 }
 
+/* Uma coluna em celulares */
+@media (max-width: 767px) {
+    .doações {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Duas colunas em tablets e telas médias */
+@media (min-width: 768px) {
+    .doações {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Três colunas em desktops */
+@media (min-width: 1024px) {
+    .doações {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Estilo geral dos cards */
 .doação {
-    width: 325px;
+    width: 100%;
+    max-width: 325px; /* Largura máxima dos cards */
     background-color: #FFFFFF;
     padding: 1rem;
     border-radius: 10px;
@@ -119,7 +138,7 @@ h2 {
     margin: auto;
     display: flex;
     flex-direction: column;
-/* Gap garantido entre os elementos dentro do pop-up */
+    gap: 1.5rem; /* Gap garantido entre os elementos dentro do pop-up */
 }
 
 /* Estilo do fundo do pop-up */
@@ -167,6 +186,7 @@ h2 {
     text-align: left;
     margin: 0;
 }
+
 /* Container para hora e endereço */
 .popup-info {
     display: flex;

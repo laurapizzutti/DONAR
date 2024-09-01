@@ -1,7 +1,7 @@
 async function getItems() {
     const Insti = localStorage.getItem('ID_insti');
 
-    const response = await fetch('http://localhost:3005/api/itens/' + Insti, {
+    const response = await fetch('http://localhost:3001/api/itens/' + Insti, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -78,7 +78,7 @@ document.getElementById("handleSubmit").onclick = async function(e) {
     let data = { item, date, hora, qnt, Id_User, Insti };
 
     try {
-        const response = await fetch('http://localhost:3005/api/store/task', {
+        const response = await fetch('http://localhost:3001/api/store/task', {
             method: "POST", 
             headers: { "Content-Type": "application/json;charset=UTF-8" }, 
             body: JSON.stringify(data)
