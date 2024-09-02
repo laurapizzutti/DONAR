@@ -14,36 +14,32 @@ main {
 
 .doações {
     display: grid;
-    gap: 1.5rem; /* Espaçamento entre os cards */
+    gap: 1.5rem; 
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr)); /* Ajuste automático das colunas */
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr)); 
 }
 
-/* Uma coluna em celulares */
 @media (max-width: 767px) {
     .doações {
         grid-template-columns: 1fr;
     }
 }
 
-/* Duas colunas em tablets e telas médias */
 @media (min-width: 768px) {
     .doações {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Três colunas em desktops */
 @media (min-width: 1024px) {
     .doações {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Estilo geral dos cards */
 .doação {
     width: 100%;
-    max-width: 325px; /* Largura máxima dos cards */
+    max-width: 325px; 
     background-color: #FFFFFF;
     padding: 1rem;
     border-radius: 10px;
@@ -53,7 +49,6 @@ main {
     height: max-content;
 }
 
-/* Cabeçalho com imagem e nome da instituição */
 .cabecalho {
     display: flex;
     align-items: center;
@@ -71,7 +66,6 @@ main {
     color: #000;
 }
 
-/* Seção da data, status e botão */
 .doacao-dois {
     display: flex;
     justify-content: space-between;
@@ -110,7 +104,6 @@ main {
     font-weight: bold;
 }
 
-/* Estilo do botão "Ver mais" */
 .ver-mais {
     background-color: #ffc800c6;
     color: #FFFFFF;
@@ -127,7 +120,6 @@ main {
     background-color: #ffb800;
 }
 
-/* Estilo do pop-up */
 .popup-content {
     background-color: #fff;
     padding: 20px;
@@ -141,7 +133,6 @@ main {
     gap: 1.5rem; /* Gap garantido entre os elementos dentro do pop-up */
 }
 
-/* Estilo do fundo do pop-up */
 .popup {
     display: none;
     position: fixed;
@@ -178,7 +169,6 @@ main {
     font-weight: 400;
 }
 
-/* Estilo para a hora de entrega e endereço */
 #popup-hora,
 #popup-endereco {
     font-size: 1.2rem;
@@ -187,14 +177,12 @@ main {
     margin: 0;
 }
 
-/* Container para hora e endereço */
 .popup-info {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Espaçamento entre hora e endereço */
+    gap: 1.5rem; 
 }
 
-/* Estilo do botão "Marcar como Realizada" */
 #marcarRealizada {
     background-color: #009920;
     color: #FFFFFF;
@@ -213,7 +201,6 @@ main {
     background-color: #009920;
 }
 
-/* Estilo da barra de navegação */
 .navbar {
     background-color: #FFFFFF;
     filter: drop-shadow(0px 4px 120px rgba(58, 86, 78, 0.10));
