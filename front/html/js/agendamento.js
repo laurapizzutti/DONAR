@@ -44,99 +44,115 @@ async function getTask() {
 
                 if (nome.success) {
                     nome.data.forEach(nomeItem => {
-                        console.log('Nome encontrado:', nomeItem);
+                            console.log('Nome encontrado:', nomeItem);
 
-                        let h4 = document.createElement('h4');
-                        h4.textContent = nomeItem.nome;
-                        cabecalho.appendChild(h4);
-                    });
+                            let h4 = document.createElement('h4');
+                            h4.textContent = nomeItem.nome;
+                            cabecalho.appendChild(h4);
+                        
+                            // buttom.setAttribute('endereco', nomeItem.endereco);
+                            // console.log(endereco)
+                        
+                        });
 
-                    doacao.appendChild(cabecalho);
+                        doacao.appendChild(cabecalho);
 
-                    let doacao_dois = document.createElement('div');
-                    doacao_dois.classList.add('doacao-dois');
+                        let doacao_dois = document.createElement('div');
+                        doacao_dois.classList.add('doacao-dois');
 
-                    let data = new Date(agendamento.data_entrega).toLocaleDateString('pt-BR', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric',
-                    });
+                        let data = new Date(agendamento.data_entrega).toLocaleDateString('pt-BR', {
+                            day: '2-digit',
+                            month: '2-digit',
+                            year: 'numeric',
+                        });
 
-                    let dataElement = document.createElement('p');
-                    dataElement.classList.add('data');
-                    dataElement.textContent = data;
-                    doacao_dois.appendChild(dataElement);
+                        let dataElement = document.createElement('p');
+                        dataElement.classList.add('data');
+                        dataElement.textContent = data;
+                        doacao_dois.appendChild(dataElement);
 
-                    let status = document.createElement('div');
-                    status.classList.add('status');
+                        let status = document.createElement('div');
+                        status.classList.add('status');
 
-                    let status_desc = document.createElement('p');
-                    status_desc.classList.add('status_desc');
-                    status_desc.textContent = 'Status';
-                    status.appendChild(status_desc);
+                        let status_desc = document.createElement('p');
+                        status_desc.classList.add('status_desc');
+                        status_desc.textContent = 'Status';
+                        status.appendChild(status_desc);
 
-                    let status_status = document.createElement('p');
-                    status_status.id = 'status_status';
-                    status_status.textContent = agendamento._status;
+                        let status_status = document.createElement('p');
+                        status_status.id = 'status_status';
+                        status_status.textContent = agendamento._status;
 
-                    if (agendamento._status.trim().toLowerCase() === "agendada") {
-                        status_status.classList.add('agendada');
-                    } else if (agendamento._status.trim().toLowerCase() === "realizada") {
-                        status_status.classList.add('realizada');
+                        if (agendamento._status.trim() === "Agendada") {
+                            status_status.classList.add('agendada');
+                        } else if (agendamento._status.trim() === "Realizada") {
+                            status_status.classList.add('realizada');
+                        }
+
+                        status.appendChild(status_status);
+
+                        doacao_dois.appendChild(status);
+                        doacao.appendChild(doacao_dois);
+
+                        let button = document.createElement('button');
+                        button.classList.add('ver-mais');
+                        button.textContent = 'Ver mais';
+
+                        button.setAttribute('data-item', agendamento.item);
+                        button.setAttribute('data-quantidade', agendamento.qnt);
+                       // button.setAttribute('data-quantidade', agendamento.hora_entrega);
+                        // button.getAttribute('endereco');
+                        
+                        // console.log(endereco)
+
+                        doacao.appendChild(button);
+
+                        div.appendChild(doacao);
+
+                        button.addEventListener('click', function () {
+                            let item = button.getAttribute('data-item');
+                            let quantidade = button.getAttribute('data-quantidade');
+
+                            let popup_itens = document.getElementById('popup-itens');
+                            popup_itens.innerHTML = '';
+
+                            let op = document.createElement('div');
+                            op.classList.add('op');
+
+                            let qnt = document.createElement('span');
+                            qnt.classList.add('qnt2');
+                            qnt.textContent = `${quantidade}x`;
+
+                            let itemSpan = document.createElement('span');
+                            itemSpan.classList.add('item');
+                            itemSpan.textContent = item;
+
+                            op.appendChild(qnt);
+                            op.appendChild(itemSpan);
+
+                            popup_itens.appendChild(op);
+
+                            document.getElementById('popup').style.display = 'block';
+                        });
+
+
+
+                    } else {
+                        console.log('Nenhum item encontrado para esta instituição');
                     }
-
-                    status.appendChild(status_status);
-
-                    doacao_dois.appendChild(status);
-                    doacao.appendChild(doacao_dois);
-
-                    let button = document.createElement('button');
-                    button.classList.add('ver-mais');
-                    button.textContent = 'Ver mais';
-
-                    // button.setAttribute('data-item', agendamento.item);
-                    // button.setAttribute('data-quantidade', agendamento.qnt);
-
-                    doacao.appendChild(button);
-
-                    div.appendChild(doacao);
-                } else {
-                    console.log('Nenhum item encontrado para esta instituição');
-                }
             }
-
             getInstiName();
         });
 
-       buttom.querySelector('ver-mais') = document.addEventListener('click', function(event) {
-            
-                let item = agendamento.item;
-                let quantidade = agendamento.qnt;
-
-                let popup_itens = document.getElementById('popup-itens');
-                popup_itens.innerHTML = '';
-
-                let op = document.createElement('div');
-                op.classList.add('op');
-
-                let qnt = document.createElement('span');
-                qnt.classList.add('qnt2');
-                qnt.textContent = `${quantidade}x`;
-
-                let itemSpan = document.createElement('span');
-                itemSpan.classList.add('item');
-                itemSpan.textContent = item;
-
-                op.appendChild(qnt);
-                op.appendChild(itemSpan);
-
-                popup_itens.appendChild(op);
-
-                document.getElementById('popup').style.display = 'block';
-       });
-        window.addEventListener('click', function(event) {
-            document.getElementById('popup').style.display = 'none';
+        window.addEventListener('click', function (event) {
+            if (event.target === document.getElementById('popup')) {
+                document.getElementById('popup').style.display = 'none';
+            }
         });
 
+    } else {
+        console.error('Nenhum agendamento encontrado para este colaborador:', results.message);
+    }
+}
 
 getTask();
