@@ -94,8 +94,8 @@ async function getTask() {
                     button.classList.add('ver-mais');
                     button.textContent = 'Ver mais';
 
-                    button.setAttribute('data-item', agendamento.item);
-                    button.setAttribute('data-quantidade', agendamento.qnt);
+                    // button.setAttribute('data-item', agendamento.item);
+                    // button.setAttribute('data-quantidade', agendamento.qnt);
 
                     doacao.appendChild(button);
 
@@ -108,10 +108,10 @@ async function getTask() {
             getInstiName();
         });
 
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('ver-mais')) {
-                let item = event.target.getAttribute('data-item');
-                let quantidade = event.target.getAttribute('data-quantidade');
+       buttom.querySelector('ver-mais') = document.addEventListener('click', function(event) {
+            
+                let item = agendamento.item;
+                let quantidade = agendamento.qnt;
 
                 let popup_itens = document.getElementById('popup-itens');
                 popup_itens.innerHTML = '';
@@ -133,16 +133,10 @@ async function getTask() {
                 popup_itens.appendChild(op);
 
                 document.getElementById('popup').style.display = 'block';
-            }
-        });
+       });
         window.addEventListener('click', function(event) {
-            if (event.target === document.getElementById('popup')) {
-                document.getElementById('popup').style.display = 'none';
-            }
+            document.getElementById('popup').style.display = 'none';
         });
-    } else {
-        console.error('Nenhum agendamento encontrado para este colaborador:', results.message);
-    }
-}
+
 
 getTask();
