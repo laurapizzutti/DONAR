@@ -1,5 +1,6 @@
 async function getTask() {
     let Id_User = localStorage.getItem('id');
+    
     console.log('ID do colaborador:', Id_User);
 
     const response = await fetch(`http://localhost:3001/api/get/task/${Id_User}`, {
