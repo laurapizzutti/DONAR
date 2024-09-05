@@ -49,6 +49,45 @@ main {
     height: max-content;
 }
 
+.perfil-foto img {
+    border-color: #fc9235;
+}
+
+.perfil-foto {
+    display: flex;
+    gap: 8%;
+    align-items: center;
+    background-color: #bababa16;
+    flex-direction: row;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 20px;
+    padding: 8%;
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); */
+}
+
+.usuario p {
+    font-size: 20px;
+    font-weight: 650;
+}
+
+.atividade {
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.intro-intro {
+    font-size: 15px;
+    font-weight: 550;
+}
+
+.editar {
+  font-size: 17px;
+  font-weight: 750;
+  border-radius: 10px;
+  border: none;
+}
+
 .cabecalho {
     display: flex;
     align-items: center;
