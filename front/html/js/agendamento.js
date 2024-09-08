@@ -100,8 +100,18 @@ async function getTask() {
                         button.classList.add('ver-mais');
                         button.textContent = 'Ver mais';
 
+                        let button2 = document.createElement('button');
+                        button2.classList.add('buttom_realizada');
+                        button2.textContent = 'Realizada';
 
-                        doacao.appendChild(button);
+                        let buttom_div = document.createElement('div');
+                        buttom_div.classList.add('buttom_div');
+
+                        buttom_div.appendChild(button);
+                        buttom_div.appendChild(button2);
+
+                        doacao.appendChild(buttom_div);
+                        
 
                         div.appendChild(doacao);
 

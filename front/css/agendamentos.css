@@ -40,7 +40,7 @@ main {
 .doação {
     width: 100%;
     max-width: 325px; 
-    background-color: #FFFFFF;
+    background-color: #f3ec2036;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
@@ -210,7 +210,7 @@ main {
 }
 
 .agendada {
-    color: #fc9235;
+    color: #FFC600;
     font-weight: bold;
 }
 
@@ -220,7 +220,7 @@ main {
 }
 
 .ver-mais {
-    background-color: #ffc800c6;
+    background-color: #FF993C;
     color: #FFFFFF;
     font-weight: 750;
     font-size: 1rem;
@@ -229,6 +229,26 @@ main {
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.buttom_realizada {
+    background-color: #0CBC8B;
+    color: #FFFFFF;
+    font-weight: 750;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.buttom_div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
 .ver-mais:hover {
@@ -241,8 +261,9 @@ main {
     border-radius: 0.938rem;
     box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
     text-align: center;
-    max-width: 325px;
+    max-width: 350px;
     margin: auto;
+    margin-top: 50%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem; /* Gap garantido entre os elementos dentro do pop-up */
@@ -265,7 +286,7 @@ main {
     align-items: center;
     justify-content: center;
     background-color: #FFFFFF;
-    width: 300px;
+    width: 93%;
     height: 57.82px;
     border-radius: 20px;
     box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
