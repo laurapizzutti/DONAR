@@ -31,7 +31,9 @@ CREATE TABLE agendamentos (
     _status ENUM ('Realizada', 'Agendada') NOT NULL
 );
 
-SELECT * FROM agendamentos;
+SELECT * FROM agendamentos WHERE _status = 'Realizada';
+
+
 SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
 
