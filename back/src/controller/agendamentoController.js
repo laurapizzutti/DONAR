@@ -34,7 +34,6 @@ async function storeTask(request, response){
     });
 }
 
-
 // async function getID (request, response) {
      
 //     const params = Array(
@@ -73,7 +72,6 @@ async function storeTask(request, response){
     
 // }
 
-
 async function getTask(request, response) {
     const id_doador = request.params.id; // Captura o ID do colaborador
 
@@ -104,7 +102,40 @@ async function getTask(request, response) {
     });
 }
 
+async function updateTask(request, response) {
+    const id_agendamento = request.params.id; // Obtém o ID do agendamento da rota
+    const { _status } = request.body; // Obtém o novo status do corpo da requisição
+
+    const query = 'UPDATE agendamentos SET _status = ? WHERE id = ?';
+
+    connection.query(query, [_status, id_agendamento], (err, results) => {
+        if (err) {
+            console.error(err);
+            return response.status(400).json({
+                success: false,
+                message: "Ops, deu problema :(",
+                data: err
+            });
+        }
+
+        if (results.affectedRows > 0) {
+            return response.status(200).json({
+                success: true,
+                message: "Status atualizado com sucesso!",
+                data: results
+            });
+        } else {
+            return response.status(404).json({
+                success: false,
+                message: "Nenhum agendamento encontrado ou já está no status solicitado.",
+                data: results
+            });
+        }
+    });
+}
+
 module.exports = {
     storeTask,
-    getTask 
+    getTask,
+    updateTask
 }

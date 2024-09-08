@@ -21,6 +21,7 @@ async function getTask() {
     if (results.success) {
         results.data.forEach(agendamento => {
             // console.log('Processando agendamento:', agendamento);
+            localStorage.setItem('id_agendamento', agendamento.id);
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
@@ -51,7 +52,6 @@ async function getTask() {
                             h4.textContent = nomeItem.nome;
                             cabecalho.appendChild(h4);
 
-                            // localStorage.setItem('endereco', nomeItem.endereco);
                             // buttom.setAttribute('endereco', nomeItem.endereco);
                             // console.log(endereco)
                         
@@ -83,13 +83,14 @@ async function getTask() {
 
                         let status_status = document.createElement('p');
                         status_status.id = 'status_status';
+                        status_status.classList.add('agendada')
                         status_status.textContent = agendamento._status;
 
-                        if (agendamento._status.trim() === "Agendada") {
-                            status_status.classList.add('agendada');
-                        } else if (agendamento._status.trim() === "Realizada") {
-                            status_status.classList.add('realizada');
-                        }
+                        // if (agendamento._status.trim() === "Agendada") {
+                        //     status_status.classList.add('agendada');
+                        // } else if (agendamento._status.trim() === "Realizada") {
+                        //     status_status.classList.add('realizada');
+                        // }
 
                         status.appendChild(status_status);
 
@@ -111,7 +112,6 @@ async function getTask() {
                         buttom_div.appendChild(button2);
 
                         doacao.appendChild(buttom_div);
-                        
 
                         div.appendChild(doacao);
 
@@ -146,7 +146,37 @@ async function getTask() {
                             document.getElementById('popup').style.display = 'block';
                         });
 
-
+                        button2.addEventListener('click', async function () {
+                            let id_agendamento = localStorage.getItem('id_agendamento');
+                            let data = { _status: 'Realizada' };
+                        
+                            try {
+                                const response = await fetch(`http://localhost:3001/api/update/task/${id_agendamento}`, {
+                                    method: "PUT",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify(data) // Enviando dados JSON corretamente
+                                });
+                        
+                                const results = await response.json();
+                        
+                                if (results.success && results.affectedRows > 0) {
+                                    console.log('Status atualizado com sucesso!');
+                                    let realizada = document.querySelector('.agendada');
+                                    if (realizada) {
+                                        realizada.classList.remove('agendada');
+                                        realizada.classList.add('realizada');
+                                        realizada.textContent = 'Realizada';
+                                    }
+                                } else {
+                                    console.log('Erro ao atualizar status ou nenhuma linha foi alterada:', results.message);
+                                }
+                        
+                            } catch (error) {
+                                console.error('Erro na requisição:', error);
+                            }
+                        });
+                        
+                                           
 
                     } else {
                         console.log('Nenhum item encontrado para esta instituição');
