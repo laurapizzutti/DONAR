@@ -20,7 +20,7 @@ async function getTask() {
 
     if (results.success) {
         results.data.forEach(agendamento => {
-            console.log('Processando agendamento:', agendamento);
+            // console.log('Processando agendamento:', agendamento);
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
@@ -45,12 +45,13 @@ async function getTask() {
 
                 if (nome.success) {
                     nome.data.forEach(nomeItem => {
-                            console.log('Nome encontrado:', nomeItem);
+                            // console.log('Nome encontrado:', nomeItem);
 
                             let h4 = document.createElement('h4');
                             h4.textContent = nomeItem.nome;
                             cabecalho.appendChild(h4);
-                        
+
+                            // localStorage.setItem('endereco', nomeItem.endereco);
                             // buttom.setAttribute('endereco', nomeItem.endereco);
                             // console.log(endereco)
                         
@@ -99,20 +100,19 @@ async function getTask() {
                         button.classList.add('ver-mais');
                         button.textContent = 'Ver mais';
 
-                        button.setAttribute('data-item', agendamento.item);
-                        button.setAttribute('data-quantidade', agendamento.qnt);
-                       // button.setAttribute('data-quantidade', agendamento.hora_entrega);
-                        // button.getAttribute('endereco');
-                        
-                        // console.log(endereco)
 
                         doacao.appendChild(button);
 
                         div.appendChild(doacao);
 
                         button.addEventListener('click', function () {
-                            let item = button.getAttribute('data-item');
-                            let quantidade = button.getAttribute('data-quantidade');
+                            let item = agendamento.item;
+                            let quantidade = agendamento.qnt;
+                            let hora = agendamento.hora_entrega;
+                            // let endereco = localStorage.getItem('endereco')
+
+                            // console.log(endereco)
+
 
                             let popup_itens = document.getElementById('popup-itens');
                             popup_itens.innerHTML = '';
@@ -124,12 +124,12 @@ async function getTask() {
                             qnt.classList.add('qnt2');
                             qnt.textContent = `${quantidade}x`;
 
-                            let itemSpan = document.createElement('span');
-                            itemSpan.classList.add('item');
-                            itemSpan.textContent = item;
+                            let itemdiv = document.createElement('span');
+                            itemdiv.classList.add('item');
+                            itemdiv.textContent = item;
 
                             op.appendChild(qnt);
-                            op.appendChild(itemSpan);
+                            op.appendChild(itemdiv);
 
                             popup_itens.appendChild(op);
 
