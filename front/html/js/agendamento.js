@@ -21,7 +21,7 @@ async function getTask() {
     if (results.success) {
         results.data.forEach(agendamento => {
             // console.log('Processando agendamento:', agendamento);
-            localStorage.setItem('id_agendamento', agendamento.id);
+            let id_agendamento = agendamento.id;
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
