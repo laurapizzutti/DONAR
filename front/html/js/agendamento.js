@@ -119,10 +119,6 @@ async function getTask() {
                             let item = agendamento.item;
                             let quantidade = agendamento.qnt;
                             let hora = agendamento.hora_entrega;
-                            // let endereco = localStorage.getItem('endereco')
-
-                            // console.log(endereco)
-
 
                             let popup_itens = document.getElementById('popup-itens');
                             popup_itens.innerHTML = '';
@@ -154,18 +150,18 @@ async function getTask() {
                                 const response = await fetch(`http://localhost:3001/api/update/task/${id_agendamento}`, {
                                     method: "PUT",
                                     headers: { "Content-Type": "application/json" },
-                                    body: JSON.stringify(data) // Enviando dados JSON corretamente
+                                    body: JSON.stringify(data) 
                                 });
                         
                                 const results = await response.json();
                         
-                                if (results.success && results.affectedRows > 0) {
+                                if (results.success) {
                                     console.log('Status atualizado com sucesso!');
                                     let realizada = document.querySelector('.agendada');
                                     if (realizada) {
                                         realizada.classList.remove('agendada');
                                         realizada.classList.add('realizada');
-                                        realizada.textContent = 'Realizada';
+                                        realizada.textContent = results._status;
                                     }
                                 } else {
                                     console.log('Erro ao atualizar status ou nenhuma linha foi alterada:', results.message);

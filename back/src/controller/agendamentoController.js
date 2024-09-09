@@ -103,12 +103,11 @@ async function getTask(request, response) {
 }
 
 async function updateTask(request, response) {
-    const id_agendamento = request.params.id; // Obtém o ID do agendamento da rota
-    const { _status } = request.body; // Obtém o novo status do corpo da requisição
+    const id_agendamento = request.params.id_agendamento; 
 
-    const query = 'UPDATE agendamentos SET _status = ? WHERE id = ?';
+    const query = 'UPDATE agendamentos SET _status = Realizada WHERE id = ?';
 
-    connection.query(query, [_status, id_agendamento], (err, results) => {
+    connection.query(query, [id_agendamento], (err, results) => {
         if (err) {
             console.error(err);
             return response.status(400).json({
