@@ -105,7 +105,9 @@ async function getTask(request, response) {
 async function updateTask(request, response) {
     const id_agendamento = request.params.id_agendamento; 
 
-    const query = 'UPDATE agendamentos SET _status = Realizada WHERE id = ?';
+    console.log(id_agendamento)
+
+    const query = "UPDATE agendamentos SET _status = 'Realizada' WHERE id = ?";
 
     connection.query(query, [id_agendamento], (err, results) => {
         if (err) {

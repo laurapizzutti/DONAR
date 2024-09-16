@@ -5,6 +5,6 @@ const { storeTask, getTask, updateTask } = require('../controller/agendamentoCon
 
 router.post('/store/task', storeTask);
 router.get('/get/task/:id', getTask);
-router.put('/update/task/:id', updateTask);
+router.post('/update/task/:id_agendamento', updateTask);
 
 module.exports = router;

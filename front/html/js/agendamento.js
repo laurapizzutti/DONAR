@@ -21,7 +21,8 @@ async function getTask() {
     if (results.success) {
         results.data.forEach(agendamento => {
             // console.log('Processando agendamento:', agendamento);
-            let id_agendamento = agendamento.id;
+       
+          
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
@@ -143,12 +144,13 @@ async function getTask() {
                         });
 
                         button2.addEventListener('click', async function () {
-                            let id_agendamento = localStorage.getItem('id_agendamento');
+                            let id_agendamento = agendamento.id;
+                            console.log("ID do agendamento:", id_agendamento)
                             let data = { _status: 'Realizada' };
                         
                             try {
                                 const response = await fetch(`http://localhost:3001/api/update/task/${id_agendamento}`, {
-                                    method: "PUT",
+                                    method: "POST",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify(data) 
                                 });
@@ -161,10 +163,10 @@ async function getTask() {
                                     if (realizada) {
                                         realizada.classList.remove('agendada');
                                         realizada.classList.add('realizada');
-                                        realizada.textContent = results._status;
+                                        realizada.textContent = agendamento._status;
                                     }
                                 } else {
-                                    console.log('Erro ao atualizar status ou nenhuma linha foi alterada:', results.message);
+                                    console.log('Erro:', results.message);
                                 }
                         
                             } catch (error) {
