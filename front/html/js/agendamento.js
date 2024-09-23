@@ -87,11 +87,11 @@ async function getTask() {
                         status_status.classList.add('agendada')
                         status_status.textContent = agendamento._status;
 
-                        // if (agendamento._status.trim() === "Agendada") {
-                        //     status_status.classList.add('agendada');
-                        // } else if (agendamento._status.trim() === "Realizada") {
-                        //     status_status.classList.add('realizada');
-                        // }
+                        if (agendamento._status.trim() === "Agendada") {
+                            status_status.classList.add('agendada');
+                        } else if (agendamento._status.trim() === "Realizada") {
+                            status_status.classList.add('realizada');
+                        }
 
                         status.appendChild(status_status);
 
@@ -159,12 +159,10 @@ async function getTask() {
                         
                                 if (results.success) {
                                     console.log('Status atualizado com sucesso!');
-                                    let realizada = document.querySelector('.agendada');
-                                    if (realizada) {
-                                        realizada.classList.remove('agendada');
-                                        realizada.classList.add('realizada');
-                                        realizada.textContent = agendamento._status;
-                                    }
+                                    status_status.classList.remove('agendada');
+                                    status_status.classList.add('realizada');
+                                    status_status.textContent = 'Realizada';
+                                    
                                 } else {
                                     console.log('Erro:', results.message);
                                 }

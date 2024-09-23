@@ -11,7 +11,7 @@ async function storeUser(request, response){
     );
 
 
-    const query = 'INSERT INTO cadastro_usuario(nome, email, senha, tipo_usuario, endereco) VALUES (?, ?, ?, ?, ? )';
+    const query = 'INSERT INTO cadastro_usuario (nome, email, senha, tipo_usuario, endereco) VALUES (?, ?, ?, ?, ? )';
 
     connection.query(query, params, (err, results) => {
         console.log(err)
