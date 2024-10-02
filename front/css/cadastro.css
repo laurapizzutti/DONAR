@@ -102,6 +102,8 @@ select.tipo_usuario option {
     color: #6D6A6A;
     border: none;
 
+}
+
 select::placeholder {
     font-family: "Outfit", sans-serif;
     padding-left: 8px;
