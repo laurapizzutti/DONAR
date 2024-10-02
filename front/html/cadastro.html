@@ -19,11 +19,17 @@
             <input type="text" placeholder="Nome" class="nome">
             <input type="email" placeholder="Email" class="email">
             <input type="password" placeholder="Senha" class="senha">
-            <input type="text" placeholder="Colaborador / Instituição" list="faixa" class="tipo_usuario">
+            <!-- <input type="text" placeholder="Colaborador / Instituição" list="faixa" class="tipo_usuario">
                 <datalist id="faixa">
                     <option value="Colaborador"></option>
                     <option value="Instituição"></option>
-                </datalist>
+                </datalist> -->
+                <select class="tipo_usuario">
+                    <option value="" disabled selected>Colaborador / Instituição</option>
+                    <option value="Colaborador">Colaborador</option>
+                    <option value="Instituição">Instituição</option>
+                </select>
+                
                 <input type="text" placeholder="Endereço" class="endereco">
                 <!-- <a href="/front/html/home.html"> -->
                     <button id="handleSubmit"> Cadastrar-se </button>

@@ -78,3 +78,31 @@ a {
     color: black;
     font-weight: 450;
 }
+
+select.tipo_usuario {
+    font-family: "Outfit", sans-serif;
+    color: #6D6A6A;
+    font-size: 20px;
+    width: 375px;
+    height: 56px;
+    border-radius: 15px;
+    padding: 12px;
+    border: solid 1.8px;
+    border-color: #6D6A6A;
+    outline: 0;
+    background-color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select.tipo_usuario option {
+    font-family: "Outfit", sans-serif;
+    font-size: 20px;
+    color: #6D6A6A;
+    border: none;
+
+select::placeholder {
+    font-family: "Outfit", sans-serif;
+    padding-left: 8px;
+}
