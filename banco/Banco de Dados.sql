@@ -7,7 +7,9 @@ CREATE TABLE cadastro_usuario (
     email VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     tipo_usuario ENUM('Colaborador', 'Instituição') NOT NULL,
-    endereco VARCHAR(255) NOT NULL
+    endereco VARCHAR(255) NOT NULL,
+    nome_usuario VARCHAR(255),
+    descricao VARCHAR(255)
 );
 
 CREATE TABLE tabela_itens (
@@ -31,9 +33,16 @@ CREATE TABLE agendamentos (
     _status ENUM ('Realizada', 'Agendada') NOT NULL
 );
 
+CREATE TABLE feed(
+	id_insti INT NOT NULL,
+	FOREIGN KEY (id_insti) REFERENCES cadastro_usuario(id),
+	descricao VARCHAR(255) NOT NULL
+);
+
 SELECT * FROM agendamentos;
 SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
+SELECT * FROM feed;
 
 INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('ONG Somos+ Juntos','somos@somos','somos','Instituição','Rua 45, Rio Branco');
 INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('Laura Pizzuti','lalapizzutti@gmail.com','Laura','Colaborador','Rua 63, Rio Verde');
