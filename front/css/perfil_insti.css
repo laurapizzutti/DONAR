@@ -81,6 +81,7 @@ h1 {
     display: flex;
     padding-bottom: 10px;
     align-items: center;
+    margin-bottom: 25px;
 }
 
 .tabela {
@@ -229,4 +230,36 @@ button.editar svg {
     font-family: "Outfit", sans-serif;
     font-size: 15px;
     font-weight: 650;
+}
+
+.post-desc {
+    display: flex;
+   /* justify-content: space-between; */
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.mais-desc {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.mais {
+    width: 25px;
+}
+.baixo {
+    width: 30px;
+}
+
+.desc{
+    gap: 25%;
+}
+
+.novo {
+    font-size: 140%;
+    font-weight: 800;
 }

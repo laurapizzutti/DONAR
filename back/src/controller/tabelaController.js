@@ -83,24 +83,30 @@ async function getItems(request, response) {
 // }
 
 async function deleteItems(request, response) {
-    const { id_item } = request.body;
-    // const userId = request.body.id_user;
+    const { id } = request.params; // Capturar o ID do parâmetro da URL
 
     const query = 'DELETE FROM tabela_itens WHERE id_item = ?';
 
-    connection.query(query, [id_item], (err, results) => {
-        
-        if (results) {
+    connection.query(query, [id], (err, results) => {
+        if (err) {
+            console.error("Erro ao deletar item:", err);
+            return response.status(400).json({
+                success: false,
+                message: "Erro ao deletar item.",
+                data: err
+            });
+        }
+
+        if (results.affectedRows > 0) {
             response.status(200).json({
                 success: true,
                 message: "Item deletado com sucesso!",
                 data: results
             });
         } else {
-            response.status(400).json({
+            response.status(404).json({
                 success: false,
-                message: "Erro ao deletar item.",
-                data: err
+                message: "Item não encontrado.",
             });
         }
     });

@@ -19,7 +19,7 @@ const { storeItem, getItems, deleteItems } = require('../controller/tabelaContro
 *                 type: object
 */
 
-router.delete('/delete/item', deleteItems);
+router.delete('/delete/item/:id', deleteItems);
 
 /**
 * @swagger

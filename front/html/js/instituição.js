@@ -48,34 +48,35 @@ function Excluir(exibir) {
                 lixeira.classList.add('lixeira-icon');
                 item.appendChild(lixeira);
 
-                // lixeira.onclick = function (event) {
-                    // async function deleteItems() {
-                    
-                    //     // const quantidade = document.getElementById("quantidade").value;
-                    //     // const nomeItem = document.getElementById("nomeItem").value;
-                    //     // const Id_User = localStorage.getItem('id');
-                    
-                    //     // const data = {quantidade, nomeItem, Id_User, id_item};
-                    
-                    //     // console.log(data);
-                    
-                    //     const response = await fetch('http://localhost:3001/api/delete/item', {
-                    //         method: "DELETE",
-                    //         headers: {
-                    //             "Content-Type":"application/json"
-                    //         },
-                    //         // body: JSON.stringify(data)
-                    //     });
-                    
-                      
-                    //     if (response.ok) {
-                    //        alert('Item removido com sucesso')
-                    //     }else{
-                    //         alert('Deu errado')
-                    //     }
-                    // }
-                    
-                // } 
+                // Capturar o id_item no clique do ícone de lixeira.
+                lixeira.onclick = async function () {
+                    const id_item = item.getAttribute('data-id'); // Captura do ID do item
+                
+                    if (id_item) {
+                        try {
+                            const response = await fetch(`http://localhost:3001/api/delete/item/${id_item}`, {
+                                method: "DELETE",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                }
+                            });
+                
+                            if (response.ok) {
+                                alert('Item removido com sucesso');
+                                item.remove(); // Remover o item da interface
+                            } else {
+                                const result = await response.json();
+                                alert(`Erro ao remover item: ${result.message}`);
+                            }
+                        } catch (error) {
+                            console.error("Erro na requisição DELETE:", error);
+                            alert('Erro ao tentar remover o item.');
+                        }
+                    } else {
+                        alert('ID do item não encontrado.');
+                    }
+                };                
+                
             }
         } else {
             const lixeira = item.querySelector('.lixeira-icon');
@@ -85,6 +86,7 @@ function Excluir(exibir) {
         }
     });
 }
+
 
 fecharPopup.onclick = function() {
     popup.style.display = 'none';
@@ -123,46 +125,52 @@ async function SalvarItemDB(event) {
     }
 }
 
+// Garantir que a função é assíncrona.
 async function getItens() {
     const Id_User = localStorage.getItem('id');
 
-    const response = await fetch('http://localhost:3001/api/itens/'+ Id_User, {
-        method: "GET",
-        headers: {
-            "Content-Type":"application/json"
-        }
-    })
-
-    const results = await response.json();
-    console.log('ID do usuário: ', Id_User)
-    id_item = results.data.id_item
-    console.log(results)
-    if(results.success) {
-        let itens = results.data;
-
-        let tabela = document.getElementById('tabela');
-
-        itens.map(item => {
-            let htmlItem = document.createElement('div');
-            htmlItem.classList.add('opcao');
-    
-            const quantidadeSpan = document.createElement('span');
-            quantidadeSpan.classList.add('quantidade');
-            quantidadeSpan.textContent = `${item.qnt_itens}x`;
-    
-            const nomeSpan = document.createElement('span');
-            nomeSpan.classList.add('item');
-            nomeSpan.textContent = item.item;
-    
-            htmlItem.appendChild(quantidadeSpan);
-            htmlItem.appendChild(nomeSpan); 
-
-            tabela.appendChild(htmlItem);
+    try {
+        const response = await fetch(`http://localhost:3001/api/itens/${Id_User}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
-        if (adicionarItem.style.display === 'block') {
-            Excluir(true);
+
+        const results = await response.json();
+        console.log('ID do usuário: ', Id_User);
+        console.log(results);
+
+        if (results.success) {
+            const itens = results.data;
+            tabela.innerHTML = ''; // Limpar tabela antes de renderizar novos itens.
+
+            itens.forEach(item => {
+                let htmlItem = document.createElement('div');
+                htmlItem.classList.add('opcao');
+                htmlItem.setAttribute('data-id', item.id_item); // Verifique se 'id_item' existe
+                
+                const quantidadeSpan = document.createElement('span');
+                quantidadeSpan.classList.add('quantidade');
+                quantidadeSpan.textContent = `${item.qnt_itens}x`;
+                
+                const nomeSpan = document.createElement('span');
+                nomeSpan.classList.add('item');
+                nomeSpan.textContent = item.item;
+                
+                htmlItem.appendChild(quantidadeSpan);
+                htmlItem.appendChild(nomeSpan);
+                tabela.appendChild(htmlItem);                
+            });
+
+            if (adicionarItem.style.display === 'block') {
+                Excluir(true); // Mostrar ícones de exclusão.
+            }
         }
+    } catch (error) {
+        console.error('Erro ao carregar itens:', error);
     }
 }
-
+// Chamar a função getItens corretamente.
 getItens();
+
