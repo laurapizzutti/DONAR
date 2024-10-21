@@ -102,6 +102,36 @@ async function getTask(request, response) {
     });
 }
 
+async function getTaskInsti(request, response) {
+    const id_insti = request.params.id; // Captura o ID do colaborador
+
+    const query = 'SELECT * FROM agendamentos WHERE id_insti = ?';
+
+    connection.query(query, [id_insti], (err, results) => {
+        if (err) {
+            console.error(err);
+            return response.status(500).json({
+                success: false,
+                message: "Erro ao recuperar agendamentos",
+                data: err
+            });
+        }
+
+        if (results.length > 0) {
+            response.status(200).json({
+                success: true,
+                message: "Agendamentos recuperados com sucesso!",
+                data: results
+            });
+        } else {
+            response.status(404).json({
+                success: false,
+                message: "Nenhum agendamento encontrado para este colaborador"
+            });
+        }
+    });
+}
+
 async function updateTask(request, response) {
     const id_agendamento = request.params.id_agendamento; 
 
@@ -138,5 +168,6 @@ async function updateTask(request, response) {
 module.exports = {
     storeTask,
     getTask,
-    updateTask
+    updateTask,
+    getTaskInsti
 }

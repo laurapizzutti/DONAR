@@ -62,8 +62,7 @@ function Excluir(exibir) {
                             });
                 
                             if (response.ok) {
-                                alert('Item removido com sucesso');
-                                item.remove(); // Remover o item da interface
+                                item.remove();
                             } else {
                                 const result = await response.json();
                                 alert(`Erro ao remover item: ${result.message}`);
