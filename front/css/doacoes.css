@@ -1,0 +1,356 @@
+html {
+    background-color: #F4F4F4;
+    font-family: "Outfit", sans-serif;
+}
+
+main {
+    justify-content: center;
+    font-family: "Outfit", sans-serif;
+    margin-bottom: 90px;
+    padding: 0;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.doações {
+    display: grid;
+    gap: 1.5rem; 
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr)); 
+}
+
+@media (max-width: 767px) {
+    .doações {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) {
+    .doações {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .doações {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.doação {
+    width: 100%;
+    max-width: 325px; 
+    background-color: #f3ec2036;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+}
+
+/* Alinhamento da foto de perfil com o nome */
+.perfil-foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 15px; Espaçamento entre a foto e o nome */
+}
+
+#fotoPerfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.botao-mais {
+    font-size: 50px;
+    color: #fc9235;
+    cursor: pointer;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    display: none;
+    margin-left: 10px;
+}
+
+.botao-mais-laranja {
+    font-size: 50px;
+    color: #fc9235;
+    cursor: pointer;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    display: none;
+    margin-left: 10px;
+}
+
+.intro-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.intro-intro {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#salvarDescricaoBtn {
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Alinhar o botão + na imagem e remover background após edição */
+.botao-mais-laranja:hover {
+    color: #fc9235;
+    font-size: 30px;
+}
+
+.perfil-foto:hover #botaoEditarFoto {
+    display: block;
+}
+
+#botaoEditarDescricao {
+    display: inline-block;
+    color: #fc9235;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.perfil-foto img {
+    border-color: #fc9235;
+}
+
+.perfil-foto {
+    display: flex;
+    gap: 8%;
+    align-items: center;
+    /* background-color: #bababa3d; */
+    flex-direction: row;
+    margin-top: 5%;
+    margin-bottom: 0%;
+    border-radius: 20px;
+    /* padding: 8%; */
+    width: 90%;
+    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); */
+}
+
+.usuario p {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    font-weight: 650;
+}
+
+.atividade {
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.intro-intro {
+    font-size: 120%;
+    font-weight: 400;
+}
+
+.editar {
+  font-size: 17px;
+  font-weight: 750;
+  border-radius: 10px;
+  border: none;
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cabecalho img {
+    width: 45px;
+    height: 45px;
+}
+
+.cabecalho h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.doacao-dois {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.data {
+    font-size: 1rem;
+    color: #494945;
+    font-weight: 500;
+    margin-right: 1rem;
+}
+
+.status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 10px;
+}
+
+.status_desc {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 0;
+}
+
+.agendada {
+    color: #FFC600;
+    font-weight: bold;
+}
+
+.realizada {
+    color: #00aa25;
+    font-weight: bold;
+}
+
+.ver-mais {
+    background-color: #FF993C;
+    color: #FFFFFF;
+    font-weight: 750;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.buttom_realizada {
+    background-color: #0CBC8B;
+    color: #FFFFFF;
+    font-weight: 750;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.buttom_div {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.ver-mais:hover {
+    background-color: #ffb800;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 0.938rem;
+    box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
+    text-align: center;
+    max-width: 350px;
+    margin: auto;
+    margin-top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Gap garantido entre os elementos dentro do pop-up */
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Estilo dos elementos dentro da div .op */
+.op {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    width: 93%;
+    height: 57.82px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 120px 0px rgba(58, 86, 78, 0.15);
+    padding: 10px;
+}
+
+.qnt2 {
+    font-weight: bold;
+    font-size: 170%;
+    color: #000000;
+    margin: 25px;
+}
+
+.item {
+    font-size: 150%;
+    font-weight: 400;
+}
+
+#popup-hora,
+#popup-endereco {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: left;
+    margin: 0;
+}
+
+.popup-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+
+#marcarRealizada {
+    background-color: #009920;
+    color: #FFFFFF;
+    font-weight: 750;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 325px;
+    height: 40px;
+}
+
+#marcarRealizada:hover {
+    background-color: #009920;
+}
+
+.navbar {
+    background-color: #FFFFFF;
+    filter: drop-shadow(0px 4px 120px rgba(58, 86, 78, 0.10));
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    width: 96%;
+    border-radius: 1rem;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    height: 4.625rem;
+    position: fixed;
+    bottom: 0;
+}

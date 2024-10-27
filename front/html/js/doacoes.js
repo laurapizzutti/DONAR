@@ -19,10 +19,10 @@ async function getTaskInsti() {
     const div = document.querySelector('.doações');
 
     if (results.success) {
+        console.log(results)
         results.data.forEach(agendamento => {
             // console.log('Processando agendamento:', agendamento);
-       
-          
+
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
@@ -36,7 +36,7 @@ async function getTaskInsti() {
             cabecalho.appendChild(img);
 
             async function getInstiName() {
-                const response = await fetch(`http://localhost:3001/api/get/InstiName/${agendamento.id_insti}`, {
+                const response = await fetch(`http://localhost:3001/api/get/InstiName/${agendamento.id_doador}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"
