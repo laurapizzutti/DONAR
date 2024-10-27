@@ -103,7 +103,7 @@ async function getTask(request, response) {
 }
 
 async function getTaskInsti(request, response) {
-    const id_insti = request.params.id; // Captura o ID do colaborador
+    const id_insti = request.params.id; // Captura o ID do instituição
 
     const query = 'SELECT * FROM agendamentos WHERE id_insti = ?';
 
