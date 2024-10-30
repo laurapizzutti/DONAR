@@ -3,7 +3,7 @@ async function getTaskInsti() {
     
     console.log('ID da Instituição:', Id_User);
 
-    const response = await fetch(`http://localhost:3001/get/task/insti/${Id_User}`, {
+    const response = await fetch(`http://localhost:3001/api/get/task/insti/${Id_User}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -22,7 +22,6 @@ async function getTaskInsti() {
         console.log(results)
         results.data.forEach(agendamento => {
             // console.log('Processando agendamento:', agendamento);
-
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
@@ -47,7 +46,7 @@ async function getTaskInsti() {
 
                 if (nome.success) {
                     nome.data.forEach(nomeItem => {
-                            // console.log('Nome encontrado:', nomeItem);
+                            console.log('Nome encontrado:', nomeItem);
 
                             let h4 = document.createElement('h4');
                             h4.textContent = nomeItem.nome;
@@ -55,7 +54,6 @@ async function getTaskInsti() {
 
                             // buttom.setAttribute('endereco', nomeItem.endereco);
                             // console.log(endereco)
-                        
                         });
 
                         doacao.appendChild(cabecalho);
