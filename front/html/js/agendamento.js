@@ -193,3 +193,9 @@ async function getTask() {
 }
 
 getTask();
+
+function Editar(event) {
+    event.preventDefault();
+
+    window.location.href = '/front/html/editar_perfil.html'
+}

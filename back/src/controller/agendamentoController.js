@@ -165,9 +165,48 @@ async function updateTask(request, response) {
     });
 }
 
+
+async function getUser(req, res) {
+
+    const params = Array(
+        req.params.id
+    )
+
+    const query = "SELECT nome, email, senha, endereco FROM cadastro_usuario WHERE id = ?";
+    // const query = "SELECT email, senha, FROM cadastro_usuario WHERE  = ?";
+
+    connection.query(query, params, (err, results) => {
+        console.log(err, results)
+        if(results.length > 0) {
+            let senhaForms = req.body.senha
+            let senhaDb = results[0].senha
+
+            if (senhaDb === senhaForms)
+                console.log('Senha Correta!')   
+                res
+                    .status(200)
+                    .json({
+                        success: true,
+                        message: "Login feito com Sucesso",
+                        data: results[0]
+                });        
+            } else {
+                res
+                    .status(400)
+                    .json({
+                        success: false,
+                        message: "Verifique sua Senha",
+                        data: results
+                });  
+        }
+    });
+};
+
+
 module.exports = {
     storeTask,
     getTask,
     updateTask,
-    getTaskInsti
+    getTaskInsti,
+    getUser
 }

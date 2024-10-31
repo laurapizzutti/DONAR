@@ -1,7 +1,7 @@
 const {Router} = require('express')
 const router = Router();
 
-const { storeTask, getTask, updateTask, getTaskInsti } = require('../controller/agendamentoController');
+const { storeTask, getTask, updateTask, getTaskInsti, getUser } = require('../controller/agendamentoController');
 
 /**
 * @swagger
@@ -74,5 +74,24 @@ router.get('/get/task/insti/:id', getTaskInsti);
 */
 
 router.post('/update/task/:id_agendamento', updateTask);
+
+/**
+* @swagger
+* /get/task/:id:
+*   get:
+*     summary: Retorna todas as tarefas
+*     responses:
+*       200:
+*         description: Uma lista de tarefas
+*         content:
+*           application/json:
+*             schema:
+*               type: array
+*               items:
+*                 type: object
+*/
+
+router.get('/get/userdata/:id', getUser);
+
 
 module.exports = router;
