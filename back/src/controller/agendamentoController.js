@@ -34,44 +34,6 @@ async function storeTask(request, response){
     });
 }
 
-// async function getID (request, response) {
-     
-//     const params = Array(
-//         req.body.email
-//     )
-//     console.log("email p/ cadastro:", req.body.email)
-
-//     const query = "id, tipo_usuario FROM cadastro_usuario WHERE email = ?";
-//     // const query = "SELECT email, senha, FROM cadastro_usuario WHERE email = ?";
-
-//     connection.query(query, params, (err, results) => {
-//         console.log(err, results)
-//         if(results.length > 0) {
-//             let senhaForms = req.body.senha
-//             let senhaDb = results[0].senha
-
-//             if (senhaDb === senhaForms)
-//                 console.log('Senha Correta!')   
-//                 res
-//                     .status(200)
-//                     .json({
-//                         success: true,
-//                         message: "Login feito com Sucesso",
-//                         data: results[0]
-//                 });        
-//             } else {
-//                 res
-//                     .status(400)
-//                     .json({
-//                         success: false,
-//                         message: "Verifique sua Senha",
-//                         data: results
-//                 });  
-//         }
-//     });
-    
-// }
-
 async function getTask(request, response) {
     const id_doador = request.params.id; // Captura o ID do colaborador
 
@@ -165,6 +127,41 @@ async function updateTask(request, response) {
     });
 }
 
+async function updateUser(request, response) {
+    const id = request.params.id; 
+
+    const { nome, email, senha, endereco } = request.body;
+
+    const query = "UPDATE cadastro_usuario SET nome = ?, email = ?, senha = ?, endereco = ? WHERE id = ?";
+
+    const params = [ nome, email, senha, endereco, id ]; 
+
+    connection.query(query, params, (err, results) => {
+        if (err) {
+            console.error(err);
+            return response.status(400).json({
+                success: false,
+                message: "Ops, deu problema :(",
+                data: err
+            });
+        }
+
+        if (results.affectedRows > 0) {
+            return response.status(200).json({
+                success: true,
+                message: "Status atualizado com sucesso!",
+                data: results
+            });
+        } else {
+            return response.status(404).json({
+                success: false,
+                message: "Nenhum agendamento encontrado ou já está no status solicitado.",
+                data: results
+            });
+        }
+    });
+}
+
 
 async function getUser(req, res) {
 
@@ -173,7 +170,6 @@ async function getUser(req, res) {
     )
 
     const query = "SELECT nome, email, senha, endereco FROM cadastro_usuario WHERE id = ?";
-    // const query = "SELECT email, senha, FROM cadastro_usuario WHERE  = ?";
 
     connection.query(query, params, (err, results) => {
         console.log(err, results)
@@ -208,5 +204,6 @@ module.exports = {
     getTask,
     updateTask,
     getTaskInsti,
-    getUser
+    getUser,
+    updateUser
 }

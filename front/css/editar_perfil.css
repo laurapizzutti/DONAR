@@ -3,13 +3,26 @@ html {
     font-family: "Outfit", sans-serif;
 }
 
-main, header {
+main {
     justify-content: center;
     font-family: "Outfit", sans-serif;
     margin-bottom: 90px;
     padding: 0;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+}
+
+.flecha {
+    padding: 10px;
+}
+.cabecalho-div {
+    display: flex;
+    padding-bottom: 10px;
+    align-items: center;
+    position: relative;
+    top: 10%;
+    font-family: "Outfit", sans-serif;
+    font-size: 12px;
 }
 
 .campos {
