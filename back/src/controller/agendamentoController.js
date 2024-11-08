@@ -173,27 +173,22 @@ async function getUser(req, res) {
 
     connection.query(query, params, (err, results) => {
         console.log(err, results)
-        if(results.length > 0) {
-            let senhaForms = req.body.senha
-            let senhaDb = results[0].senha
-
-            if (senhaDb === senhaForms)
-                console.log('Senha Correta!')   
-                res
-                    .status(200)
-                    .json({
-                        success: true,
-                        message: "Login feito com Sucesso",
-                        data: results[0]
-                });        
-            } else {
-                res
-                    .status(400)
-                    .json({
-                        success: false,
-                        message: "Verifique sua Senha",
-                        data: results
-                });  
+        if (results) {
+            res
+                .status(201)
+                .json({
+                    success: true,
+                    massage: "Sucesso",
+                    data: results[0]
+                })
+        }else{
+            res
+                .status(400)
+                .json({
+                    success: false,
+                    message: "Ops, deu problema :(",
+                    data: err
+                })
         }
     });
 };
