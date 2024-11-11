@@ -14,29 +14,33 @@
     <header>
     </header>
     <main>
-        <h2>Seu perfil</h2>
+        <div class="cabecalho-init">
+            <h2>Seu perfil</h2>
+            <a href="/front/html/editar_perfil.html">
+                <button class="editar" type="button" id="editar" onclick="Editar(event)">Editar</button>
+            </a>
+        </div>
         <div class="perfil-foto-container">
             <div class="perfil-foto">
                 <img src="/front/img/foto-perfil-colab.png" alt="Foto de perfil" id="fotoPerfil">
                 <div id="botaoEditarFoto" class="botao-mais" style="display: none;">+</div>
                 <input type="file" id="inputFotoPerfil" style="display: none;">
-                <div class="usuario">
-                    <div class="um">
-                        <p>Olá,<span id="nomeUsuario"></span></p>
-                        <p>@pizzzutti<span id="nomeUsuario"></span></p>
+                <div class="usuario-big">
+                    <div class="usuario">
+                        <span id="nomeUsuario"  class="intro-intro">Olá,</span>
+                        <span  id="nomeUsuario" class="usuario-nome">usuario</span>
                     </div>
-                    <a href="/front/html/editar_perfil.html">
-                        <button class="editar" type="button" id="editar" onclick="Editar(event)">Editar perfil</button>
-                    </a>
+                  
                 </div>
+           
             </div>
         </div>
-        <h2 class="intro">Sobre nós</h2>
+        <!-- <h2 class="intro">Sobre nós</h2>
         <div class="intro-container">
             <p class="intro-intro" id="descricaoUsuario">Sou uma estudante do Segundo Ano do Ensino Médio no Senac São Leopoldo e minha pesquisa é direcionada às OSCs de Porto Alegre e região.</p>
             <div id="botaoEditarDescricao" class="botao-mais-laranja" style="display: none;">+</div>
             <button id="salvarDescricaoBtn" style="display: none;">Salvar</button>
-        </div>
+        </div> -->
         <h2 class="atividade"> Atividade </h2>
         <div class="doações">
         <div id="popup" class="popup">

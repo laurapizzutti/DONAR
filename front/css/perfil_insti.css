@@ -272,3 +272,43 @@ button.editar svg {
     font-size: 140%;
     font-weight: 800;
 }
+
+.usuario-big {
+    display: flex;
+    flex-direction: column; /* Alinha "Olá," e o nome na mesma linha */
+    font-size: 20px;
+    font-weight: 650;
+}
+
+.editar {
+    background:none;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+    font-family: "Outfit", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #fc9235;
+    border-radius: 8PX;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.intro-intro, .usuario-nome {
+    display: inline; /* Mantém o "Olá," e o nome do usuário na mesma linha */
+    margin: 0 5px; /* Ajuste o espaçamento entre os elementos */
+    
+}
+
+.cabecalho-init {
+    display: flex;
+    align-items: center;
+    gap: 160px;
+}
+
+.solicite {
+    display: flex;
+    position: relative;
+    right: 20px;
+    margin-top: 50px;
+}

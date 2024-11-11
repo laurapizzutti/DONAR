@@ -40,50 +40,13 @@ main {
 .doação {
     width: 100%;
     max-width: 325px; 
-    background-color: #fcecb49f;
+    background-color: #ffa30e26;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     height: max-content;
-}
-
-/* Alinhamento da foto de perfil com o nome */
-.perfil-foto-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* gap: 15px; Espaçamento entre a foto e o nome */
-}
-
-#fotoPerfil {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.botao-mais {
-    font-size: 50px;
-    color: #fc9235;
-    cursor: pointer;
-    border-radius: 50%;
-    background: none;
-    border: none;
-    display: none;
-    margin-left: 10px;
-}
-
-.botao-mais-laranja {
-    font-size: 50px;
-    color: #fc9235;
-    cursor: pointer;
-    border-radius: 50%;
-    background: none;
-    border: none;
-    display: none;
-    margin-left: 10px;
 }
 
 .intro-container {
@@ -97,59 +60,6 @@ main {
     font-weight: 500;
 }
 
-#salvarDescricaoBtn {
-    margin-top: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: none;
-}
-
-/* Alinhar o botão + na imagem e remover background após edição */
-.botao-mais-laranja:hover {
-    color: #fc9235;
-    font-size: 30px;
-}
-
-.perfil-foto:hover #botaoEditarFoto {
-    display: block;
-}
-
-#botaoEditarDescricao {
-    display: inline-block;
-    color: #fc9235;
-    font-size: 50px;
-    cursor: pointer;
-}
-
-.perfil-foto img {
-    border-color: #fc9235;
-}
-
-.perfil-foto {
-    display: flex;
-    gap: 8%;
-    align-items: center;
-    /* background-color: #bababa3d; */
-    flex-direction: row;
-    margin-top: 5%;
-    margin-bottom: 0%;
-    border-radius: 20px;
-    /* padding: 8%; */
-    width: 90%;
-    /* box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); */
-}
-
-.usuario{
-    display: flex;
-    flex-direction: row;
-    font-size: 20px;
-    font-weight: 650;
-}
-
 .atividade {
     margin-bottom: 10%;
     margin-top: 10%;
@@ -158,13 +68,6 @@ main {
 .intro-intro {
     font-size: 120%;
     font-weight: 400;
-}
-
-.editar {
-  font-size: 17px;
-  font-weight: 750;
-  border-radius: 10px;
-  border: none;
 }
 
 .cabecalho {
@@ -213,7 +116,7 @@ main {
 }
 
 .agendada {
-    color: #FFC600;
+    color: #babf28;
     font-weight: bold;
 }
 
@@ -232,7 +135,7 @@ main {
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 50%;
+    width: 100%;
 }
 
 .buttom_realizada {
@@ -269,7 +172,7 @@ main {
     margin-top: 50%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Gap garantido entre os elementos dentro do pop-up */
+    gap: 1.5rem;
 }
 
 .popup {
@@ -283,7 +186,6 @@ main {
     z-index: 1000;
 }
 
-/* Estilo dos elementos dentro da div .op */
 .op {
     display: flex;
     align-items: center;
@@ -353,4 +255,64 @@ main {
     height: 4.625rem;
     position: fixed;
     bottom: 0;
+}
+.perfil-foto-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre a foto e o nome */
+}
+
+#fotoPerfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.perfil-foto img {
+    border-color: #fc9235;
+}
+
+.perfil-foto {
+    display: flex;
+    gap: 8%;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    width: 90%;
+}
+
+.usuario-big {
+    display: flex;
+    flex-direction: column; /* Alinha "Olá," e o nome na mesma linha */
+    font-size: 20px;
+    font-weight: 650;
+}
+
+.editar {
+    background:none;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+    font-family: "Outfit", sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #fc9235;
+    border-radius: 8PX;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.intro-intro, .usuario-nome {
+    display: inline; /* Mantém o "Olá," e o nome do usuário na mesma linha */
+    margin: 0 5px; /* Ajuste o espaçamento entre os elementos */
+    
+}
+
+.cabecalho-init {
+    display: flex;
+    align-items: center;
+    gap: 160px;
 }

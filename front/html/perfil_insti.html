@@ -15,7 +15,12 @@
 
     </header>
     <main>
-        <h2>Seu perfil</h2>
+        <div class="cabecalho-init">
+            <h2>Seu perfil</h2>
+            <a href="/front/html/editar_perfil.html">
+                <button class="editar" type="button" id="editar" onclick="Editar(event)">Editar</button>
+            </a>
+        </div>
         <div class="perfil-foto-container">
             <div class="perfil-foto">
                 <img src="/front/img/foto-perfil-colab.png" alt="Foto de perfil" id="fotoPerfil">
@@ -26,23 +31,18 @@
                         <p>Olá,<span id="nomeUsuario"></span></p>
                         <p>@pizzzutti<span id="nomeUsuario"></span></p>
                     </div>
-
-                    <a href="/front/html/editar_perfil.html">
-                        <button class="editar" type="button" id="editar" onclick="Editar(event)">Editar perfil</button>
-                    </a>
-                    
                 </div>
             </div>
         </div>
-        <h2 class="intro">Sobre nós</h2>
+        <!-- <h2 class="intro">Sobre nós</h2>
         <div class="intro-container">
             <p class="intro-intro" id="descricaoUsuario">Sou uma estudante do Segundo Ano do Ensino Médio no Senac São Leopoldo e minha pesquisa é direcionada às OSCs de Porto Alegre e região.</p>
             <div id="botaoEditarDescricao" class="botao-mais-laranja" style="display: none;">+</div>
             <button id="salvarDescricaoBtn" style="display: none;">Salvar</button>
-        </div>
+        </div> -->
         <div class="cabecalho-div">
-            <a href="/front/html/home.html"><img class="flecha" src="/front/img/arrow.svg"></a>
-            <h1>Solicite seus itens por aqui!</h1>
+            <a href="/front/html/home.html"><img class="flecha"></a>
+            <h1 class="solicite">Solicite seus itens por aqui!</h1>
         </div>
         <div class="tabela" id="tabela">
             
@@ -59,7 +59,7 @@
                 <button type="button" class="botao" onclick="SalvarItemDB(event)">Salvar</button>
             </div>
         </div>
-        <div class="desc">
+        <!-- <div class="desc">
             <div class="post-desc">
                 <h1>Posts</h1>
                 <img src="/front/img/flecha preta pra baixo.svg" class="baixo" alt="" srcset="">
@@ -68,7 +68,7 @@
                 <p class="novo">Novo Post</p>
                 <img src="/front/img/mais.svg" class="mais" alt="" srcset="">
             </div>
-        </div>
+        </div> -->
     </main>
     <footer>
         <div class="navbar">

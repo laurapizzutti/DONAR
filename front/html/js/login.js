@@ -20,7 +20,6 @@ async function login(event) {
     const results = await response.json();
     console.log(results)
     if(results.success) {
-        alert(results.message);
         localStorage.setItem('id', results.data.id)
         localStorage.setItem('tipo_user', results.data.tipo_usuario)
             Tipo_User = localStorage.getItem('tipo_user');
@@ -35,6 +34,6 @@ async function login(event) {
             // }
 
     } else {
-        alert(results.message);
+        console.log(results.message);
     }
 }

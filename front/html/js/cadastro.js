@@ -45,11 +45,10 @@ button.onclick = async function(e) {
                 // }
 
         } else {
-            alert("Erro ao cadastrar. Vefique os dados inseridos ou se você já possui uma conta."); 
+            console.log("Erro ao cadastrar. Vefique os dados inseridos ou se você já possui uma conta."); 
         }
 
     } catch (error) {
         console.error("Erro ao enviar a requisição:", error); 
-        alert("Erro ao enviar a requisição."); 
     }
 };

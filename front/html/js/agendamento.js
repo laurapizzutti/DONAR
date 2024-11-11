@@ -110,7 +110,7 @@ async function getTask() {
                         buttom_div.classList.add('buttom_div');
 
                         buttom_div.appendChild(button);
-                        buttom_div.appendChild(button2);
+                        // buttom_div.appendChild(button2);
 
                         doacao.appendChild(buttom_div);
 

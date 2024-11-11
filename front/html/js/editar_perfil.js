@@ -30,6 +30,8 @@ getUser()
 document.querySelector('.salvar').addEventListener('click', async () => {
 
     let Id_User = localStorage.getItem('id');
+    Tipo_User = localStorage.getItem('tipo_user');
+
     console.log(Id_User)
 
     const data = {
@@ -50,7 +52,12 @@ document.querySelector('.salvar').addEventListener('click', async () => {
         const results = await response.json();
 
         if (results.success) {
-            alert("Dados atualizados com sucesso!");
+            console.log("Dados atualizados com sucesso!");
+            if (Tipo_User == 'Colaborador') {
+                window.location.href = "/front/html/agendamento.html"
+            }else{
+                 window.location.href = "/front/html/perfil_insti.html"
+            }
         } else {
             console.error("Erro ao atualizar os dados");
         }
