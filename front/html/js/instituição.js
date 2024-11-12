@@ -178,3 +178,5 @@ function Editar(event) {
 
     window.location.href = '/front/html/editar_perfil.html'
 }
+
+

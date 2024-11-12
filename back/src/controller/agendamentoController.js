@@ -130,11 +130,11 @@ async function updateTask(request, response) {
 async function updateUser(request, response) {
     const id = request.params.id; 
 
-    const { nome, email, senha, endereco } = request.body;
+    const { nome, email, senha, endereco, nome_usuario, descricao } = request.body;
 
-    const query = "UPDATE cadastro_usuario SET nome = ?, email = ?, senha = ?, endereco = ? WHERE id = ?";
+    const query = "UPDATE cadastro_usuario SET nome = ?, email = ?, senha = ?, endereco = ?, nome_usuario = ?, descricao = ? WHERE id = ?";
 
-    const params = [ nome, email, senha, endereco, id ]; 
+    const params = [ nome, email, senha, endereco, nome_usuario, descricao, id ]; 
 
     connection.query(query, params, (err, results) => {
         if (err) {
@@ -169,7 +169,7 @@ async function getUser(req, res) {
         req.params.id
     )
 
-    const query = "SELECT nome, email, senha, endereco FROM cadastro_usuario WHERE id = ?";
+    const query = "SELECT nome, email, senha, endereco, nome_usuario,descricao FROM cadastro_usuario WHERE id = ?";
 
     connection.query(query, params, (err, results) => {
         console.log(err, results)

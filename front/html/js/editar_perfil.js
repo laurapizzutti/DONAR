@@ -1,3 +1,15 @@
+Tipo_User = localStorage.getItem('tipo_user');
+
+document.querySelector('.botao-voltar').addEventListener('click', async () => { 
+
+    if (Tipo_User == 'Colaborador') {
+        window.location.href = "/front/html/agendamento.html"
+    }else{
+        window.location.href = "/front/html/perfil_insti.html"
+    }  
+
+});
+
 async function getUser() {
     let Id_User = localStorage.getItem('id');
     console.log(Id_User)
@@ -19,6 +31,8 @@ async function getUser() {
         document.querySelector('.email').value = results.data.email;
         document.querySelector('.senha').value = results.data.senha;
         document.querySelector('.endereco').value = results.data.endereco;
+        document.querySelector('.apelido').value = results.data.nome_usuario;
+        document.querySelector('.descricao').value = results.data.descricao;
       
     } else {
         console.log('Nenhum item encontrado para esta instituição');
@@ -39,6 +53,8 @@ document.querySelector('.salvar').addEventListener('click', async () => {
         email:  document.querySelector('.email').value,
         senha: document.querySelector('.senha').value,
         endereco: document.querySelector('.endereco').value,
+        nome_usuario: document.querySelector('.apelido').value,
+        descricao: document.querySelector('.descricao').value,
        
     };
 
@@ -53,11 +69,7 @@ document.querySelector('.salvar').addEventListener('click', async () => {
 
         if (results.success) {
             console.log("Dados atualizados com sucesso!");
-            if (Tipo_User == 'Colaborador') {
-                window.location.href = "/front/html/agendamento.html"
-            }else{
-                 window.location.href = "/front/html/perfil_insti.html"
-            }
+
         } else {
             console.error("Erro ao atualizar os dados");
         }

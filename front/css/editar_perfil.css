@@ -65,3 +65,9 @@ input {
     font-family: "Outfit", sans-serif;
     padding-left: 8px;
 }
+
+.botao-voltar {
+    background: none;
+    background-color: #F4F4F4;
+    border: 0;
+}

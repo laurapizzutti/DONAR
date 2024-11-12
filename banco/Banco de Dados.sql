@@ -1,4 +1,4 @@
-USE befgo1uafcm2vbheuugq;
+USE DONAR_MVP;
 
 CREATE TABLE cadastro_usuario (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -8,7 +8,7 @@ CREATE TABLE cadastro_usuario (
     tipo_usuario ENUM('Colaborador', 'Instituição') NOT NULL,
     endereco VARCHAR(255) NOT NULL,
     nome_usuario VARCHAR(255),
-    descricao VARCHAR(255)
+    descricao VARCHAR(255) DEFAULT "Clique em Editar para adicionar sua descrição!"
 );
 
 CREATE TABLE tabela_itens (
@@ -35,8 +35,3 @@ CREATE TABLE agendamentos (
 SELECT * FROM agendamentos;
 SELECT * FROM cadastro_usuario;
 SELECT * FROM tabela_itens;
-
-INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('ONG Somos+ Juntos','somos@somos','somos','Instituição','Rua 45, Rio Branco');
-INSERT INTO cadastro_usuario(nome, email, senha,tipo_usuario,endereco)VALUES('Laura Pizzuti','lalapizzutti@gmail.com','Laura','Colaborador','Rua 63, Rio Verde');
-INSERT INTO tabela_itens(item,qnt_itens,id_user) VALUES('Arroz', 8, 1);
-INSERT INTO agendamentos (id, item, data_entrega, hora_entrega, qnt, id_doador, id_insti, _status) VALUES ('1','Arroz', '2022-06-06','09:00', 10, 2, 1, 'Agendada');

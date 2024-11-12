@@ -30,19 +30,13 @@ button.onclick = async function(e) {
         let content = await response.json(); 
 
         if (content.success) {
-            alert("Bem vindo(a)! Você foi cadastrado(a)."); 
+            console.log("Bem vindo(a)! Você foi cadastrado(a)."); 
             
             localStorage.setItem('id', content.data.insertId);
             console.log(`ID do usuário armazenado: ${content.data.insertId}`);
             console.log(`Tipo do usuário armazenado: ${content.data.tipo_usuario}`);
 
             window.location.href = "/front/html/login.html";
-            
-                // if (content.data.tipo_usuario == 'Instituição') {
-                //     window.location.href = "/front/html/perfil_insti.html";
-                // }else{
-                //     window.location.href = "/front/html/agendamento.html";
-                // }
 
         } else {
             console.log("Erro ao cadastrar. Vefique os dados inseridos ou se você já possui uma conta."); 

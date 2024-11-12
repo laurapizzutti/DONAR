@@ -1,3 +1,7 @@
+
+
+
+
 async function getTask() {
     let Id_User = localStorage.getItem('id');
     
@@ -199,3 +203,32 @@ function Editar(event) {
 
     window.location.href = '/front/html/editar_perfil.html'
 }
+
+async function getUser() {
+    let Id_User = localStorage.getItem('id');
+    console.log(Id_User)
+
+    const response = await fetch(`http://localhost:3001/api/get/userdata/${Id_User}` , 
+    {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    const results = await response.json();
+    console.log(results)
+
+    if (results.success) {
+
+        let nome = document.querySelector('.usuario-nome');
+        nome.textContent = results.data.nome;
+        let desc = document.querySelector('.intro-intro');
+        desc.textContent = results.data.descricao;
+      
+    } else {
+        console.log('Nenhum item encontrado para esta instituição');
+    }
+}
+
+getUser()
