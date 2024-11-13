@@ -1,7 +1,3 @@
-
-
-
-
 async function getTask() {
     let Id_User = localStorage.getItem('id');
     
@@ -25,8 +21,6 @@ async function getTask() {
     if (results.success) {
         results.data.forEach(agendamento => {
             // console.log('Processando agendamento:', agendamento);
-       
-          
 
             let doacao = document.createElement('div');
             doacao.classList.add('doação');
@@ -56,6 +50,9 @@ async function getTask() {
                             let h4 = document.createElement('h4');
                             h4.textContent = nomeItem.nome;
                             cabecalho.appendChild(h4);
+
+                            const enderecoInsti = document.createElement('span');
+                            enderecoInsti.textContent = nomeItem.endereco;
 
                             // buttom.setAttribute('endereco', nomeItem.endereco);
                             // console.log(endereco)
@@ -123,10 +120,12 @@ async function getTask() {
                         button.addEventListener('click', function () {
                             let item = agendamento.item;
                             let quantidade = agendamento.qnt;
+                            let ID = agendamento.id_insti
                             let hora = agendamento.hora_entrega;
 
+
                             let popup_itens = document.getElementById('popup-itens');
-                            popup_itens.innerHTML = '';
+                            popup_itens.innerHTML = '<p class="endereco-popup"> Endereço: </p> <p p class="hora-popup"> Horário: </p>';
 
                             let op = document.createElement('div');
                             op.classList.add('op');
@@ -139,8 +138,43 @@ async function getTask() {
                             itemdiv.classList.add('item');
                             itemdiv.textContent = item;
 
+                            let horario = document.createElement('span');
+                            horario.classList.add('item');
+                            horario.textContent = hora;
+
                             op.appendChild(qnt);
                             op.appendChild(itemdiv);
+
+                            async function getUser() {
+                               
+                            
+                                const response = await fetch(`http://localhost:3001/api/get/userdata/${ID}` , 
+                                {
+                                    method: "GET",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    }
+                                });
+                            
+                                const results = await response.json();
+                                console.log(results)
+                            
+                                if (results.success) {
+
+                                    console.log(results.endereco)
+                            
+                                    let ende = document.createElement('span');
+                                    ende.classList.add('item');
+                                    ende.textContent = results.data.endereco;
+
+                                    popup_itens.appendChild(ende);
+
+                                } else {
+                                    console.log('Nenhum item encontrado para esta instituição');
+                                }
+                            }
+                            
+                            getUser()
 
                             popup_itens.appendChild(op);
 

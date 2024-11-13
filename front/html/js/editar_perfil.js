@@ -31,7 +31,6 @@ async function getUser() {
         document.querySelector('.email').value = results.data.email;
         document.querySelector('.senha').value = results.data.senha;
         document.querySelector('.endereco').value = results.data.endereco;
-        document.querySelector('.apelido').value = results.data.nome_usuario;
         document.querySelector('.descricao').value = results.data.descricao;
       
     } else {
@@ -53,7 +52,6 @@ document.querySelector('.salvar').addEventListener('click', async () => {
         email:  document.querySelector('.email').value,
         senha: document.querySelector('.senha').value,
         endereco: document.querySelector('.endereco').value,
-        nome_usuario: document.querySelector('.apelido').value,
         descricao: document.querySelector('.descricao').value,
        
     };
