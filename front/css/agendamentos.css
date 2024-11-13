@@ -95,7 +95,7 @@ main {
 }
 
 .data {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #494945;
     font-weight: 500;
     margin-right: 1rem;
@@ -109,20 +109,22 @@ main {
 }
 
 .status_desc {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 400;
     color: #666;
     margin-bottom: 0;
 }
 
 .agendada {
     color: #babf28;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: large;
 }
 
 .realizada {
     color: #00aa25;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: large;
 }
 
 .ver-mais {
