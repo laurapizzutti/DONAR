@@ -39,6 +39,11 @@ main {
     border-color: #fc9235;
 }
 
+#ola {
+        font-size: 120%;
+        font-weight: 400;
+}
+
 .perfil-foto {
     display: flex;
     gap: 8%;
@@ -276,8 +281,7 @@ button.editar svg {
 .usuario-big {
     display: flex;
     flex-direction: column; /* Alinha "Olá," e o nome na mesma linha */
-    font-size: 20px;
-    font-weight: 650;
+    
 }
 
 .editar {
@@ -294,10 +298,13 @@ button.editar svg {
     font-weight: bold;
 }
 
-.intro-intro, .usuario-nome {
-    display: inline; /* Mantém o "Olá," e o nome do usuário na mesma linha */
-    margin: 0 5px; /* Ajuste o espaçamento entre os elementos */
-    
+#nomeUsuario, #ola {
+    display: inline; /* Mantém o "Olá," e o nome do usuário na mesma linha */ 
+}
+
+#ola {
+    font-size: 23px;
+    font-weight: 400;
 }
 
 .cabecalho-init {

@@ -117,29 +117,48 @@ async function getTaskInsti() {
                         button.addEventListener('click', function () {
                             let item = agendamento.item;
                             let quantidade = agendamento.qnt;
-                            let hora = agendamento.hora_entrega;
-
+                            let ID = agendamento.id_insti;
+                        
                             let popup_itens = document.getElementById('popup-itens');
-                            popup_itens.innerHTML = '';
-
+                            popup_itens.innerHTML = '';  // Limpa o conteúdo do popup
+                        
                             let op = document.createElement('div');
                             op.classList.add('op');
-
+                        
                             let qnt = document.createElement('span');
                             qnt.classList.add('qnt2');
                             qnt.textContent = `${quantidade}x`;
-
+                        
                             let itemdiv = document.createElement('span');
                             itemdiv.classList.add('item');
                             itemdiv.textContent = item;
-
+                        
                             op.appendChild(qnt);
                             op.appendChild(itemdiv);
-
+                        
+                            // Adiciona 'op' primeiro
                             popup_itens.appendChild(op);
-
+                        
+                            let popup_div = document.createElement('div');
+                            popup_div.classList.add('popup-info'); // Classe para controle do layout
+                            popup_div.innerHTML = `
+                                <p class="hora-popup">Horário:  </p>
+                            `;
+                        
+                            // Adiciona 'popup_div' depois, com endereço e horário à esquerda
+                            popup_itens.appendChild(popup_div);
+                        
+                        
+                            // Adicionando horário
+                            let hora = document.createElement('span');
+                            hora.classList.add('item-dados-popup');
+                            // Pega apenas os quatro primeiros caracteres, no formato HH:MM
+                            hora.textContent = agendamento.hora_entrega.substring(0, 5);
+                            popup_div.querySelector('.hora-popup').appendChild(hora);
+                        
                             document.getElementById('popup').style.display = 'block';
                         });
+                        
 
                         button2.addEventListener('click', async function () {
                             let id_agendamento = agendamento.id;

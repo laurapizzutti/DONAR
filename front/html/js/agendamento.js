@@ -120,76 +120,66 @@ async function getTask() {
                         button.addEventListener('click', function () {
                             let item = agendamento.item;
                             let quantidade = agendamento.qnt;
-                            let ID = agendamento.id_insti
-
+                            let ID = agendamento.id_insti;
+                        
                             let popup_itens = document.getElementById('popup-itens');
-
+                            popup_itens.innerHTML = '';  // Limpa o conteúdo do popup
+                        
                             let op = document.createElement('div');
                             op.classList.add('op');
-
+                        
                             let qnt = document.createElement('span');
                             qnt.classList.add('qnt2');
                             qnt.textContent = `${quantidade}x`;
-
+                        
                             let itemdiv = document.createElement('span');
                             itemdiv.classList.add('item');
                             itemdiv.textContent = item;
-
+                        
                             op.appendChild(qnt);
                             op.appendChild(itemdiv);
-
-                            let popup_div = document.createElement('popup-div');
-
-                            popup_div.innerHTML = '<p class="endereco-popup"> Endereço:  </p> <p p class="hora-popup"> Horário:     </p>';
-                            
-                            popup_itens.appendChild(popup_div)
-
-                            let divishora = document.querySelector('.hora-popup');
-                            
-                            let hora = document.createElement('span');
-                            hora.classList.add('item-dados-popup');
-                            hora.textContent = agendamento.hora_entrega;
-
-                            divishora.appendChild(hora);
-
+                        
+                            // Adiciona 'op' primeiro
+                            popup_itens.appendChild(op);
+                        
+                            let popup_div = document.createElement('div');
+                            popup_div.classList.add('popup-info'); // Classe para controle do layout
+                            popup_div.innerHTML = `
+                                <p class="endereco-popup">Endereço:  </p>
+                                <p class="hora-popup">Horário:  </p>
+                            `;
+                        
+                            // Adiciona 'popup_div' depois, com endereço e horário à esquerda
+                            popup_itens.appendChild(popup_div);
+                        
                             async function getUser() {
-                               
-                            
-                                const response = await fetch(`http://localhost:3001/api/get/userdata/${ID}` , 
-                                {
+                                const response = await fetch(`http://localhost:3001/api/get/userdata/${ID}`, {
                                     method: "GET",
-                                    headers: {
-                                        "Content-Type": "application/json"
-                                    }
+                                    headers: { "Content-Type": "application/json" }
                                 });
-                            
+                        
                                 const results = await response.json();
-                                console.log(results)
-                            
                                 if (results.success) {
-
-                                    console.log(results.data.endereco)
-
-                                    let divis = document.querySelector('.endereco-popup');
-                            
-                                    let ende = document.createElement('span');
-                                    ende.classList.add('item-dados-popup');
-                                    ende.textContent = results.data.endereco;
-
-                                    divis.appendChild(ende);
-
-
-                                } else {
-                                    console.log('Nenhum item encontrado para esta instituição');
+                                    let endereco = document.createElement('span');
+                                    endereco.classList.add('item-dados-popup');
+                                    endereco.textContent = results.data.endereco;
+                                    popup_div.querySelector('.endereco-popup').appendChild(endereco);
                                 }
                             }
-                            
-                            getUser()
-
-                            popup_itens.appendChild(op);
-
+                        
+                            getUser();
+                        
+                            // Adicionando horário
+                            let hora = document.createElement('span');
+                            hora.classList.add('item-dados-popup');
+                            // Pega apenas os quatro primeiros caracteres, no formato HH:MM
+                            hora.textContent = agendamento.hora_entrega.substring(0, 5);
+                            popup_div.querySelector('.hora-popup').appendChild(hora);
+                        
                             document.getElementById('popup').style.display = 'block';
                         });
+                        
+                        
 
                         button2.addEventListener('click', async function () {
                             let id_agendamento = agendamento.id;
