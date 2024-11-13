@@ -121,11 +121,8 @@ async function getTask() {
                             let item = agendamento.item;
                             let quantidade = agendamento.qnt;
                             let ID = agendamento.id_insti
-                            let hora = agendamento.hora_entrega;
-
 
                             let popup_itens = document.getElementById('popup-itens');
-                            popup_itens.innerHTML = '<p class="endereco-popup"> Endereço: </p> <p p class="hora-popup"> Horário: </p>';
 
                             let op = document.createElement('div');
                             op.classList.add('op');
@@ -138,12 +135,22 @@ async function getTask() {
                             itemdiv.classList.add('item');
                             itemdiv.textContent = item;
 
-                            let horario = document.createElement('span');
-                            horario.classList.add('item');
-                            horario.textContent = hora;
-
                             op.appendChild(qnt);
                             op.appendChild(itemdiv);
+
+                            let popup_div = document.createElement('popup-div');
+
+                            popup_div.innerHTML = '<p class="endereco-popup"> Endereço:  </p> <p p class="hora-popup"> Horário:     </p>';
+                            
+                            popup_itens.appendChild(popup_div)
+
+                            let divishora = document.querySelector('.hora-popup');
+                            
+                            let hora = document.createElement('span');
+                            hora.classList.add('item-dados-popup');
+                            hora.textContent = agendamento.hora_entrega;
+
+                            divishora.appendChild(hora);
 
                             async function getUser() {
                                
@@ -161,13 +168,16 @@ async function getTask() {
                             
                                 if (results.success) {
 
-                                    console.log(results.endereco)
+                                    console.log(results.data.endereco)
+
+                                    let divis = document.querySelector('.endereco-popup');
                             
                                     let ende = document.createElement('span');
-                                    ende.classList.add('item');
+                                    ende.classList.add('item-dados-popup');
                                     ende.textContent = results.data.endereco;
 
-                                    popup_itens.appendChild(ende);
+                                    divis.appendChild(ende);
+
 
                                 } else {
                                     console.log('Nenhum item encontrado para esta instituição');
