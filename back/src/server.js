@@ -24,6 +24,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Serve o front-end pelo mesmo servidor, assim tudo fica num único endereço
 app.use('/front', express.static(path.join(__dirname, '..', '..', 'front')))
-app.get('/', (req, res) => res.redirect('/front/html/intro.html'))
+app.get('/', (req, res) => res.redirect('/front/html/login.html'))
 
 app.listen(port, () => console.log(`Rodando na porta ${port}`));

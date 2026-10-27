@@ -35,5 +35,6 @@ async function login(event) {
 
     } else {
         console.log(results.message);
+        alert(results.message || 'Não foi possível fazer login.');
     }
 }

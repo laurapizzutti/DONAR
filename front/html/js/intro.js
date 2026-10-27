@@ -6,6 +6,10 @@ Id_User = localStorage.getItem('id');
 console.log(`ID do usuário: ${Id_User} e Tipo do usuário: ${Tipo_User}`);
 
 function evento(event) {
+    if (!Id_User) {
+        window.location.href = '/front/html/login.html'
+        return
+    }
     if (Tipo_User =='Instituição') {
         window.location.href = '/front/html/perfil_insti.html'
 
