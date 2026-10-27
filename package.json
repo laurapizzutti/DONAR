@@ -1,6 +1,14 @@
 {
+  "name": "donar",
+  "private": true,
+  "description": "Dependências usadas pela função da Vercel (api/index.js)",
   "dependencies": {
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.10.0"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

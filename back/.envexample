@@ -1,6 +1,16 @@
-# PORT = 3001
+# Copie este arquivo para .env e preencha.
+PORT=3001
 
-# DB_HOST = ""
-# DB_USER = ""
-# DB_PASSWORD = ""
-# DB_DATABASE = ""
+# Opção 1: URL única (a maioria dos provedores na nuvem fornece assim)
+# DATABASE_URL=mysql://usuario:senha@host:porta/DONAR_MVP
+
+# Opção 2: variáveis separadas (ex.: MySQL local)
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=root
+DB_DATABASE=DONAR_MVP
+
+# SSL fica ligado automaticamente com DATABASE_URL.
+# Use DB_SSL=false para um MySQL local sem SSL, ou true para forçar.
+DB_SSL=false

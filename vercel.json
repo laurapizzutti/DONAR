@@ -1,0 +1,15 @@
+{
+  "buildCommand": "mkdir -p public && cp -r front public/",
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" }
+  ],
+  "redirects": [
+    { "source": "/", "destination": "/front/html/intro.html", "permanent": false }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "back/src/config/schema.sql"
+    }
+  }
+}

@@ -8,7 +8,7 @@ const loginRouter = require('./routes/loginRouter');
 const instiRouter = require('./routes/instiRouter');
 const app = express();
 
-app.set('port', process.env.PORT || 3005);
+app.set('port', process.env.PORT || 3001);
 app.use(cors());
 app.use(express.json());
 

@@ -54,7 +54,7 @@ function Excluir(exibir) {
                 
                     if (id_item) {
                         try {
-                            const response = await fetch(`http://localhost:3001/api/delete/item/${id_item}`, {
+                            const response = await fetch(`/api/delete/item/${id_item}`, {
                                 method: "DELETE",
                                 headers: {
                                     "Content-Type": "application/json"
@@ -102,7 +102,7 @@ async function SalvarItemDB(event) {
 
     console.log(data);
 
-    const response = await fetch('http://localhost:3001/api/store/item', {
+    const response = await fetch('/api/store/item', {
         method: "POST",
         headers: {
             "Content-Type":"application/json"
@@ -129,7 +129,7 @@ async function getItens() {
     const Id_User = localStorage.getItem('id');
 
     try {
-        const response = await fetch(`http://localhost:3001/api/itens/${Id_User}`, {
+        const response = await fetch(`/api/itens/${Id_User}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -183,7 +183,7 @@ async function getUser() {
     let Id_User = localStorage.getItem('id');
     console.log(Id_User)
 
-    const response = await fetch(`http://localhost:3001/api/get/userdata/${Id_User}` , 
+    const response = await fetch(`/api/get/userdata/${Id_User}` , 
     {
         method: "GET",
         headers: {
