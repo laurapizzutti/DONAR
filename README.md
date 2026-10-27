@@ -3,7 +3,8 @@
 Plataforma que conecta colaboradores a instituições para agendar doações.
 
 - `front/` – páginas HTML/CSS/JS
-- `back/` – API Node.js (Express) que também entrega o front
+- `back/` – API Node.js (Express)
+- `api/` + `vercel.json` – configuração para publicar na Vercel
 - `banco/` – script SQL de referência (as tabelas são criadas automaticamente ao iniciar a API)
 
 ## Colocar na nuvem (grátis, sem Workbench)
@@ -22,25 +23,24 @@ São dois serviços: um **banco MySQL na nuvem** e o **servidor** que roda a API
    ```
    (o usuário tem o formato `xxxxxxxx.root`; o host termina em `tidbcloud.com`).
 
-### 2. Publicar o servidor (Render)
+### 2. Publicar na Vercel
 
-1. Crie uma conta em <https://render.com> entrando com o GitHub.
-2. **New → Blueprint** e selecione este repositório. O Render lê o `render.yaml`.
-3. Quando pedir `DATABASE_URL`, cole a URL do passo anterior e confirme.
-4. Aguarde o deploy. O site fica em `https://donar-XXXX.onrender.com`
-   e a documentação da API em `/api-docs`.
+1. Em <https://vercel.com>, abra o projeto **donar** (ou **Add New → Project** e importe este repositório).
+2. Em **Settings → General**, deixe **Root Directory** vazio (raiz do repositório) e
+   **Framework Preset** como **Other**. O resto vem do `vercel.json`.
+3. Em **Settings → Environment Variables**, crie `DATABASE_URL` com a URL do passo anterior
+   (marque Production, Preview e Development).
+4. Vá em **Deployments** e clique em **Redeploy** no último deploy.
+5. O site fica em `https://donar-XXXX.vercel.app`.
 
-As tabelas são criadas sozinhas na primeira vez que o servidor sobe.
-Cada `git push` na branch configurada gera um novo deploy automaticamente.
-
-> No plano gratuito do Render o servidor "dorme" após 15 min sem acesso;
-> a primeira visita depois disso demora uns 30–50 segundos.
+As tabelas são criadas sozinhas no primeiro acesso.
+Cada `git push` na branch `main` gera um novo deploy automaticamente.
 
 ## Rodar localmente
 
 ```bash
 cd back
-cp .envexample .env   # ajuste os dados do seu MySQL (ou cole a DATABASE_URL da nuvem)
+cp .envexample .env   # ajuste os dados do seu MySQL (ou cole a DATABASE_URL da nuvem e apague DB_SSL)
 npm install
 npm run dev
 ```

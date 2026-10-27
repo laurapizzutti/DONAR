@@ -16,7 +16,9 @@ const config = url ? { uri: url } : {
 };
 
 // Bancos gerenciados (Aiven, TiDB, etc.) exigem conexão com SSL.
-if (process.env.DB_SSL === 'true') {
+// Ligado por padrão quando se usa DATABASE_URL; DB_SSL=false desliga.
+const useSsl = process.env.DB_SSL ? process.env.DB_SSL === 'true' : Boolean(url);
+if (useSsl) {
     config.ssl = { rejectUnauthorized: true };
     if (process.env.DB_CA_CERT) config.ssl.ca = process.env.DB_CA_CERT;
 }

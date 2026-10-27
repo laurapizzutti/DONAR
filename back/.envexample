@@ -11,5 +11,6 @@ DB_USER=root
 DB_PASSWORD=root
 DB_DATABASE=DONAR_MVP
 
-# Use true em bancos na nuvem que exigem SSL (Aiven, TiDB Cloud...)
+# SSL fica ligado automaticamente com DATABASE_URL.
+# Use DB_SSL=false para um MySQL local sem SSL, ou true para forçar.
 DB_SSL=false
