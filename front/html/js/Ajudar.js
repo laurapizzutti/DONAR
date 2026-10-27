@@ -80,6 +80,11 @@ document.getElementById("handleSubmit").onclick = async function(e) {
     }
     const Insti = localStorage.getItem('ID_insti');
 
+    if (!date || !hora || !qnt) {
+        alert("Preencha a data, o horário e a quantidade de itens antes de agendar.");
+        return;
+    }
+
     let data = { item, date, hora, qnt, Id_User, Insti };
 
     try {
@@ -89,11 +94,13 @@ document.getElementById("handleSubmit").onclick = async function(e) {
             body: JSON.stringify(data)
         });
 
-        if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.statusText}`);
-        }
-
         let results = await response.json();
+
+        if (!response.ok) {
+            const motivo = results.data && results.data.sqlMessage ? `\n\nDetalhe: ${results.data.sqlMessage}` : '';
+            alert(`Não foi possível agendar a doação.${motivo}`);
+            return;
+        }
 
         if (results.success) {
            window.location.href = '/front/html/agendada.html';
