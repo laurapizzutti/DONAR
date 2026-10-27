@@ -44,6 +44,9 @@ async function getTask() {
                 const nome = await response.json();
 
                 if (nome.success) {
+                    // Endereço já vem nesta resposta; guardado para o popup abrir sem nova busca
+                    let enderecoInsti = '';
+
                     nome.data.forEach(nomeItem => {
                             // console.log('Nome encontrado:', nomeItem);
 
@@ -51,8 +54,7 @@ async function getTask() {
                             h4.textContent = nomeItem.nome;
                             cabecalho.appendChild(h4);
 
-                            const enderecoInsti = document.createElement('span');
-                            enderecoInsti.textContent = nomeItem.endereco;
+                            enderecoInsti = nomeItem.endereco;
 
                             // buttom.setAttribute('endereco', nomeItem.endereco);
                             // console.log(endereco)
@@ -120,7 +122,6 @@ async function getTask() {
                         button.addEventListener('click', function () {
                             let item = agendamento.item;
                             let quantidade = agendamento.qnt;
-                            let ID = agendamento.id_insti;
                         
                             let popup_itens = document.getElementById('popup-itens');
                             popup_itens.innerHTML = '';  // Limpa o conteúdo do popup
@@ -152,22 +153,10 @@ async function getTask() {
                             // Adiciona 'popup_div' depois, com endereço e horário à esquerda
                             popup_itens.appendChild(popup_div);
                         
-                            async function getUser() {
-                                const response = await fetch(`/api/get/userdata/${ID}`, {
-                                    method: "GET",
-                                    headers: { "Content-Type": "application/json" }
-                                });
-                        
-                                const results = await response.json();
-                                if (results.success) {
-                                    let endereco = document.createElement('span');
-                                    endereco.classList.add('item-dados-popup');
-                                    endereco.textContent = results.data.endereco;
-                                    popup_div.querySelector('.endereco-popup').appendChild(endereco);
-                                }
-                            }
-                        
-                            getUser();
+                            let endereco = document.createElement('span');
+                            endereco.classList.add('item-dados-popup');
+                            endereco.textContent = enderecoInsti;
+                            popup_div.querySelector('.endereco-popup').appendChild(endereco);
                         
                             // Adicionando horário
                             let hora = document.createElement('span');

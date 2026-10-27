@@ -1,0 +1,243 @@
+/*
+ * Ajustes de responsividade compartilhados por todas as páginas.
+ * Carregado depois do CSS de cada página, então só sobrescreve layout
+ * (tamanhos fixos, posições "chumbadas"), sem mudar cores ou fontes.
+ *
+ * O DONAR foi desenhado para celular. Em telas maiores o conteúdo fica
+ * numa coluna central, como um app, em vez de esticar pela tela toda.
+ */
+
+:root {
+    --coluna: 560px;          /* largura máxima do conteúdo */
+    --altura-navbar: 4.625rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: var(--coluna);
+    margin: 0 auto;
+    padding: 0 16px;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+}
+
+/* Espaço para a barra fixa do rodapé não cobrir o fim da página */
+body:has(.navbar) {
+    padding-bottom: calc(var(--altura-navbar) + 24px + env(safe-area-inset-bottom));
+}
+
+main {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Nada com largura fixa pode passar da largura da tela */
+input, select, textarea, button {
+    max-width: 100%;
+}
+
+/* Botões principais dentro de links (<a><button></a>, ex.: Login e "Ok, voltar")
+   ocupam a largura disponível */
+.registro > a:has(> button),
+main > a:has(> button) {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+}
+
+/* ---------- Barra de navegação (rodapé) ---------- */
+.navbar {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: min(96%, var(--coluna));
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 10;
+}
+
+.navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+}
+
+/* ---------- Login e cadastro ---------- */
+.registro {
+    top: 0;
+    padding: clamp(40px, 12vh, 170px) 0 40px;
+}
+
+.registro input,
+.registro select,
+.registro .cadastro,
+.registro #handleSubmit {
+    width: 100%;
+    max-width: 375px;
+}
+
+/* ---------- Intro ---------- */
+.intro {
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: clamp(24px, 8vh, 120px) 0 40px;
+    align-items: center;
+}
+
+.intro img {
+    width: 100%;
+    max-width: 340px;
+}
+
+.intro p {
+    max-width: 420px;
+}
+
+.intro .ajudar {
+    left: 0;
+    width: 100%;
+    max-width: 375px;
+}
+
+/* ---------- Ajudar (escolher item, data e hora) ---------- */
+.coluna {
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    width: auto;
+}
+
+.frase2 {
+    right: 0;
+}
+
+.opcoes .op,
+.opcoes .selecionado {
+    width: 100%;
+    max-width: 375px;
+}
+
+#data,
+#hora {
+    width: 100%;
+    max-width: 375px;
+    font-size: clamp(1.25rem, 5vw, 2rem);
+    height: auto;
+}
+
+#quant {
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.principal,
+.data {
+    width: 100%;
+}
+
+.data {
+    align-items: center;
+}
+
+.agendar {
+    width: 100%;
+    max-width: 375px;
+}
+
+/* ---------- Perfis e listas de doações ---------- */
+.doações,
+#home {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+}
+
+.doação,
+.card-home {
+    max-width: none;
+    min-width: 0;
+}
+
+.card-home .ajudar {
+    width: 100%;
+}
+
+.cabecalho-init {
+    gap: 16px;
+    justify-content: space-between;
+}
+
+.solicite {
+    right: 0;
+}
+
+.opcao,
+.input-popup,
+.search-div {
+    width: 100%;
+    max-width: 375px;
+}
+
+#marcarRealizada {
+    width: 100%;
+    max-width: 325px;
+}
+
+/* ---------- Editar perfil e doação agendada ---------- */
+.campos input,
+main > #handleSubmit,
+.voltar {
+    width: 100%;
+    max-width: 375px;
+}
+
+main > #handleSubmit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Popups ---------- */
+.popup-content,
+.conteudo-popup {
+    width: calc(100% - 32px);
+    max-width: 400px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+}
+
+/* ---------- Telas maiores: mais respiro ---------- */
+@media (min-width: 600px) {
+    body {
+        padding: 0 24px;
+    }
+
+    body:has(.navbar) {
+        padding-bottom: calc(var(--altura-navbar) + 40px);
+    }
+}
+
+/* Telas muito baixas (celular deitado): menos espaço no topo */
+@media (max-height: 500px) {
+    .registro,
+    .intro {
+        padding-top: 16px;
+    }
+}
