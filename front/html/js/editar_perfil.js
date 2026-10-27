@@ -1,14 +1,15 @@
 Tipo_User = localStorage.getItem('tipo_user');
 
-document.querySelector('.botao-voltar').addEventListener('click', async () => { 
-
+// Volta para a página de perfil de acordo com o tipo de usuário
+function voltar() {
     if (Tipo_User == 'Colaborador') {
         window.location.href = "/front/html/agendamento.html"
     }else{
         window.location.href = "/front/html/perfil_insti.html"
     }  
+}
 
-});
+document.querySelector('.botao-voltar').addEventListener('click', voltar);
 
 async function getUser() {
     let Id_User = localStorage.getItem('id');
@@ -67,11 +68,14 @@ document.querySelector('.salvar').addEventListener('click', async () => {
 
         if (results.success) {
             console.log("Dados atualizados com sucesso!");
+            voltar();
 
         } else {
             console.error("Erro ao atualizar os dados");
+            alert("Não foi possível salvar as alterações. Tente novamente.");
         }
     } catch (error) {
         console.error("Erro na requisição", error);
+        alert("Não foi possível salvar as alterações. Tente novamente.");
     }
 });
