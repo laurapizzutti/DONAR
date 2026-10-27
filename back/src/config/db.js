@@ -25,10 +25,14 @@ if (useSsl) {
 
 // Pool reconecta sozinho se o banco derrubar uma conexão ociosa,
 // o que acontece com frequência em bancos na nuvem.
+// Poucas conexões e liberadas rápido: planos gratuitos (ex.: Clever Cloud DEV)
+// aceitam só algumas conexões simultâneas, e a Vercel roda várias instâncias.
 const connection = mysql.createPool({
     ...config,
     waitForConnections: true,
-    connectionLimit: 5,
+    connectionLimit: Number(process.env.DB_CONNECTION_LIMIT) || 2,
+    maxIdle: 0,
+    idleTimeout: 10000,
     enableKeepAlive: true,
     multipleStatements: true,
 });
