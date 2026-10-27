@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: donar
+    runtime: node
+    plan: free
+    rootDir: back
+    buildCommand: npm install
+    startCommand: npm start
+    buildFilter:
+      paths:
+        - back/**
+        - front/**
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_SSL
+        value: "true"

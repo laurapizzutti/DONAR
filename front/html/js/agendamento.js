@@ -3,7 +3,7 @@ async function getTask() {
     
     console.log('ID do colaborador:', Id_User);
 
-    const response = await fetch(`http://localhost:3001/api/get/task/${Id_User}`, {
+    const response = await fetch(`/api/get/task/${Id_User}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -34,7 +34,7 @@ async function getTask() {
             cabecalho.appendChild(img);
 
             async function getInstiName() {
-                const response = await fetch(`http://localhost:3001/api/get/InstiName/${agendamento.id_insti}`, {
+                const response = await fetch(`/api/get/InstiName/${agendamento.id_insti}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"
@@ -153,7 +153,7 @@ async function getTask() {
                             popup_itens.appendChild(popup_div);
                         
                             async function getUser() {
-                                const response = await fetch(`http://localhost:3001/api/get/userdata/${ID}`, {
+                                const response = await fetch(`/api/get/userdata/${ID}`, {
                                     method: "GET",
                                     headers: { "Content-Type": "application/json" }
                                 });
@@ -187,7 +187,7 @@ async function getTask() {
                             let data = { _status: 'Realizada' };
                         
                             try {
-                                const response = await fetch(`http://localhost:3001/api/update/task/${id_agendamento}`, {
+                                const response = await fetch(`/api/update/task/${id_agendamento}`, {
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify(data) 
@@ -242,7 +242,7 @@ async function getUser() {
     let Id_User = localStorage.getItem('id');
     console.log(Id_User)
 
-    const response = await fetch(`http://localhost:3001/api/get/userdata/${Id_User}` , 
+    const response = await fetch(`/api/get/userdata/${Id_User}` , 
     {
         method: "GET",
         headers: {

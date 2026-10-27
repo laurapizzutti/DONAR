@@ -15,12 +15,11 @@ async function login(req, res) {
 
     connection.query(query, params, (err, results) => {
         console.log(err, results)
-        if(results.length > 0) {
-            let senhaForms = req.body.senha
-            let senhaDb = results[0].senha
-
-            if (senhaDb === senhaForms)
-                console.log('Senha Correta!')   
+        if (err) {
+            return res.status(500).json({ success: false, message: "Erro no servidor", data: err });
+        }
+        if (results.length > 0 && results[0].senha === req.body.senha) {
+                console.log('Senha Correta!')
                 res
                     .status(200)
                     .json({
@@ -33,8 +32,8 @@ async function login(req, res) {
                     .status(400)
                     .json({
                         success: false,
-                        message: "Verifique sua Senha",
-                        data: results
+                        message: "Verifique seu e-mail e senha",
+                        data: []
                 });  
         }
     });

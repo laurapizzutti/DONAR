@@ -3,7 +3,7 @@ async function getTaskInsti() {
     
     console.log('ID da Instituição:', Id_User);
 
-    const response = await fetch(`http://localhost:3001/api/get/task/insti/${Id_User}`, {
+    const response = await fetch(`/api/get/task/insti/${Id_User}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"
@@ -35,7 +35,7 @@ async function getTaskInsti() {
             cabecalho.appendChild(img);
 
             async function getInstiName() {
-                const response = await fetch(`http://localhost:3001/api/get/InstiName/${agendamento.id_doador}`, {
+                const response = await fetch(`/api/get/InstiName/${agendamento.id_doador}`, {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json"
@@ -166,7 +166,7 @@ async function getTaskInsti() {
                             let data = { _status: 'Realizada' };
                         
                             try {
-                                const response = await fetch(`http://localhost:3001/api/update/task/${id_agendamento}`, {
+                                const response = await fetch(`/api/update/task/${id_agendamento}`, {
                                     method: "POST",
                                     headers: { "Content-Type": "application/json" },
                                     body: JSON.stringify(data) 

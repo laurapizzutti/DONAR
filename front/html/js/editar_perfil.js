@@ -14,7 +14,7 @@ async function getUser() {
     let Id_User = localStorage.getItem('id');
     console.log(Id_User)
 
-    const response = await fetch(`http://localhost:3001/api/get/userdata/${Id_User}` , 
+    const response = await fetch(`/api/get/userdata/${Id_User}` , 
     {
         method: "GET",
         headers: {
@@ -57,7 +57,7 @@ document.querySelector('.salvar').addEventListener('click', async () => {
     };
 
     try {
-        const response = await fetch("http://localhost:3001/api/update/user/" + Id_User, {
+        const response = await fetch("/api/update/user/" + Id_User, {
             method: "PUT",
             headers: { "Content-Type": "application/json;charset=UTF-8" },
             body: JSON.stringify(data)
