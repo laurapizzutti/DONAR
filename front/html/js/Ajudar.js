@@ -73,6 +73,11 @@ document.getElementById("handleSubmit").onclick = async function(e) {
     let hora = document.getElementById("hora").value; 
     const Id_User = localStorage.getItem('id');
     console.log(Id_User)
+    if (!Id_User) {
+        alert("Faça login para agendar uma doação.");
+        window.location.href = '/front/html/login.html';
+        return;
+    }
     const Insti = localStorage.getItem('ID_insti');
 
     let data = { item, date, hora, qnt, Id_User, Insti };
